@@ -135,16 +135,16 @@ enableEmoji = true
     title = "Curriculum Vitae"
     url = "/cv/"
     weight = 2
-  [[menu.header]]
-    name = "Projects"
-    title = "Project Portfolio"
-    url = "/project/"
-    weight = 3
-  [[menu.header]]
-    name = "Contact"
-    title = "Contact form"
-    url = "/contact/"
-    weight = 4
+#  [[menu.header]]
+#    name = "Projects"
+#    title = "Project Portfolio"
+#    url = "/project/"
+#    weight = 3
+#  [[menu.header]]
+#    name = "Contact"
+#    title = "Contact form"
+#    url = "/contact/"
+#    weight = 4
 #  [[menu.header]]
 #    name = "Blog"
 #    title = "Blog"
