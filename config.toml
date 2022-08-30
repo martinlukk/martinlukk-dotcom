@@ -1,4 +1,4 @@
-baseURL = "https://martinlukk.netlify.app/"
+baseURL = "https://www.martinlukk.com"
 theme = "hugo-apero"
 languageCode = "en"
 title = "Martin Lukk's Personal Website"
