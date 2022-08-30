@@ -128,7 +128,7 @@ enableEmoji = true
   [[menu.header]]
     name = "About"
     title = "About Martin"
-    url = "/about/"
+    url = "/" # Redirected from "/about/" while content pending
     weight = 1
   [[menu.header]]
     name = "CV"
