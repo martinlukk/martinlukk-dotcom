@@ -130,8 +130,8 @@ enableEmoji = true
 [menu]
   # Configure header 
   [[menu.header]]
-    name = "About"
-    title = "About Martin"
+    name = "Home"
+    title = "Home" # Changed from "About Martin" while content pending
     url = "/" # Redirected from "/about/" while content pending
     weight = 1
   [[menu.header]]
