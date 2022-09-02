@@ -124,7 +124,7 @@ enableRobotsTXT = true
 #      url       = "/blog/index.xml"
 
 [taxonomies]
-#  category = "categories"
+   category = "categories"
 #  series = "series"
 #  tag = "tags"
 
