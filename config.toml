@@ -124,9 +124,9 @@ enableRobotsTXT = true
 #      url       = "/blog/index.xml"
 
 [taxonomies]
-  category = "categories"
-  series = "series"
-  tag = "tags"
+#  category = "categories"
+#  series = "series"
+#  tag = "tags"
 
 [menu]
   # Configure header 
