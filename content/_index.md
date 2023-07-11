@@ -2,7 +2,7 @@
 action_label: Read My CV &rarr;
 action_link: "/cv.html"
 action_type: text
-description: "I am a sociologist who studies the political consequences of economic inequality. My research investigates how the dramatic growth in income and wealth inequality in industrialized countries since the 1980s has shaped political life in three key areas: identity, voting, and social welfare. This work contributes to scholarship in  political sociology, inequality and stratification, social policy, digital sociology, and health and illness.
+description: "I am a sociologist studying politics, economic inequality, and the internet. I am particularly interested in how income inequality shapes conceptions about national belonging, how attitudes about the nation affect support for radical-right parties, and how novel digital solutions to financing individual welfare needs reproduce economic inequality. This work contributes to scholarship in political sociology, digital sociology, inequality and stratification, social policy, and health and illness.
 
 <br><br>I am an author of the forthcoming book [_GoFailMe: The Unfulfilled Promise of Digital Crowdfunding_](https://www.sup.org/books/title/?id=30793) (Stanford University Press), written with Erik Schneiderhan.<br><br>"
 
