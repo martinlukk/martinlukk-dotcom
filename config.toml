@@ -87,13 +87,17 @@ enableRobotsTXT = true
   # Icon pack "fas" includes solid icons, see: https://fontawesome.com/icons?d=gallery&s=solid&m=free
   # Icon pack "far" includes regular icons, see: https://fontawesome.com/icons?d=gallery&s=regular&m=free
   [[params.social]]
-      icon      = "twitter" # icon name without the 'fa-'
-      icon_pack = "fab"
-      url       = "https://twitter.com/martin_lukk"
+      icon      = "envelope" # icon name without the 'fa-'
+      icon_pack = "fas"
+      url       = "mailto:martin.lukk@mail.utoronto.ca"
   [[params.social]]
       icon      = "google-scholar" # icon name without the 'fa-'
       icon_pack = "ai"
       url       = "https://scholar.google.ca/citations?user=QQ2GsIAAAAAJ"
+  [[params.social]]
+      icon      = "square-x-twitter" # icon name without the 'fa-'
+      icon_pack = "fab"
+      url       = "https://twitter.com/martin_lukk"
   [[params.social]]
       icon      = "github" # icon name without the 'fa-'
       icon_pack = "fab"
@@ -114,10 +118,6 @@ enableRobotsTXT = true
       icon      = "orcid" # icon name without the 'fa-'
       icon_pack = "ai"
       url       = "https://orcid.org/0000-0001-7569-4068"
-  [[params.social]]
-      icon      = "envelope" # icon name without the 'fa-'
-      icon_pack = "fas"
-      url       = "mailto:martin.lukk@mail.utoronto.ca"
 #  [[params.social]]
 #      icon      = "rss" # icon name without the 'fa-'
 #      icon_pack = "fas"
