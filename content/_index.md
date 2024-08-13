@@ -2,7 +2,7 @@
 action_label: Read My CV &rarr;
 action_link: "/cv.html"
 action_type: text
-description: 'I am a sociologist who studies <span style="color:#2c2857; font-style:italic">politics, inequality,</span> and <span style="color:#2c2857; font-weight:bold;">the internet.</span> I am particularly interested in how income inequality shapes political identities and the role of digital technologies in social welfare. My work contributes to scholarship in political sociology, digital sociology, inequality and stratification, social policy, and health and illness.
+description: 'I am a sociologist who studies <span style="color:#2c2857; font-weight:bold;">politics, inequality,</span> and <span style="color:#2c2857; font-weight:bold;">the internet.</span> I am particularly interested in how income inequality shapes political identities and the role of digital technologies in social welfare. My work contributes to scholarship in political sociology, digital sociology, inequality and stratification, social policy, and health and illness.
 
 <br><br>I recently published the article ["Politics of Boundary Consolidation: Income Inequality, Ethnonationalism, and Radical-Right Voting"](https://doi.org/10.1177/23780231241251714) in _Socius._
 
