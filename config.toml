@@ -87,10 +87,6 @@ enableRobotsTXT = true
   # Icon pack "fas" includes solid icons, see: https://fontawesome.com/icons?d=gallery&s=solid&m=free
   # Icon pack "far" includes regular icons, see: https://fontawesome.com/icons?d=gallery&s=regular&m=free
   [[params.social]]
-      icon      = "envelope" # icon name without the 'fa-'
-      icon_pack = "fas"
-      url       = "mailto:martin.lukk@mail.utoronto.ca"
-  [[params.social]]
       icon      = "square-x-twitter" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://twitter.com/martin_lukk"
@@ -102,6 +98,10 @@ enableRobotsTXT = true
       icon      = "github" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://github.com/martinlukk"
+    [[params.social]]
+      icon      = "envelope" # icon name without the 'fa-'
+      icon_pack = "fas"
+      url       = "mailto:martin.lukk@mail.utoronto.ca"
 #  [[params.social]]
 #      icon      = "facebook-square" # icon name without the 'fa-'
 #      icon_pack = "fab"
