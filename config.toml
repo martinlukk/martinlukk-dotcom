@@ -86,12 +86,13 @@ enableRobotsTXT = true
   # Icon pack "fab" includes brand icons, see: https://fontawesome.com/icons?d=gallery&s=brands&m=free
   # Icon pack "fas" includes solid icons, see: https://fontawesome.com/icons?d=gallery&s=solid&m=free
   # Icon pack "far" includes regular icons, see: https://fontawesome.com/icons?d=gallery&s=regular&m=free
+  
   [[params.social]]
-      icon      = "square-bluesky" # icon name without the 'fa-'
+      icon      = "bluesky" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://bsky.app/profile/martinlukk.bsky.social"
   [[params.social]]
-      icon      = "square-x-twitter" # icon name without the 'fa-'
+      icon      = "x-twitter" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://twitter.com/martin_lukk"
   [[params.social]]
