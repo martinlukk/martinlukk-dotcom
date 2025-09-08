@@ -1,25 +1,105 @@
 <!DOCTYPE html>
-  <html>
-  <head>
+<html>
+<head>
   <title>Martin Lukk's CV</title>
   <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-      <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1"/>
-        </head>
-        <body style="margin: 0px">
-          <div id="adobe-dc-view"></div>
-            <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
-              <script type="text/javascript">
-                document.addEventListener("adobe_dc_view_sdk.ready", function()
-                {
-                  var adobeDCView = new AdobeDC.View({clientId: "08d4c22b6d744a998f8cf5633cda6e60", divId: "adobe-dc-view"});
-                  adobeDCView.previewFile(
-                    {
-                      content:   {location: {url: "https://www.martinlukk.com/doc/cv.pdf"}},
-                      metaData: {fileName: "CV.pdf"}
-                    }, {defaultViewMode: "FIT_WIDTH", showAnnotationTools: false});
-                });
-              </script>
-                </body>
-                </html>
-                
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    body {
+      margin: 0px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    #adobe-dc-view {
+      /* Improve font rendering at different zoom levels */
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      
+      /* Set container size */
+      width: 100%;
+      height: 100vh;
+    }
+    
+    /* Desktop-specific styling for better zoom control */
+    @media (min-width: 768px) {
+      #adobe-dc-view {
+        /* Add slight padding on desktop for better viewing */
+        padding: 20px;
+        box-sizing: border-box;
+        height: calc(100vh - 40px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="adobe-dc-view"></div>
+  
+  <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+  <script type="text/javascript">
+    document.addEventListener("adobe_dc_view_sdk.ready", function() {
+      var adobeDCView = new AdobeDC.View({
+        clientId: "08d4c22b6d744a998f8cf5633cda6e60", 
+        divId: "adobe-dc-view"
+      });
+      
+      // Detect if user is on desktop
+      var isDesktop = window.innerWidth >= 768;
+      
+      adobeDCView.previewFile(
+        {
+          content: {location: {url: "https://www.martinlukk.com/doc/cv.pdf"}},
+          metaData: {fileName: "CV.pdf"}
+        }, 
+        {
+          // Use FIT_PAGE for desktop (more zoomed out), FIT_WIDTH for mobile
+          defaultViewMode: isDesktop ? "FIT_PAGE" : "FIT_WIDTH",
+          showAnnotationTools: false,
+          showLeftHandPanel: false,
+          showDownloadPDF: true,
+          showPrintPDF: true,
+          showFormFillHandle: false,
+          enableFormFilling: false,
+          showSharePDF: false,
+          showBookmarks: false,
+          showThumbnails: false,
+          // Disable zoom controls to prevent distortion issues
+          showZoomControl: false,
+          // Enable page controls
+          showPageControls: true,
+          // Improve performance
+          enablePDFAnalytics: false
+        }
+      );
+      
+      // Optional: Add event listener to handle zoom-related issues
+      adobeDCView.registerCallback(
+        AdobeDC.View.Enum.CallbackType.SAVE_API,
+        function(metaData, content, options) {
+          return new Promise(function(resolve, reject) {
+            // Handle save operations if needed
+            resolve({
+              code: AdobeDC.View.Enum.ApiResponseCode.SUCCESS,
+              data: {
+                metaData: metaData
+              }
+            });
+          });
+        }
+      );
+    });
+    
+    // Handle window resize to maintain proper view
+    window.addEventListener('resize', function() {
+      // Simple debounce to avoid excessive calls
+      clearTimeout(window.resizeTimeout);
+      window.resizeTimeout = setTimeout(function() {
+        // You could trigger a re-render here if needed
+      }, 250);
+    });
+  </script>
+</body>
+</html>
