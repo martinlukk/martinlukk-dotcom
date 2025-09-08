@@ -143,7 +143,7 @@ enableRobotsTXT = true
   [[menu.header]]
     name = "CV"
     title = "Curriculum Vitae"
-    url = "/cv.html"
+    url = "/cv.pdf"
     weight = 2
 #  [[menu.header]]
 #    name = "Projects"

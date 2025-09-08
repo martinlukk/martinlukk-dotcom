@@ -1,6 +1,6 @@
 ---
 action_label: Read My CV &rarr;
-action_link: "/cv.html"
+action_link: "/cv.pdf"
 action_type: text
 description: 'I am a sociologist studying <span style="color:#2c2857; font-style:italic;">politics, inequality,</span> and <span style="color:#2c2857; font-style:italic;">the internet.</span> I am particularly interested in how income inequality shapes political identities and the role of digital technologies in social welfare. My work contributes to scholarship in political sociology, digital sociology, inequality and stratification, social policy, and health and illness.
 
