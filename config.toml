@@ -110,7 +110,7 @@ enableRobotsTXT = true
   [[params.social]]
       icon      = "envelope" # icon name without the 'fa-'
       icon_pack = "fas"
-      url       = "mailto:martin.lukk@mail.utoronto.ca"
+      url       = "mailto:martin.lukk@utoronto.ca"
 #  [[params.social]]
 #      icon      = "facebook-square" # icon name without the 'fa-'
 #      icon_pack = "fab"
