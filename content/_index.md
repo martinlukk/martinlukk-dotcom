@@ -2,7 +2,7 @@
 action_label: Read My CV &rarr;
 action_link: "/cv.pdf"
 action_type: text
-description: 'I am a social scientist studying <span style="color:#2c2857; font-style:italic;">politics, algorithmic fairness</span> and <span style="color:#2c2857; font-style:italic;">digital platforms.</span>. I am particularly interested in how AI makes decisions about who deserves help and how cultural divisions fuel political conflict.
+description: 'I am a social scientist studying <span style="color:#2c2857; font-style:italic;">politics, algorithmic fairness</span> and <span style="color:#2c2857; font-style:italic;">digital platforms</span>. I am particularly interested in how AI makes decisions about who deserves help and how cultural divisions fuel political conflict.
 
 <br><br>I recently published the article ["Disrupting Philanthropy? A Reality Check for Digital Crowdfunding"](https://doi.org/10.1002/nvsm.70041) in the _Journal of Philanthropy_ (with Nora Kenworthy, Erik Schneiderhan, and Jeremy Snyder).
 
