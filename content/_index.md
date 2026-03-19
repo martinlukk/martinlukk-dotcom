@@ -2,9 +2,7 @@
 action_label: Read My CV &rarr;
 action_link: "/cv.pdf"
 action_type: text
-description: 'I am a sociologist studying <span style="color:#2c2857; font-style:italic;">politics, group boundaries,</span> and <span style="color:#2c2857; font-style:italic;">digital platforms.</span> I am particularly interested in how cultural divisions become sources of political conflict and how platforms enable and constrain prosocial behavior.
-
-<br><br>I recently published the article ["Disrupting Philanthropy? A Reality Check for Digital Crowdfunding"](https://doi.org/10.1002/nvsm.70041) in the _Journal of Philanthropy_ (with Nora Kenworthy, Erik Schneiderhan, and Jeremy Snyder).
+description: 'I am a computational social scientist studying <span style="color:#2c2857; font-style:italic;">algorithmic fairness</span> and <span style="color:#2c2857; font-style:italic;">digital platforms,</span> with a focus on how AI and recommendation systems shape who gets help in digital fundraising. I also study how cultural divisions become sources of political conflict.
 
 <br><br>I am an author of the book [_GoFailMe: The Unfulfilled Promise of Digital Crowdfunding_](https://www.sup.org/books/title/?id=30793) (Stanford University Press).<br><br>'
 
