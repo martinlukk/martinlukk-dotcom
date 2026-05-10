@@ -154,14 +154,20 @@ header#title-block-header.quarto-title-block.default {
 // Sized so it fits inside the page-pad gap without nudging the brand.
 .ml-topbar-brand-icon {
   position: absolute;
-  right: calc(100% + 0.4em);
+  right: calc(100% + 0.45em);
   top: 50%;
-  width: 0.95em;
-  height: 0.95em;
+  width: 0.8em;
+  height: 0.8em;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(calc(-50% + 1px)) translateX(-6px);
-  transition: opacity 0.32s ease, transform 0.32s ease, filter 0.32s ease;
+  transform: translateY(calc(-50% + 1px)) translateX(-5px);
+  // Mask the favicon so the bird inherits the brand text color
+  // instead of rendering as pure black.
+  background-color: currentColor;
+  -webkit-mask: url(/favicon.ico) center / contain no-repeat;
+          mask: url(/favicon.ico) center / contain no-repeat;
+  // Hover-out: fast, clean exit (no delay, no overshoot).
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out, filter 0.2s ease-out;
 }
 
 // Limit hover styling to devices with real pointers — avoids tap-flash
@@ -171,14 +177,21 @@ header#title-block-header.quarto-title-block.default {
   .ml-topbar-brand:hover .ml-topbar-brand-icon {
     opacity: 1;
     transform: translateY(calc(-50% + 1px)) translateX(0);
-    filter: drop-shadow(0 0 4px rgba(15, 77, 146, 0.4));
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+    // Hover-in: brief delay then a slower curve with a touch of overshoot.
+    transition: opacity 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) 80ms,
+                transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) 80ms,
+                filter 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) 80ms;
   }
 }
 
 .ml-topbar-brand:focus-visible .ml-topbar-brand-icon {
   opacity: 1;
   transform: translateY(calc(-50% + 1px)) translateX(0);
-  filter: drop-shadow(0 0 4px rgba(15, 77, 146, 0.4));
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  transition: opacity 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) 80ms,
+              transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) 80ms,
+              filter 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) 80ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
