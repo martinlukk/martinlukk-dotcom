@@ -1,0 +1,9 @@
+---
+title: '"Politics of Boundary Consolidation" published in *Socius*'
+date: "2024-05-31"
+categories: [publication]
+---
+
+My article ["Politics of Boundary Consolidation: Income Inequality, Ethnonationalism, and Radical-Right Voting"](https://doi.org/10.1177/23780231241251714) has been published in *Socius*. The paper develops a theory of *boundary consolidation* to reconcile competing accounts of how income inequality shapes radical-right politics, and tests it with time-series cross-sectional data from 38 countries.
+
+> **Abstract.** Scholars have linked income inequality to the recent success of radical-right parties and movements. Yet research shows that inequality reduces participation among groups likely to support the radical right and promotes support for redistribution, an issue championed by the radical left. This raises questions about why, if at all, inequality matters for radical-right politics. The author reconciles previous arguments by developing a theory that connects these phenomena through the process of boundary consolidation. He argues that inequality generates status threats that prompt exclusionary shifts in national group boundaries. This promotes ethnonationalism, a restrictive conception of national membership and, ultimately, support for the radical right, whose mobilization relies on ethnonationalist appeals. Analyses of time-series cross-sectional data from 38 countries support this theory, revealing that inequality is associated with greater ethnonationalism, with distinct associations by income and ethnicity, and that ethnonationalism strongly predicts radical-right voting. The author thus demonstrates how long-term structural changes are linked to contemporary radical politics and how arguments setting economic and cultural causes of the radical right in opposition are inadequate.

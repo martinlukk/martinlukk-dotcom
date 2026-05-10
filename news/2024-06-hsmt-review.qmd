@@ -1,0 +1,9 @@
+---
+title: "*GoFailMe* reviewed on *H-Sci-Med-Tech*"
+date: "2024-06-01"
+categories: [recognition]
+---
+
+My book [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](/book/) (Stanford University Press) was reviewed by Daniela Zuzunaga Zegarra on [*H-Sci-Med-Tech*](https://networks.h-net.org/group/reviews/20036394/zuzunaga-zegarra-schneiderhan-and-lukk-gofailme-unfulfilled-promise-digital).
+
+> Schneiderhan and Lukk's book offers a detailed and data-driven account of the failures of digital crowdfunding in democratizing charity. The book is clearly written and accessible, appealing to readers of both academic and lay backgrounds. *GoFailMe* is a great resource for those seeking to expand their knowledge on the rise of and access to digital crowdfunding.

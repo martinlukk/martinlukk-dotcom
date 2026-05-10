@@ -1,0 +1,7 @@
+---
+title: "Research on crowdfunding featured in *Vox*"
+date: "2025-10-09"
+categories: [media]
+---
+
+Findings from my book [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](book/) (Stanford University Press) were mentioned in Sara Herschander's *Vox* piece ["What to do when every crisis needs your $20"](https://www.vox.com/future-perfect/464196/gofundme-crowdfunding-generosity-nonprofit-giving-charity-crisis) on the challenges of digital crowdfunding.

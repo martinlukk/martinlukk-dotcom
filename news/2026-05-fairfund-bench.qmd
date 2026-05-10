@@ -1,7 +1,0 @@
----
-title: "FairFund-Bench preprint coming soon"
-date: "2026-05-09"
-categories: [preprint, ai]
----
-
-I have a forthcoming arXiv paper introducing [**FairFund-Bench**](/fairfund/), a multi-task audit of LLM allocation decisions grounded in distributive-justice theory and built from real GoFundMe campaigns.

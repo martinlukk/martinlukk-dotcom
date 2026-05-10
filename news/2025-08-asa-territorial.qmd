@@ -1,0 +1,9 @@
+---
+title: "Presented at ASA Annual Meeting, Chicago"
+date: "2025-08-11"
+categories: [talk]
+---
+
+I presented "Beyond Cosmopolitans and Nationalists: Territorial Identities in European Cleavage Politics" at the American Sociological Association Annual Meeting in Chicago, IL.
+
+> **Abstract.** What is the relationship between global and local identification, and how is it linked to political conflict? These questions are central to scholarship on contemporary electoral politics, which has linked the radical right's rise to a new dimension of political conflict separating culturally liberal, globally minded voters from conservative, locally oriented ones. This cleavage, described as universalist–particularist, cosmopolitan–parochial, or globalist–nationalist, implies that collective identification is polarized along a global–local axis and helps drive political mobilization. Yet little is known about how different territorial identities compete with or reinforce each other, let alone how their configurations shape political preferences. Using latent class models and survey data from 35 countries, I find that most Europeans are pluralists, who identify across a range of territories and support mainstream parties. A subset of countries, however, exhibits a division between particularists, who emphasize proximal identities, and expansivists, who emphasize distal ones. Moreover, this division maps onto educational and geographic divides and separates radical-right supporters from those of new left parties. Findings demonstrate how collective identities reinforce new political divisions while challenging accounts of widespread identity polarization.

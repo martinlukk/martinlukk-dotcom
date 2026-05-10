@@ -1,0 +1,14 @@
+---
+title: "Presented at SNACK Workshop, University of Toronto"
+date: "2026-04-08"
+categories: [talk]
+---
+
+I presented "Fair Fund? Automated Evaluations of Deservingness in Recommendation Systems and Large Language Models" at the Symbols, Norms, Action, Culture, Knowledge (SNACK) Workshop, hosted by the University of Toronto's Department of Sociology.
+
+::: {.chips}
+[slides (HTML)](/assets/presentations/2026-04-snack-fairfund/slides.html){.chip}
+[slides (PDF)](/assets/presentations/2026-04-snack-fairfund/slides.pdf){.chip}
+:::
+
+> **Abstract.** How do automated systems evaluate who should get what and why? Research on welfare deservingness and charitable giving shows that humans exhibit biases in what they deem to be a worthy cause based on who is asking, the kind of help they're asking for, and how they ask it, generating demographic disparities in aid. Across various welfare allocation contexts, from social service providers to charitable fundraising platforms like GoFundMe, such decisions about deservingness are being rapidly delegated to automated systems, raising important questions about who and what these tools deem to be deserving. The fact that AI systems used in these contexts are trained on text reflecting dominant cultural schemas about deservingness specifically raises concerns about whether human preferences for certain kinds of askers and appeals are reproduced when AI makes judgments. This project studies how two types of automated processes, algorithmic recommendation systems and large language models (LLMs), evaluate welfare deservingness. The first study is an algorithmic audit of GoFundMe, the world's largest crowdfunding platform, which uses automated accounts to systematically compare the campaigns that users are algorithmically served to the larger population of campaigns on the platform, to understand whether recommendation systems are biased toward particular types of causes. The second study tests how frontier LLMs allocate funding when forced to choose among a set of fictitious fundraising appeals systematically varied on gender, race, cause, and responsibility attribution. The appeals are grounded in a computational analysis of 1.3M actual crowdfunding requests, providing ecological validity while enabling precise experimental variation in key dimensions of deservingness.

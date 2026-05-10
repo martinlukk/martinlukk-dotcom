@@ -1,0 +1,11 @@
+---
+title: "*GoFailMe* reviewed in *Social Forces*"
+date: "2024-08-30"
+categories: [recognition]
+---
+
+My book [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](/book/) (Stanford University Press) was reviewed by Emily Barman in [*Social Forces*](https://doi.org/10.1093/sf/soae123).
+
+> Overall, this is a well-researched book that provides a lively and well-written introduction to the claims and the realities of philanthropic crowdfunding, elucidating both how it reflects, reproduces, and—most intriguingly—reconfigures broader structures of inequality in the United States and Canada.
+
+> **Citation.** Barman, Emily. 2024. Review of *GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*, by Erik Schneiderhan and Martin Lukk. *Social Forces* 103(2):e21.
