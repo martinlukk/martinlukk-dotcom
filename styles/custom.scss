@@ -142,8 +142,46 @@ header#title-block-header.quarto-title-block.default {
   color: var(--ml-heading);
   text-decoration: none;
   white-space: nowrap;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 1.55em; // reserves a fixed slot for the swallow so the text
+                        // never shifts when it fades in.
 
   &:hover { color: var(--ml-link); }
+}
+
+// Barn swallow that fades in beside the brand on hover. A small nod to the
+// favicon (and to where I'm from) — keep it subtle.
+.ml-topbar-brand-icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1.15em;
+  height: 1.15em;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) translateX(-6px);
+  transition: opacity 0.32s ease, transform 0.32s ease, filter 0.32s ease;
+}
+
+.ml-topbar-brand:hover .ml-topbar-brand-icon,
+.ml-topbar-brand:focus-visible .ml-topbar-brand-icon {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  filter: drop-shadow(0 0 6px rgba(15, 77, 146, 0.7))
+          drop-shadow(0 0 2px rgba(15, 77, 146, 0.55));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ml-topbar-brand-icon {
+    transition: opacity 0.18s linear;
+    transform: translateY(-50%);
+  }
+  .ml-topbar-brand:hover .ml-topbar-brand-icon,
+  .ml-topbar-brand:focus-visible .ml-topbar-brand-icon {
+    transform: translateY(-50%);
+  }
 }
 
 .ml-topnav {
