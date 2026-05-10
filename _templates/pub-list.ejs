@@ -16,6 +16,7 @@ function titleOf(item) {
 }
 
 function bestTitleHref(item) {
+  if (item.book) return item.book;
   if (item.path) return item.path;
   if (item.project_page) return item.project_page;
   if (item.doi) return 'https://doi.org/' + item.doi;

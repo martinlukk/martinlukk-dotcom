@@ -10,7 +10,7 @@ listing:
   page-size: 100
   categories: false
   feed: false
-  fields: [title, pub_title, date, categories, authors, venue, project, doi, pdf, arxiv, code, project_page]
+  fields: [title, pub_title, date, categories, authors, venue, project, doi, pdf, arxiv, code, project_page, book]
 ---
 
 {{< include _includes/pub-filter.html >}}

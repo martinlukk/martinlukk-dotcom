@@ -1,0 +1,14 @@
+---
+title: "*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*"
+subtitle: "Stanford University Press, 2023"
+news_title: '*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding* published by Stanford University Press'
+date: "2023-09-26"
+categories: [publication]
+authors: ["Erik Schneiderhan", "Martin Lukk"]
+venue: "Stanford University Press"
+year: 2023
+project: crowdfunding
+book: /book/
+---
+
+Co-authored with Erik Schneiderhan, *GoFailMe* draws on a multi-method study of GoFundMe campaigns to ask who actually receives help when aid is crowdfunded, what kinds of need the platform's interface makes legible, and how the underlying logic of digital crowdfunding distorts the moral and political work that "giving" is asked to do. See the [book page](/book/) for more.

@@ -96,7 +96,8 @@ doi: "10.1177/..."         # optional; renders as a chip on the detail page
 arxiv: "..."               # optional
 pdf: "..."                 # optional
 code: "..."                # optional
-project_page: "/fairfund/" # optional; if set, Research title links here instead of doi
+project_page: "/fairfund/" # optional; renders as a "project" chip on Research
+book: "/book/"             # optional; for the book entry — routes the Research title link to /book/ instead of the news detail page
 abstract: >
   Multi-line YAML folded string. Rendered manually in the qmd body via
   {{< meta abstract >}} below a short context paragraph.
@@ -126,6 +127,7 @@ the talk, blockquote of the review, etc.).
 | A new top-level page | Create `pagename.qmd` with `title:` front matter; add a nav link in `_includes/header.html` |
 | A news item / talk / media mention / milestone / etc. | Add `news/YYYY-MM-DD-{type}-{slug}.qmd` with the common frontmatter; it appears in the News timeline and homepage widget automatically |
 | A publication | Add `news/YYYY-MM-DD-publication-{slug}.qmd` with the publication frontmatter above; it appears on Research, in the News timeline (using `news_title`), and on its own detail page |
+| A book | Same as a publication, plus set `book: "/book/"` so the Research listing title links to the dedicated book page rather than the news detail page. The `/book/` page itself lives at `book/index.qmd`. |
 | A media mention / op-ed | Add `news/YYYY-MM-DD-{media\|writing}-{slug}.qmd` with `outlet` + `outlet_url`; it appears on Media and in the News timeline |
 | A new project section | `mkdir foo/` and add `foo/index.qmd` |
 | Site-wide JS | Drop a file in `assets/js/` and add `<script src="/assets/js/foo.js" defer></script>` to `_includes/scripts.html` |
