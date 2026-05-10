@@ -1,0 +1,51 @@
+---
+title: "FairFund-Bench"
+pagetitle: "FairFund-Bench — Martin Lukk"
+subtitle: "A multi-task audit of LLM allocation decisions grounded in distributive-justice theory, built from real GoFundMe campaigns."
+---
+
+::: {.pub-links}
+[paper (arXiv)]{.pub-link}
+[code]{.pub-link}
+[Croissant metadata]{.pub-link}
+[BibTeX](#cite){.pub-link}
+:::
+
+::: {.callout-note appearance="simple"}
+**Status:** preprint forthcoming. Links above are placeholders until release.
+:::
+
+## Abstract
+
+Large language models are increasingly placed in roles that mediate the distribution of scarce resources — from charitable giving to social-service triage — yet existing audits of LLM bias return contradictory findings on overlapping models. We argue that these contradictions reflect a *methodology spectrum* rather than substantive disagreement, and we introduce **FairFund-Bench**: a multi-task audit of LLM allocation decisions grounded in distributive-justice theory and constructed from real GoFundMe campaigns. Across **13 frontier models**, **three elicitation tasks**, **600 human-authored stimuli**, and a **five-condition causal-framing design**, we recover both prior audits' findings as points on the same continuum. We further document a *four-pillar* structure of LLM allocation behaviour — demographic disparity, cross-condition differentiation, cross-task coherence, and normative framing coherence — and argue that no single scalar score adequately summarises any model's behaviour across them. We release the benchmark, code, and Croissant metadata to support reuse and extension.
+
+## At a glance
+
+| | |
+|--|--|
+| Models audited | 13 frontier LLMs |
+| Tasks | 3 elicitation tasks |
+| Stimuli | 600 human-authored |
+| Conditions | 5-condition causal-framing |
+| Pillars | demographic disparity · cross-condition differentiation · cross-task coherence · normative framing coherence |
+| Releases | benchmark · code · Croissant metadata |
+
+## Why this benchmark
+
+Existing LLM-bias audits in resource-allocation domains often disagree on overlapping models. FairFund-Bench reframes this disagreement as a *methodology spectrum*: each prior audit corresponds to a point in a larger design space (which task you elicit, which framing you condition on, which subgroup contrast you measure). By varying these axes systematically over the same stimulus pool, FairFund-Bench reproduces prior findings as special cases and surfaces structure that a single audit cannot.
+
+## How it connects to *GoFailMe*
+
+The stimuli are drawn from real GoFundMe campaigns — the same digital-crowdfunding ecosystem analysed in [*GoFailMe*](/book/). Where the book documents how human donors and platforms allocate aid unevenly, FairFund-Bench asks the same of language models that increasingly mediate or recommend those decisions.
+
+## Cite {#cite}
+
+```bibtex
+@misc{lukk2026fairfund,
+  title  = {FairFund-Bench: A multi-task audit of LLM allocation decisions
+            grounded in distributive-justice theory},
+  author = {Lukk, Martin},
+  year   = {2026},
+  note   = {preprint, forthcoming}
+}
+```

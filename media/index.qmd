@@ -1,0 +1,17 @@
+---
+title: "Media"
+pagetitle: "Media — Martin Lukk"
+subtitle: "Press, podcasts, and other public-facing appearances."
+listing:
+  contents: "*.qmd"
+  exclude:
+    filename: "index.qmd"
+  type: custom
+  template: ../_templates/news-item.ejs
+  sort: "date desc"
+  page-size: 50
+  fields: [date, title, outlet]
+---
+
+::: {#listing-listing}
+:::

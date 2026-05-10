@@ -1,0 +1,15 @@
+---
+title: "Blog"
+pagetitle: "Blog — Martin Lukk"
+listing:
+  contents: "*.qmd"
+  exclude:
+    filename: "index.qmd"
+  type: default
+  sort: "date desc"
+  page-size: 25
+  feed: true
+---
+
+::: {#listing-listing}
+:::

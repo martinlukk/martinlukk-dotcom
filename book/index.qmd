@@ -1,0 +1,23 @@
+---
+title: "GoFailMe"
+pagetitle: "GoFailMe — Martin Lukk"
+subtitle: "*The Unfulfilled Promise of Digital Crowdfunding* — a co-authored book from Stanford University Press."
+---
+
+*GoFailMe* investigates what digital crowdfunding has actually delivered — not as a promise of platform-mediated mutual aid, but as an everyday infrastructure that absorbs needs governments and charities have offloaded.
+
+::: {.pub-links}
+[Stanford University Press](https://www.sup.org/books/title/?id=30793){.pub-link}
+:::
+
+## In brief
+
+The book draws on a multi-method study of GoFundMe campaigns to ask: who actually receives help when aid is crowdfunded? What kinds of need are made legible by the platform's interface, and what kinds remain invisible? And how does the underlying logic of digital crowdfunding shape — or distort — the moral and political work that "giving" is asked to do?
+
+## Reviews & coverage
+
+*Add reviews, podcast appearances, and review-essay coverage here as they accumulate. See also [Media](/media/).*
+
+## Related research
+
+The book opens onto the [crowdfunding](/research/) thread of my work, and supplies the empirical ground for [FairFund-Bench](/fairfund/), which audits how LLMs allocate help when given the same kinds of campaigns the book studies.

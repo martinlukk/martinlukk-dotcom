@@ -1,0 +1,35 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - cv.pdf
+    - favicon.ico
+    - assets/
+
+website:
+  title: "Martin Lukk"
+  description: "Sociologist studying politics, inequality, and the internet."
+  site-url: "https://www.martinlukk.com"
+  favicon: favicon.ico
+  open-graph: true
+  twitter-card:
+    creator: "@martin_lukk"
+    image: /images/sharing.png
+  page-navigation: false
+  back-to-top-navigation: false
+
+format:
+  html:
+    theme:
+      - cosmo
+      - styles/custom.scss
+    toc: false
+    page-layout: custom
+    include-before-body:
+      - _includes/header.html
+      - _includes/sidebar.html
+    include-after-body:
+      - _includes/footer.html
+      - _includes/scripts.html
+    link-external-newwindow: true
+    link-external-icon: false

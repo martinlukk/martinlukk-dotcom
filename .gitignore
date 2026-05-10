@@ -1,16 +1,16 @@
+# Quarto
+/.quarto/
+/_site/
+/_freeze/
+*_files/
+*_cache/
+**/*.quarto_ipynb
+
+# OS / editors
+.DS_Store
+Thumbs.db
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
-.DS_Store
-
-# Remove unlinked theme template pages from live website
-content/about/
-content/blog/
-content/collection/
-content/contributors.md
-content/license.md
-content/elements/
-content/form/
-content/project/
-content/talk/
+.vscode/

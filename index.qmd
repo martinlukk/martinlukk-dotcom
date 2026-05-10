@@ -1,0 +1,29 @@
+---
+pagetitle: "Martin Lukk"
+description: "Sociologist studying politics, inequality, and the internet."
+page-layout: custom
+listing:
+  - id: news-recent
+    contents: news/*.qmd
+    exclude:
+      filename: "index.qmd"
+    type: custom
+    template: _templates/news-item.ejs
+    max-items: 4
+    sort: "date desc"
+    fields: [date, title]
+    page-size: 4
+---
+
+I am a sociologist working at the intersection of *politics*, *inequality*, and *the internet*, and I am currently bridging this work into AI evaluation. I study how cultural divisions become sources of political conflict, and how digital platforms enable and constrain pro-social behaviour.
+
+I am an author of the book [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](book/) (Stanford University Press, 2024), and I am building [**FairFund-Bench**](fairfund/) — a benchmark that audits how large language models allocate scarce resources in real crowdfunding scenarios.
+
+I am a Postdoctoral Research Fellow at the [Data Sciences Institute](https://datasciences.utoronto.ca/), University of Toronto.
+
+## News
+
+::: {#news-recent}
+:::
+
+[See all News &rarr;](news/){.see-all}

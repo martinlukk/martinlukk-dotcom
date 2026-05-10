@@ -1,0 +1,791 @@
+/*-- scss:defaults --*/
+
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+
+$body-color: #494e52;
+$body-bg: #ffffff;
+$link-color: #0f4d92;
+$link-hover-color: #1565c0;
+$muted: #7a8288;
+$rule: #f0f1f2;
+$heading-color: #1a1a1a;
+
+$font-size-base: 1rem;
+$line-height-base: 1.55;
+
+/*-- scss:rules --*/
+
+:root {
+  --ml-content-max: 720px;
+  --ml-sidebar-width: 260px;
+  --ml-page-pad: 1.5rem;
+  --ml-gap: 2.5rem;
+  --ml-topbar-height: 60px;
+
+  --ml-body: #494e52;
+  --ml-heading: #1a1a1a;
+  --ml-muted: #7a8288;
+  --ml-rule: #f0f1f2;
+  --ml-rule-strong: #e2e4e7;
+  --ml-link: #0f4d92;
+  --ml-link-hover: #1565c0;
+  --ml-tag-bg: #f3f4f6;
+  --ml-tag-text: #374151;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+@media (min-width: 768px) {
+  html { font-size: 17px; }
+}
+
+body,
+body.fullcontent,
+body.quarto-light {
+  font-family: $font-family-sans-serif;
+  line-height: 1.55;
+  color: var(--ml-body);
+  background: #ffffff;
+  margin: 0;
+  display: block !important;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Hide Quarto chrome we don't want
+#quarto-header,
+.nav-footer,
+.quarto-secondary-nav,
+#quarto-margin-sidebar,
+.margin-sidebar,
+.quarto-title-banner { display: none !important; }
+
+// Soften Quarto's title block (used on non-home pages).
+// Selector uses #title-block-header.default so we beat the cosmo
+// theme rules, which also lead with the ID + .default classes.
+header#title-block-header.quarto-title-block.default {
+  margin: 0 0 2.5rem;
+  padding: 0;
+  border: 0;
+
+  .quarto-title h1.title,
+  .quarto-title .title.h1 {
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+    margin: 0 0 0.7rem;
+    color: var(--ml-heading);
+    text-align: left;
+  }
+  .quarto-title .description,
+  .quarto-title .subtitle,
+  .quarto-title p.subtitle.lead {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--ml-muted);
+    line-height: 1.55;
+    margin: 1.4rem 0 0;
+    max-width: 42rem;
+    text-align: left;
+  }
+  .quarto-categories { display: none; }
+
+  // Date on individual news/post pages. Strip the labelled grid
+  // ("Published" / date) and render as a single muted line that
+  // hugs the H1.
+  .quarto-title-meta {
+    display: block;
+    margin: 0.4rem 0 0;
+    font-size: 0.85rem;
+    color: var(--ml-muted);
+    font-variant-numeric: tabular-nums;
+    grid-template-columns: none;
+
+    > div { display: block; }
+    .quarto-title-meta-heading { display: none; }
+    .quarto-title-meta-contents {
+      font-size: inherit;
+      margin: 0;
+      p { margin: 0; }
+    }
+    p.date { margin: 0; }
+  }
+}
+
+// Top masthead -----------------------------------------------------
+// The topbar lives inside #quarto-content. We break out of the
+// container's side padding so the bottom border reaches the edges.
+.ml-topbar {
+  margin: 0 calc(var(--ml-page-pad) * -1) 1.75rem;
+  padding: 0 var(--ml-page-pad);
+  border-bottom: 1px solid var(--ml-rule-strong);
+  background: #fff;
+}
+
+.ml-topbar-inner {
+  height: var(--ml-topbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.ml-topbar-brand {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ml-heading);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover { color: var(--ml-link); }
+}
+
+.ml-topnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  align-items: center;
+}
+
+.ml-nav-link {
+  display: inline-block;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.85rem;
+  color: var(--ml-muted);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.15s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0.85rem;
+    right: 0.85rem;
+    bottom: 0.25rem;
+    height: 2px;
+    background: currentColor;
+    opacity: 0;
+    transform: scaleX(0.6);
+    transform-origin: center;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  &:hover {
+    color: var(--ml-heading);
+
+    &::after { opacity: 0.9; transform: scaleX(1); }
+  }
+
+  &.active,
+  &[aria-current="page"] {
+    color: var(--ml-heading);
+    font-weight: 600;
+
+    &::after {
+      opacity: 1;
+      transform: scaleX(1);
+      background: var(--ml-link);
+    }
+  }
+}
+
+// Hamburger toggle (mobile)
+.ml-topnav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ml-heading);
+    transition: transform 0.18s ease, opacity 0.18s ease;
+  }
+
+  &.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  &.open span:nth-child(2) { opacity: 0; }
+  &.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+
+// Two-column layout -----------------------------------------------
+// Topbar is a full-width band at the top. Below it, the sidebar
+// floats left (sticky) and content flows to its right.
+#quarto-content,
+.quarto-container.page-layout-custom {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--ml-page-pad) 4rem;
+  display: block;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+// Quarto applies `padding-top: 14px` to every direct child of
+// #quarto-content. That bakes a hidden 14px into both the sidebar
+// and the topbar, breaking photo / H1 alignment and inflating the
+// topbar's height. Wipe it; spacing is controlled explicitly below.
+#quarto-content > * {
+  padding-top: 0;
+}
+
+// Sidebar ---------------------------------------------------------
+// Float left so content can sit in the same horizontal band; sticky so
+// it follows scroll. Width matches the offset we apply to content
+// children below — content always starts past the sidebar column,
+// even after the float clears.
+.ml-sidebar {
+  float: left;
+  width: var(--ml-sidebar-width);
+  // Single offset used on every page so the photo doesn't shift
+  // between Home (no H1) and title pages (H1 present).
+  margin: -0.4rem 0 1.5rem;
+  position: sticky;
+  top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+// All content children get a left offset equal to the sidebar column
+// (sidebar width + gap). This keeps content aligned above AND below
+// the floated sidebar.
+#quarto-content > *:not(.ml-topbar):not(.ml-sidebar):not(.ml-page-footer):not(script):not(style) {
+  margin-left: calc(var(--ml-sidebar-width) + var(--ml-gap));
+  max-width: var(--ml-content-max);
+}
+
+// Clear the float at the end so the bottom of the page is clean
+#quarto-content::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.ml-sidebar-photo-link {
+  display: block;
+  width: 225px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  line-height: 0;
+  overflow: hidden;
+  border-radius: 50%;
+
+  &:focus-visible { outline: 2px solid var(--ml-link); outline-offset: 2px; }
+}
+
+// Trim only the transparent halo outside the PNG's baked-in circle —
+// the crop inside the circle stays as in the source.
+.ml-sidebar-photo {
+  width: 125%;
+  height: auto;
+  margin: -12.5%;
+  display: block;
+}
+
+.ml-sidebar-affiliation {
+  margin: 0.15rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.ml-sidebar-role {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ml-body);
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+
+.ml-sidebar-place {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--ml-muted);
+  margin: 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.12s ease, border-color 0.12s ease;
+
+    &:hover {
+      color: var(--ml-link);
+      border-bottom-color: var(--ml-link);
+    }
+  }
+}
+
+.ml-sidebar-socials {
+  list-style: none;
+  padding: 0.7rem 0 0;
+  margin: 0.5rem 0 0;
+  border-top: 1px solid var(--ml-rule);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  li { margin: 0; }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.3rem 0;
+    color: var(--ml-body);
+    text-decoration: none;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    transition: color 0.12s ease;
+
+    &:hover { color: var(--ml-link); }
+    &:focus-visible { outline: 2px solid var(--ml-link); outline-offset: 2px; border-radius: 2px; }
+  }
+
+  .ml-icon {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 15px;
+    color: var(--ml-muted);
+  }
+
+  a:hover .ml-icon { color: var(--ml-link); }
+}
+
+// Typography ------------------------------------------------------
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  color: var(--ml-heading);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0 0 1.2rem;
+}
+h2 {
+  font-size: 1.18rem;
+  font-weight: 700;
+  margin: 2.25rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--ml-rule);
+  letter-spacing: -0.008em;
+}
+h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.5rem;
+}
+
+p {
+  margin: 0 0 1.2rem;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--ml-link);
+  text-decoration: underline;
+  text-decoration-thickness: 0.04em;
+  text-underline-offset: 0.18em;
+  text-decoration-color: rgba(15, 77, 146, 0.35);
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    color: var(--ml-link-hover);
+    text-decoration-color: currentColor;
+  }
+}
+
+ul, ol {
+  padding-left: 1.4rem;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+li + li { margin-top: 0.2rem; }
+
+hr { border: 0; border-top: 1px solid var(--ml-rule); margin: 2rem 0; }
+
+blockquote {
+  border-left: 3px solid var(--ml-rule-strong);
+  padding: 0.25rem 0 0.25rem 1rem;
+  color: var(--ml-body);
+  margin: 1rem 0;
+  font-style: italic;
+}
+
+code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: #f5f5f5;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+// Listings (Quarto) -----------------------------------------------
+.quarto-listing {
+  margin-top: 0.5rem;
+
+  .listing-title { font-weight: 600; }
+  .listing-actions-group { display: none; }
+
+  .quarto-listing-default .listing-item-title {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
+// News/blog item: compact
+.news-item {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--ml-rule);
+  align-items: baseline;
+
+  &:first-child { border-top: 0; }
+
+  .news-date {
+    color: var(--ml-muted);
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .news-text {
+    font-size: 0.95rem;
+
+    a { color: var(--ml-heading); text-decoration: none; }
+    a:hover { color: var(--ml-link); text-decoration: underline; }
+  }
+}
+
+// Publications by year --------------------------------------------
+.pub-year {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ml-muted);
+  font-weight: 700;
+  margin: 1.75rem 0 0.6rem;
+  padding: 0;
+  border: 0;
+}
+
+.pub-list { list-style: none; padding: 0; margin: 0; }
+.pub-list > li {
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--ml-rule);
+  margin: 0;
+
+  &:first-child { border-top: 0; }
+}
+
+.pub-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 0 0.15rem;
+  line-height: 1.35;
+
+  a { color: var(--ml-heading); text-decoration: none; }
+  a:hover { color: var(--ml-link); text-decoration: underline; }
+}
+
+.pub-authors {
+  font-size: 0.9rem;
+  color: var(--ml-body);
+  margin: 0 0 0.15rem;
+
+  .pub-self { font-weight: 600; }
+}
+
+.pub-venue {
+  font-size: 0.85rem;
+  color: var(--ml-muted);
+  font-style: italic;
+  margin: 0 0 0.4rem;
+}
+
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0 1.5rem;
+
+  // Quarto wraps inline [label]{.pub-link} content in a <p>.
+  // Reset that <p> so chips flow naturally without extra whitespace.
+  > p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+}
+
+// Inside a .pub-list (year-grouped publications listing) the chips sit
+// tight under the venue line — keep that compact spacing there.
+.pub-list .pub-links {
+  margin: 0.3rem 0 0;
+}
+
+.pub-link {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--ml-rule-strong);
+  border-radius: 4px;
+  color: var(--ml-body);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+
+  &:hover {
+    background: #f3f4f6;
+    color: var(--ml-link);
+    border-color: var(--ml-link);
+  }
+}
+
+.pub-tags {
+  display: inline;
+  margin-left: 0.4rem;
+
+  .pub-tag {
+    display: inline-block;
+    font-size: 0.78rem;
+    padding: 0.05rem 0.45rem;
+    background: var(--ml-tag-bg);
+    color: var(--ml-tag-text);
+    border-radius: 10px;
+    margin-right: 0.3rem;
+    letter-spacing: 0.02em;
+  }
+}
+
+// Project filter buttons (research page)
+.pub-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0 1.5rem;
+  font-size: 0.85rem;
+
+  button {
+    background: transparent;
+    border: 1px solid var(--ml-rule-strong);
+    border-radius: 4px;
+    padding: 0.3rem 0.7rem;
+    color: var(--ml-body);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+
+    &:hover { background: #f3f4f6; }
+    &.active {
+      background: var(--ml-link);
+      color: #fff;
+      border-color: var(--ml-link);
+    }
+  }
+}
+
+// "See all →" link
+.see-all {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+// Quarto callout-note (simple) — make it a quiet inline note, not a bulky box
+.callout.callout-style-simple.callout-note {
+  background: transparent;
+  border: 0;
+  border-left: 2px solid var(--ml-rule-strong);
+  border-radius: 0;
+  padding: 0.1rem 0 0.1rem 0.85rem;
+  margin: 0.75rem 0 1.5rem;
+  font-size: 0.9rem;
+  color: var(--ml-muted);
+  box-shadow: none;
+
+  .callout-body,
+  .callout-body.d-flex { display: block; }
+  .callout-icon-container,
+  .callout-icon { display: none; }
+  .callout-body-container { padding: 0; }
+  .callout-body-container p {
+    margin: 0;
+    font-size: inherit;
+    line-height: 1.5;
+    color: inherit;
+  }
+  .callout-body-container strong { color: var(--ml-heading); }
+}
+
+// Footer ----------------------------------------------------------
+// Shown in the sidebar on desktop, at page-bottom on mobile. The two
+// markup blocks toggle visibility via the responsive breakpoint
+// below; they share styles for the link treatment.
+.ml-sidebar-footer,
+.ml-page-footer {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ml-muted);
+
+  // Inner <p> in .ml-page-footer otherwise picks up the global
+  // `p { font-size: 1rem }` rule and renders bigger than the footer.
+  p {
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.12s ease, border-color 0.12s ease;
+
+    &:hover {
+      color: var(--ml-link);
+      border-bottom-color: var(--ml-link);
+    }
+  }
+}
+
+.ml-sidebar-footer {
+  margin: 0.7rem 0 0;
+  padding: 0.55rem 0 0;
+  border-top: 1px solid var(--ml-rule);
+}
+
+.ml-page-footer {
+  display: none;  // shown only on mobile (see media query below)
+  // The footer is a child of #quarto-content, which has horizontal
+  // page padding. Break out of that padding so the top border reaches
+  // the screen edges, then re-add it so the text aligns with the
+  // surrounding content (same trick as .ml-topbar).
+  margin: 1.5rem calc(var(--ml-page-pad) * -1) 0;
+  padding: 0.55rem var(--ml-page-pad);
+  border-top: 1px solid var(--ml-rule);
+}
+
+// Mobile / responsive ---------------------------------------------
+@media (max-width: 800px) {
+  :root { --ml-page-pad: 1.1rem; }
+
+  .ml-topnav-toggle { display: inline-flex; }
+
+  // Anchor the absolutely-positioned dropdown to .ml-topbar (which
+  // breaks out to the screen edges) rather than .ml-topbar-inner
+  // (which sits inside the page padding) so the panel's bottom border
+  // reaches the edges.
+  .ml-topbar { position: relative; }
+
+  .ml-topnav {
+    position: absolute;
+    top: var(--ml-topbar-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: #ffffff;
+    border-bottom: 1px solid var(--ml-rule-strong);
+    padding: 0.4rem var(--ml-page-pad) 0.6rem;
+    display: none;
+    z-index: 25;
+  }
+  .ml-topnav.open { display: flex; }
+
+  .ml-nav-link {
+    padding: 0.7rem 0.4rem;
+    border-top: 1px solid var(--ml-rule);
+
+    &:first-child { border-top: 0; }
+    &::after { display: none; }
+  }
+
+  #quarto-content,
+  .quarto-container.page-layout-custom {
+    padding: 0 var(--ml-page-pad) 3rem;
+    // 100vh is helpful on desktop so the sticky sidebar always has
+    // room, but on mobile it just leaves a screenful of whitespace
+    // before the page-end footer.
+    min-height: 0;
+  }
+
+  #quarto-content > *:not(.ml-topbar):not(.ml-sidebar):not(.ml-page-footer):not(script):not(style) {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .ml-sidebar {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+    position: static;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .ml-sidebar-photo-link { width: 140px; }
+
+  .ml-sidebar-affiliation {
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .ml-sidebar-socials {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 1.1rem;
+    margin-top: 0.4rem;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  h1 { font-size: 1.65rem; }
+  h2 { font-size: 1.1rem; }
+
+  .news-item {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  // Swap which footer copy is visible: hide the sidebar one (it would
+  // appear at the top of the page on mobile) and reveal the page-end one.
+  .ml-sidebar-footer { display: none; }
+  .ml-page-footer { display: block; }
+}
+
+// Print
+@media print {
+  .ml-topbar, .ml-sidebar, .ml-page-footer { display: none; }
+  #quarto-content { display: block; padding: 1rem; max-width: 100%; }
+}

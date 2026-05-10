@@ -1,0 +1,18 @@
+---
+title: "News"
+pagetitle: "News — Martin Lukk"
+subtitle: "A running log of publications, talks, media, and other updates."
+listing:
+  contents: "*.qmd"
+  exclude:
+    filename: "index.qmd"
+  type: custom
+  template: ../_templates/news-item.ejs
+  sort: "date desc"
+  page-size: 50
+  fields: [date, title]
+  feed: true
+---
+
+::: {#listing-listing}
+:::

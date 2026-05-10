@@ -1,0 +1,16 @@
+- title: "FairFund-Bench: A multi-task audit of LLM allocation decisions grounded in distributive-justice theory"
+  authors: ["Martin Lukk"]
+  year: 2026
+  venue: "arXiv (forthcoming)"
+  project: fairfund
+  arxiv: ""
+  code: ""
+  project_page: "/fairfund/"
+  abstract: "A multi-task audit of LLM allocation decisions grounded in distributive-justice theory and constructed from real GoFundMe campaigns. Across 13 frontier models, three elicitation tasks, 600 human-authored stimuli, and a five-condition causal-framing design, we recover prior audits' findings as points on the same continuum and document a four-pillar structure of LLM allocation behaviour."
+
+- title: "Disrupting Philanthropy? A Reality Check for Digital Crowdfunding"
+  authors: ["Nora Kenworthy", "Martin Lukk", "Erik Schneiderhan", "Jeremy Snyder"]
+  year: 2026
+  venue: "Journal of Philanthropy"
+  project: crowdfunding
+  doi: "10.1002/nvsm.70041"

@@ -1,0 +1,37 @@
+<%
+const byYear = {};
+items.forEach(function(item) {
+  var y = item.year || 'undated';
+  (byYear[y] = byYear[y] || []).push(item);
+});
+var years = Object.keys(byYear).sort(function(a,b){ return (b|0) - (a|0); });
+
+function bestTitleHref(item) {
+  if (item.project_page) return item.project_page;
+  if (item.doi) return 'https://doi.org/' + item.doi;
+  if (item.arxiv) return item.arxiv;
+  return '';
+}
+%>
+<% years.forEach(function(year) { %>
+<h2 class="pub-year"><%= year %></h2>
+<ul class="pub-list">
+<% byYear[year].forEach(function(item) {
+  var href = bestTitleHref(item);
+%>
+<li data-projects="<%= item.project || '' %>">
+<div class="pub-title"><% if (href) { %><a href="<%= href %>"><%= item.title %></a><% } else { %><%= item.title %><% } %></div>
+<div class="pub-authors"><% (item.authors || []).forEach(function(a, i) {
+    var clean = String(a).trim();
+    var isSelf = (clean === 'Martin Lukk' || clean === 'M. Lukk' || clean === 'Lukk, M.');
+    if (i > 0) { %>, <% }
+    if (isSelf) { %><span class="pub-self"><%= clean %></span><% } else { %><%= clean %><% }
+}); %></div>
+<div class="pub-venue"><%= item.venue || '' %><% if (item.venue && item.year) { %>, <% } %><%= item.year || '' %></div>
+<% if (item.pdf || item.doi || item.arxiv || item.code || item.project_page) { %>
+<div class="pub-links"><% if (item.pdf) { %><a class="pub-link" href="<%= item.pdf %>">PDF</a><% } %><% if (item.doi) { %><a class="pub-link" href="https://doi.org/<%= item.doi %>">DOI</a><% } %><% if (item.arxiv) { %><a class="pub-link" href="<%= item.arxiv %>">arXiv</a><% } %><% if (item.code) { %><a class="pub-link" href="<%= item.code %>">code</a><% } %><% if (item.project_page) { %><a class="pub-link" href="<%= item.project_page %>">project</a><% } %></div>
+<% } %>
+</li>
+<% }); %>
+</ul>
+<% }); %>

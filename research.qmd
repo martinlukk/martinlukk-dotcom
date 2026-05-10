@@ -1,0 +1,19 @@
+---
+title: "Research"
+pagetitle: "Research — Martin Lukk"
+subtitle: "Articles, working papers, and a book. Filter by project, or scroll chronologically."
+listing:
+  id: pubs
+  contents: pubs.yml
+  template: _templates/pub-list.ejs
+  sort: "year desc"
+  page-size: 100
+  categories: false
+  feed: false
+  fields: [title, authors, venue, year, project, doi, pdf, arxiv, code, project_page]
+---
+
+{{< include _includes/pub-filter.html >}}
+
+::: {#pubs}
+:::

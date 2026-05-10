@@ -1,17 +1,32 @@
 [build]
-command = 'hugo'
-publish = 'public'
+  command = "curl -sL https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.tar.gz | tar -xz -C /tmp && export PATH=\"/tmp/quarto-${QUARTO_VERSION}/bin:$PATH\" && quarto render"
+  publish = "_site"
+
 [build.environment]
-HUGO_VERSION = '0.101.0'
+  QUARTO_VERSION = "1.8.26"
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
 
-[context]
-[context.branch-deploy]
-command = 'hugo -F -b $DEPLOY_PRIME_URL'
+[[redirects]]
+  from = "/about/*"
+  to   = "/"
+  status = 301
 
-[context.deploy-preview]
-command = 'hugo -F -b $DEPLOY_PRIME_URL'
+[[redirects]]
+  from = "/blog/*"
+  to   = "/posts/:splat"
+  status = 301
 
-[context.production]
-[context.production.environment]
-HUGO_ENV = 'production'
+[[redirects]]
+  from = "/cv.html"
+  to   = "/cv.pdf"
+  status = 301
+
+[[redirects]]
+  from = "/doc/cv.pdf"
+  to   = "/cv.pdf"
+  status = 301
