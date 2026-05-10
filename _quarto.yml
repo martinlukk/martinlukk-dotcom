@@ -32,5 +32,4 @@ format:
     include-after-body:
       - _includes/footer.html
       - _includes/scripts.html
-    link-external-newwindow: true
     link-external-icon: false
