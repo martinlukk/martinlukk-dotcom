@@ -1,13 +1,31 @@
+<%
+function groupOf(item) {
+  var cats = item.categories || [];
+  if (!Array.isArray(cats)) cats = [cats];
+  if (cats.indexOf('publication') !== -1 || cats.indexOf('writing') !== -1) return 'publications';
+  if (cats.indexOf('talk') !== -1) return 'presentations';
+  if (cats.indexOf('media') !== -1) return 'media';
+  return 'other';
+}
+
+var byYear = {};
+var years = [];
+items.forEach(function(item) {
+  var y = item.date ? new Date(item.date).getFullYear() : 'undated';
+  if (!byYear[y]) { byYear[y] = []; years.push(y); }
+  byYear[y].push(item);
+});
+%>
 <div class="news-list">
-<% let lastYear = null; %>
-<% items.forEach(function(item) { %>
-<% const year = item.date ? new Date(item.date).getFullYear() : null; %>
-<% if (year !== lastYear) { lastYear = year; %>
+<% years.forEach(function(year) { %>
+<div class="news-year-group">
 <div class="news-year"><%= year %></div>
-<% } %>
-<div class="news-item">
+<% byYear[year].forEach(function(item) { %>
+<div class="news-item" data-group="<%= groupOf(item) %>">
 <div class="news-date"><% if (item.date) { %><%= new Date(item.date).toLocaleDateString('en-US', {year: 'numeric', month: 'short'}) %><% } %></div>
 <div class="news-text"><% if (item.path) { %><a href="<%= item.path %>"><%- item.title %></a><% } else { %><%- item.title %><% } %></div>
+</div>
+<% }); %>
 </div>
 <% }); %>
 </div>

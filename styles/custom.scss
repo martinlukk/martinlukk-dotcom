@@ -501,15 +501,15 @@ code {
 }
 
 // News/blog item: compact
+.news-year-group + .news-year-group { margin-top: 1.75rem; }
+
 .news-year {
   font-size: 0.78rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ml-muted);
   font-weight: 700;
-  margin: 1.75rem 0 0.6rem;
-
-  &:first-child { margin-top: 0; }
+  margin: 0 0 0.6rem;
 }
 
 .news-item {
@@ -520,7 +520,7 @@ code {
   border-top: 1px solid var(--ml-rule);
   align-items: baseline;
 
-  &:first-child { border-top: 0; }
+  .news-list > &:first-child { border-top: 0; }
   .news-year + & { border-top: 0; }
 
   .news-date {

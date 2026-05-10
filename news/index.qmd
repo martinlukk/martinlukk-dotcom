@@ -10,9 +10,11 @@ listing:
   template: ../_templates/news-item-grouped.ejs
   sort: "date desc"
   page-size: 50
-  fields: [date, title]
+  fields: [date, title, categories]
   feed: true
 ---
+
+{{< include ../_includes/news-filter.html >}}
 
 ::: {#listing-listing}
 :::
