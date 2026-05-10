@@ -4,6 +4,6 @@ date: "2026-03-17"
 categories: [media]
 ---
 
-I was interviewed by Sarah Crosbie on *QR Calgary Mornings* about GoFundMe's newly launched smart fundraising coach, an AI assistant that drafts campaign titles, story, goal, and outreach messages. Drawing on findings from my book [*GoFailMe*](book/) (Stanford University Press), I raised concerns that when every campaign sounds the same, success shifts to factors people can't control, and that the bigger question is whether GoFundMe is the best way for our donations to actually help people.
+I was interviewed by Sarah Crosbie on *QR Calgary Mornings* about GoFundMe's newly launched smart fundraising coach, an AI assistant that drafts campaign titles, story, goal, and outreach messages. Drawing on findings from my book [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](/book/) (Stanford University Press), I raised concerns that when every campaign sounds the same, success shifts to factors people can't control, and that the bigger question is whether GoFundMe is the best way for our donations to actually help people.
 
 <audio controls preload="none" src="/assets/audio/media-qrcalgary-2026-03-17.mp3"></audio>
