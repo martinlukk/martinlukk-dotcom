@@ -4,15 +4,12 @@ description: "Social scientist studying politics, inequality, and digital platfo
 page-layout: custom
 listing:
   - id: news-recent
-    contents: news/*.qmd
-    exclude:
-      filename: "index.qmd"
+    contents: news/[0-9]*.qmd
     type: custom
-    template: _templates/news-item.ejs
-    max-items: 4
+    template: _templates/news-item-recent.ejs
     sort: "date desc"
-    fields: [date, title]
-    page-size: 4
+    fields: [date, title, news_title, hide_in_news]
+    page-size: 100
 ---
 
 # About

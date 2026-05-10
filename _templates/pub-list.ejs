@@ -1,17 +1,35 @@
 <%
-const byYear = {};
-items.forEach(function(item) {
-  var y = item.year || 'undated';
-  (byYear[y] = byYear[y] || []).push(item);
-});
-var years = Object.keys(byYear).sort(function(a,b){ return (b|0) - (a|0); });
+function isPub(item) {
+  var cats = item.categories || [];
+  if (!Array.isArray(cats)) cats = [cats];
+  return cats.indexOf('publication') !== -1;
+}
+
+function yearOf(item) {
+  if (item.year) return item.year;
+  if (item.date) return new Date(item.date).getFullYear();
+  return 'undated';
+}
+
+function titleOf(item) {
+  return item.title;
+}
 
 function bestTitleHref(item) {
+  if (item.path) return item.path;
   if (item.project_page) return item.project_page;
   if (item.doi) return 'https://doi.org/' + item.doi;
   if (item.arxiv) return item.arxiv;
   return '';
 }
+
+var pubs = items.filter(isPub);
+const byYear = {};
+pubs.forEach(function(item) {
+  var y = yearOf(item);
+  (byYear[y] = byYear[y] || []).push(item);
+});
+var years = Object.keys(byYear).sort(function(a,b){ return (b|0) - (a|0); });
 %>
 <% years.forEach(function(year) { %>
 <h2 class="pub-year"><%= year %></h2>
@@ -20,14 +38,14 @@ function bestTitleHref(item) {
   var href = bestTitleHref(item);
 %>
 <li data-projects="<%= item.project || '' %>">
-<div class="pub-title"><% if (href) { %><a href="<%= href %>"><%= item.title %></a><% } else { %><%= item.title %><% } %></div>
+<div class="pub-title"><% if (href) { %><a href="<%= href %>"><%= titleOf(item) %></a><% } else { %><%= titleOf(item) %><% } %></div>
 <div class="pub-authors"><% (item.authors || []).forEach(function(a, i) {
     var clean = String(a).trim();
     var isSelf = (clean === 'Martin Lukk' || clean === 'M. Lukk' || clean === 'Lukk, M.');
     if (i > 0) { %>, <% }
     if (isSelf) { %><span class="pub-self"><%= clean %></span><% } else { %><%= clean %><% }
 }); %></div>
-<div class="pub-venue"><%= item.venue || '' %><% if (item.venue && item.year) { %>, <% } %><%= item.year || '' %></div>
+<div class="pub-venue"><%= item.venue || '' %><% if (item.venue && year) { %>, <% } %><%= year %></div>
 <% if (item.pdf || item.doi || item.arxiv || item.code || item.project_page) { %>
 <div class="chips"><% if (item.pdf) { %><a class="chip" href="<%= item.pdf %>">PDF</a><% } %><% if (item.doi) { %><a class="chip" href="https://doi.org/<%= item.doi %>">DOI</a><% } %><% if (item.arxiv) { %><a class="chip" href="<%= item.arxiv %>">arXiv</a><% } %><% if (item.code) { %><a class="chip" href="<%= item.code %>">code</a><% } %><% if (item.project_page) { %><a class="chip" href="<%= item.project_page %>">project</a><% } %></div>
 <% } %>

@@ -115,6 +115,69 @@ header#title-block-header.quarto-title-block.default {
     }
     p.date { margin: 0; }
   }
+
+  // Publication detail pages: render Quarto's auto-generated author list
+  // as a single inline, comma-separated line, and turn the DOI into a chip.
+  // Triggered by presence of an .abstract block in the title-block-header.
+  &:has(.abstract) {
+    .quarto-title-meta-contents > p {
+      display: inline;
+    }
+    .quarto-title-meta-contents > p + p::before {
+      content: ", ";
+    }
+    // Hide the auto-rendered date — year is conveyed by the subtitle.
+    .quarto-title-meta > div:has(p.date) { display: none; }
+
+    // Render DOI as a chip matching .chip styling.
+    .quarto-title-meta > div:has(p.doi) {
+      margin-top: 0.5rem;
+      p.doi a {
+        display: inline-block;
+        padding: 0.15rem 0.55rem;
+        font-size: 0;
+        border: 1px solid var(--ml-rule-strong);
+        border-radius: 4px;
+        color: var(--ml-body);
+        text-decoration: none;
+        letter-spacing: 0.01em;
+        &::after {
+          content: "DOI";
+          font-size: 0.78rem;
+        }
+        &:hover {
+          background: #f3f4f6;
+          color: var(--ml-link);
+          border-color: var(--ml-link);
+        }
+      }
+    }
+  }
+
+  // Hide Quarto's auto-rendered abstract — we render it manually in the
+  // body via {{< meta abstract >}} so it can sit below the context paragraph.
+  .abstract { display: none; }
+}
+
+// Publication abstract (rendered manually in pub qmd body):
+// inline bold "Abstract." lead-in, upright body, no border or background.
+.abstract {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--ml-body);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  max-width: 42rem;
+  p {
+    margin: 0;
+    &:first-of-type::before {
+      content: "Abstract. ";
+      font-weight: 700;
+      color: var(--ml-heading);
+    }
+  }
 }
 
 // Top masthead -----------------------------------------------------
@@ -187,7 +250,7 @@ header#title-block-header.quarto-title-block.default {
 
 .ml-topbar-brand:focus-visible .ml-topbar-brand-icon {
   opacity: 1;
-  transform: translateY(calc(-50% + 0.75px)) translateX(0);
+  transform: translateY(calc(-50% + 1px)) translateX(0);
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
   transition: opacity 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) 80ms,
               transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) 80ms,

@@ -1,14 +1,13 @@
 <%
-function groupOf(item) {
+function isMedia(item) {
   var cats = item.categories || [];
   if (!Array.isArray(cats)) cats = [cats];
-  if (cats.indexOf('publication') !== -1) return 'publications';
-  if (cats.indexOf('talk') !== -1) return 'presentations';
-  if (cats.indexOf('media') !== -1 || cats.indexOf('writing') !== -1) return 'media';
-  return 'other';
+  return cats.indexOf('media') !== -1 || cats.indexOf('writing') !== -1;
 }
 
-var visible = items.filter(function(item) { return !item.hide_in_news; });
+var visible = items.filter(function(item) {
+  return isMedia(item) && !item.hide_in_news;
+});
 
 var byYear = {};
 var years = [];
@@ -23,7 +22,7 @@ visible.forEach(function(item) {
 <div class="news-year-group">
 <div class="news-year"><%= year %></div>
 <% byYear[year].forEach(function(item) { %>
-<div class="news-item" data-group="<%= groupOf(item) %>">
+<div class="news-item">
 <div class="news-date"><% if (item.date) { %><%= new Date(item.date).toLocaleDateString('en-US', {year: 'numeric', month: 'short'}) %><% } %></div>
 <div class="news-text"><% var t = item.news_title || item.title; if (item.path) { %><a href="<%= item.path %>"><%- t %></a><% } else { %><%- t %><% } %></div>
 </div>

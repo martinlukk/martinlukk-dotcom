@@ -1,5 +1,5 @@
 <div class="news-list">
-<% items.forEach(function(item) { %>
+<% items.filter(function(item) { return !item.hide_in_news; }).forEach(function(item) { %>
 <div class="news-item">
 <div class="news-date"><% if (item.date) { %><%= new Date(item.date).toLocaleDateString('en-US', {year: 'numeric', month: 'short'}) %><% } %></div>
 <div class="news-text"><% if (item.path) { %><a href="<%= item.path %>"><%- item.title %></a><% } else { %><%- item.title %><% } %></div>

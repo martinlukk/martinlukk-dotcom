@@ -1,0 +1,35 @@
+---
+title: "Disrupting Philanthropy? A Reality Check for Digital Crowdfunding"
+subtitle: "*Journal of Philanthropy*, 2025"
+news_title: '"Disrupting Philanthropy? A Reality Check for Digital Crowdfunding" published in *Journal of Philanthropy*'
+date: "2025-11-11"
+categories: [publication]
+authors: ["Martin Lukk", "Nora Kenworthy", "Erik Schneiderhan", "Jeremy Snyder"]
+venue: "Journal of Philanthropy"
+year: 2025
+project: crowdfunding
+doi: "10.1002/nvsm.70041"
+abstract: >
+  Crowdfunding promised to revolutionize philanthropy by using digital technology
+  to make charitable giving cheaper, easier, and more accessible. Has this been
+  realized in practice? We highlight three crucial questions for charity
+  professionals and academic researchers to consider regarding crowdfunding's
+  "disruptive" capacity, and we answer them in light of nearly a decade of
+  research on crowdfunding for health care and related personal costs. We argue
+  that crowdfunding's benefits have been largely overstated. Instead of offering
+  a radically novel approach, it puts a digital spin on an outdated charity
+  model. While potentially empowering fundraising recipients, it can
+  significantly undermine their autonomy in practice. And although crowdfunding
+  is commonly used to support health and medical costs, it promotes values and
+  practices that ultimately harm public health systems. Our synthesis highlights
+  the considerable progress scholars have made in understanding this extremely
+  popular, if flawed, approach to charity, and we call for more critical
+  analyses of crowdfunding as it continues to evolve, alongside research into
+  alternative approaches to charitable giving.
+---
+
+The lead article in a [Dialogues special issue](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)3064-7878.evolution-of-traditional) on crowdfunding.
+
+::: {.abstract}
+{{< meta abstract >}}
+:::

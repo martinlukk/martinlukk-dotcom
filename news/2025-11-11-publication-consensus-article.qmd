@@ -1,0 +1,39 @@
+---
+title: "A Consensus Against False Dichotomies in Crowdfunding?"
+subtitle: "*Journal of Philanthropy*, 2025"
+news_title: '"A Consensus Against False Dichotomies in Crowdfunding?" published in *Journal of Philanthropy*'
+date: "2025-11-11"
+categories: [publication]
+authors: ["Martin Lukk", "Nora Kenworthy", "Erik Schneiderhan", "Jeremy Snyder"]
+venue: "Journal of Philanthropy"
+year: 2025
+project: crowdfunding
+doi: "10.1002/nvsm.70035"
+abstract: >
+  Our opening pillar article for this special issue argued that the disruptive
+  benefits of digital crowdfunding have been overstated. Responses to our piece
+  draw on diverse cases and perspectives, inviting the field to both broaden
+  its theoretical scope and expand its appreciation of crowdfunding's
+  wide-ranging empirical manifestations. The exchange also surfaces valuable
+  insights about the current state of crowdfunding scholarship, suggesting a
+  consensus against understanding crowdfunding in terms of simple dichotomies,
+  like good versus bad or oppressive versus liberating, while revealing
+  generative frictions among scholars' approaches. We identify three unresolved
+  questions about the nature of crowdfunding that emerge from the responses:
+  What is crowdfunding? What does crowdfunding do? How is crowdfunding actually
+  practiced? Answering these questions requires confronting essential debates
+  in the literature, including about crowdfunding's relationship to autonomy,
+  resistance, and structural change. In search of these answers, the responses
+  highlight the need for expanded empirical research into additional aspects
+  of the phenomenon across different contexts, including the elite networks
+  shaping crowdfunding platforms and ordinary users' perspectives on agency
+  and resistance. Overall, the dialog calls for future research that develops
+  the field's critical edge while appreciating the diversity of practices that
+  crowdfunding involves.
+---
+
+A reply to responses to our lead article in a [Dialogues special issue](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)3064-7878.evolution-of-traditional) on crowdfunding.
+
+::: {.abstract}
+{{< meta abstract >}}
+:::
