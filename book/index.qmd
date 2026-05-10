@@ -6,8 +6,8 @@ subtitle: "*The Unfulfilled Promise of Digital Crowdfunding* — a co-authored b
 
 *GoFailMe* investigates what digital crowdfunding has actually delivered — not as a promise of platform-mediated mutual aid, but as an everyday infrastructure that absorbs needs governments and charities have offloaded.
 
-::: {.pub-links}
-[Stanford University Press](https://www.sup.org/books/title/?id=30793){.pub-link}
+::: {.chips}
+[Stanford University Press](https://www.sup.org/books/title/?id=30793){.chip}
 :::
 
 ## In brief

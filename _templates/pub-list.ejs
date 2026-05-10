@@ -29,7 +29,7 @@ function bestTitleHref(item) {
 }); %></div>
 <div class="pub-venue"><%= item.venue || '' %><% if (item.venue && item.year) { %>, <% } %><%= item.year || '' %></div>
 <% if (item.pdf || item.doi || item.arxiv || item.code || item.project_page) { %>
-<div class="pub-links"><% if (item.pdf) { %><a class="pub-link" href="<%= item.pdf %>">PDF</a><% } %><% if (item.doi) { %><a class="pub-link" href="https://doi.org/<%= item.doi %>">DOI</a><% } %><% if (item.arxiv) { %><a class="pub-link" href="<%= item.arxiv %>">arXiv</a><% } %><% if (item.code) { %><a class="pub-link" href="<%= item.code %>">code</a><% } %><% if (item.project_page) { %><a class="pub-link" href="<%= item.project_page %>">project</a><% } %></div>
+<div class="chips"><% if (item.pdf) { %><a class="chip" href="<%= item.pdf %>">PDF</a><% } %><% if (item.doi) { %><a class="chip" href="https://doi.org/<%= item.doi %>">DOI</a><% } %><% if (item.arxiv) { %><a class="chip" href="<%= item.arxiv %>">arXiv</a><% } %><% if (item.code) { %><a class="chip" href="<%= item.code %>">code</a><% } %><% if (item.project_page) { %><a class="chip" href="<%= item.project_page %>">project</a><% } %></div>
 <% } %>
 </li>
 <% }); %>

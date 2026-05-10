@@ -4,11 +4,11 @@ pagetitle: "FairFund-Bench — Martin Lukk"
 subtitle: "A multi-task audit of LLM allocation decisions grounded in distributive-justice theory, built from real GoFundMe campaigns."
 ---
 
-::: {.pub-links}
-[paper (arXiv)]{.pub-link}
-[code]{.pub-link}
-[Croissant metadata]{.pub-link}
-[BibTeX](#cite){.pub-link}
+::: {.chips}
+[paper (arXiv)]{.chip}
+[code]{.chip}
+[Croissant metadata]{.chip}
+[BibTeX](#cite){.chip}
 :::
 
 ::: {.callout-note appearance="simple"}

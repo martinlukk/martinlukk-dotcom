@@ -572,13 +572,13 @@ code {
   margin: 0 0 0.4rem;
 }
 
-.pub-links {
+.chips {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
   margin: 0.5rem 0 1.5rem;
 
-  // Quarto wraps inline [label]{.pub-link} content in a <p>.
+  // Quarto wraps inline [label]{.chip} content in a <p>.
   // Reset that <p> so chips flow naturally without extra whitespace.
   > p {
     margin: 0;
@@ -592,11 +592,11 @@ code {
 
 // Inside a .pub-list (year-grouped publications listing) the chips sit
 // tight under the venue line — keep that compact spacing there.
-.pub-list .pub-links {
+.pub-list .chips {
   margin: 0.3rem 0 0;
 }
 
-.pub-link {
+.chip {
   display: inline-block;
   font-size: 0.78rem;
   padding: 0.15rem 0.55rem;
@@ -740,8 +740,6 @@ code {
 
 // Mobile / responsive ---------------------------------------------
 @media (max-width: 800px) {
-  :root { --ml-page-pad: 1.1rem; }
-
   .ml-topnav-toggle { display: inline-flex; }
 
   // Anchor the absolutely-positioned dropdown to .ml-topbar (which
