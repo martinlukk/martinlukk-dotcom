@@ -501,6 +501,17 @@ code {
 }
 
 // News/blog item: compact
+.news-year {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ml-muted);
+  font-weight: 700;
+  margin: 1.75rem 0 0.6rem;
+
+  &:first-child { margin-top: 0; }
+}
+
 .news-item {
   display: grid;
   grid-template-columns: 6rem 1fr;
@@ -510,6 +521,7 @@ code {
   align-items: baseline;
 
   &:first-child { border-top: 0; }
+  .news-year + & { border-top: 0; }
 
   .news-date {
     color: var(--ml-muted);

@@ -7,7 +7,7 @@ listing:
   exclude:
     filename: "index.qmd"
   type: custom
-  template: ../_templates/news-item.ejs
+  template: ../_templates/news-item-grouped.ejs
   sort: "date desc"
   page-size: 50
   fields: [date, title]

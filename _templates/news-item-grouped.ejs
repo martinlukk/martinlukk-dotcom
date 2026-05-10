@@ -1,0 +1,13 @@
+<div class="news-list">
+<% let lastYear = null; %>
+<% items.forEach(function(item) { %>
+<% const year = item.date ? new Date(item.date).getFullYear() : null; %>
+<% if (year !== lastYear) { lastYear = year; %>
+<div class="news-year"><%= year %></div>
+<% } %>
+<div class="news-item">
+<div class="news-date"><% if (item.date) { %><%= new Date(item.date).toLocaleDateString('en-US', {year: 'numeric', month: 'short'}) %><% } %></div>
+<div class="news-text"><% if (item.path) { %><a href="<%= item.path %>"><%- item.title %></a><% } else { %><%- item.title %><% } %></div>
+</div>
+<% }); %>
+</div>
