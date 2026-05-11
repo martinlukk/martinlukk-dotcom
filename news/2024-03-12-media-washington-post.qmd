@@ -6,4 +6,4 @@ outlet: "The Washington Post"
 outlet_url: "https://www.washingtonpost.com/dc-md-va/2024/03/11/tiktok-unhoused-man-gofundme/"
 ---
 
-I was quoted in Kyle Swenson and Amber Ferguson's article, ["A TikToker raised $400K for an unhoused man. Then things got messy."](https://www.washingtonpost.com/dc-md-va/2024/03/11/tiktok-unhoused-man-gofundme/), in *The Washington Post*, on a viral crowdfunding campaign in D.C., drawing on findings from my book [*GoFailMe*](/book/) (Stanford University Press), about amateur fundraisers being unprepared to manage the large sums they raise overnight.
+I was quoted in Kyle Swenson and Amber Ferguson's article, ["A TikToker raised $400K for an unhoused man. Then things got messy."](https://www.washingtonpost.com/dc-md-va/2024/03/11/tiktok-unhoused-man-gofundme/) in *The Washington Post*, on a viral crowdfunding campaign in D.C., drawing on findings from my book [*GoFailMe*](/book/) (Stanford University Press), about amateur fundraisers being unprepared to manage the large sums they raise overnight.

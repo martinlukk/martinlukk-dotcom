@@ -180,14 +180,15 @@ header#title-block-header.quarto-title-block.default {
   .abstract { display: none; }
 }
 
-// Publication abstract (rendered manually in pub qmd body):
-// inline bold "Abstract." lead-in, upright body, no border or background.
+// Abstract block (talks and publications): offset by a left rule, upright
+// body in the heading color, bold "Abstract." lead-in injected via CSS.
 .abstract {
   margin: 1.25rem 0 0;
-  padding: 0;
+  padding: 0.25rem 0 0.25rem 1rem;
   background: transparent;
   border: 0;
-  color: var(--ml-body);
+  border-left: 3px solid var(--ml-rule-strong);
+  color: #252930;
   font-size: 0.98rem;
   line-height: 1.6;
   max-width: 42rem;
@@ -196,7 +197,6 @@ header#title-block-header.quarto-title-block.default {
     &:first-of-type::before {
       content: "Abstract. ";
       font-weight: 700;
-      color: var(--ml-heading);
     }
   }
 }
