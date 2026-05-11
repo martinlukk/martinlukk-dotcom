@@ -7,8 +7,12 @@ categories: [publication]
 authors: ["Erik Schneiderhan", "Martin Lukk"]
 venue: "Stanford University Press"
 year: 2023
-project: crowdfunding
+pub_project: crowdfunding
 book: /book/
 ---
 
-Co-authored with Erik Schneiderhan, *GoFailMe* draws on a multi-method study of GoFundMe campaigns to ask who actually receives help when aid is crowdfunded, what kinds of need the platform's interface makes legible, and how the underlying logic of digital crowdfunding distorts the moral and political work that "giving" is asked to do. See the [book page](/book/) for more.
+Co-authored with Erik Schneiderhan. Full overview, praise, and reviews on the [book page](/book/).
+
+::: {.callout-note appearance="simple"}
+**From the publisher.** The gaping holes in the U.S. and Canadian social safety nets mean that many people live in a state of financial precarity that can instantly become untenable in the face of another big expense, such as a large medical bill or damaged property. Historically, people have turned to their communities, neighbors, families, and loved ones for help in these situations. Today, asking for money on the internet through crowdfunding is among the most popular ways of seeking and donating to charity, and for-profit enterprises have realized that tapping into this instinct for helping is extremely good business. *GoFailMe* reveals how these sites, most notably GoFundMe, enjoy massive revenue, without providing the help they promise. They fail most of their users while putting them through an emotional rollercoaster and using sneaky tactics to obscure that reality. With unprecedented access to interviews, surveys, and hundreds of thousands of crowdfunding cases across North America, Erik Schneiderhan and Martin Lukk take on pressing questions with critical insight: When do we turn to others for help? Who succeeds and who fails in the digital crowd? Whom do these sites benefit? Ultimately, the failure of GoFundMe and others is emblematic of the inability of the for-profit sector and Big Tech to engineer an end to social inequality.
+:::

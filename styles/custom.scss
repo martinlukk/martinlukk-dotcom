@@ -63,6 +63,15 @@ body.quarto-light {
 .margin-sidebar,
 .quarto-title-banner { display: none !important; }
 
+// Quarto/cosmo stamps `padding-top: 14px` on `.subtitle` inside
+// @media (max-width: 991.98px) — a holdover from its built-in nav
+// chrome that we hide. Leaves a phantom blank line above subtitles
+// (Research/News listings, publication detail pages) at narrower
+// viewports. Reset everywhere.
+#quarto-content .subtitle {
+  padding-top: 0;
+}
+
 // "← Back to news" link injected above the title block on news detail pages.
 .news-back-link {
   display: block;
@@ -137,47 +146,125 @@ header#title-block-header.quarto-title-block.default {
     p.date { margin: 0; }
   }
 
-  // Publication detail pages: render Quarto's auto-generated author list
-  // as a single inline, comma-separated line, and turn the DOI into a chip.
-  // Triggered by presence of an .abstract block in the title-block-header.
-  &:has(.abstract) {
+  // Hide Quarto's auto-rendered abstract — we render it manually in the
+  // body via {{< meta abstract >}} so it can sit below the context paragraph.
+  .abstract { display: none; }
+}
+
+// Publication detail pages: scoped by the .pub-marker element that the
+// pub-detail Lua filter prepends to the body for any qmd with
+// `categories: [publication]`. Restyles the auto-generated title block
+// to mirror the Research listing card (authors inline + self bolded,
+// DOI moved into the injected .pub-actions chip row).
+#quarto-content:has(.pub-marker) {
+  header#title-block-header.quarto-title-block.default {
+    margin-bottom: 0.5rem;
+
+    // Reorder to match the listing card: title → authors → venue.
+    // Quarto emits subtitle inside .quarto-title and authors inside
+    // .quarto-title-meta. Flex on the header + `display: contents` on
+    // .quarto-title lets us order them as siblings via `order:`.
+    display: flex;
+    flex-direction: column;
+    .quarto-title { display: contents; }
+
+    .quarto-title h1.title,
+    .quarto-title .title.h1 {
+      order: 1;
+      margin-bottom: 0;
+      // `text-wrap: balance` distributes wrap points evenly across
+      // multi-line pub titles — keeps long titles like "Politics of
+      // Boundary Consolidation: …" from leaving a short orphan line.
+      text-wrap: balance;
+    }
+    .quarto-title-meta { order: 2; }
+    .quarto-title .subtitle,
+    .quarto-title p.subtitle.lead { order: 3; }
+    .quarto-categories { order: 4; }
+
+    // Authors line: inline, comma-separated, body color, sits just under
+    // the title. `text-wrap: pretty` keeps wrapped lines tidy on
+    // multi-author papers.
+    .quarto-title-meta {
+      margin-top: 0.4rem;
+      font-size: 0.95rem;
+      color: var(--ml-body);
+    }
+    .quarto-title-meta-contents {
+      text-wrap: pretty;
+    }
     .quarto-title-meta-contents > p {
       display: inline;
+      color: inherit;
     }
     .quarto-title-meta-contents > p + p::before {
       content: ", ";
     }
-    // Hide the auto-rendered date — year is conveyed by the subtitle.
-    .quarto-title-meta > div:has(p.date) { display: none; }
 
-    // Render DOI as a chip matching .chip styling.
+    // Venue, Year — italic muted, mirrors the listing's `.pub-venue` line.
+    .quarto-title .subtitle,
+    .quarto-title p.subtitle.lead {
+      font-size: 0.9rem;
+      color: var(--ml-muted);
+      margin: 0.25rem 0 0;
+    }
+
+    // Suppress the auto-rendered Date and DOI rows — date is implicit
+    // in the subtitle's year, DOI is in the .pub-actions chip row.
+    .quarto-title-meta > div:has(p.date),
     .quarto-title-meta > div:has(p.doi) {
-      margin-top: 0.5rem;
-      p.doi a {
-        display: inline-block;
-        padding: 0.15rem 0.55rem;
-        font-size: 0;
-        border: 1px solid var(--ml-rule-strong);
-        border-radius: 4px;
-        color: var(--ml-body);
-        text-decoration: none;
-        letter-spacing: 0.01em;
-        &::after {
-          content: "DOI";
-          font-size: 0.78rem;
-        }
-        &:hover {
-          background: #f3f4f6;
-          color: var(--ml-link);
-          border-color: var(--ml-link);
-        }
-      }
+      display: none;
     }
   }
 
-  // Hide Quarto's auto-rendered abstract — we render it manually in the
-  // body via {{< meta abstract >}} so it can sit below the context paragraph.
-  .abstract { display: none; }
+  // Chip row injected by the Lua filter — PDF / publisher-or-DOI /
+  // arXiv / code / project / Cite. Hairline rule below visually
+  // delimits the bibliographic header from the article body.
+  .pub-actions {
+    margin: 0.85rem 0 1.5rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--ml-rule);
+  }
+
+  .pub-marker { display: none; }
+}
+
+// Cite chip is a <button> that copies a BibTeX entry to the clipboard
+// (see pub-self.js). Strip the browser's default button chrome so it
+// matches the surrounding .chip <a> elements, and add success/failure
+// feedback states triggered by the copy handler.
+button.chip,
+button.pub-cite {
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+.pub-cite-copied {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #10b981;
+}
+.pub-cite-failed {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #f87171;
+}
+
+// Pretty-wrap on the Research listing's author line too, so a long
+// multi-author byline doesn't orphan a single name on the last line.
+.pub-authors {
+  text-wrap: pretty;
+}
+
+// Project tag pill — sits next to the venue text on both the Research
+// listing (rendered by pub-list.ejs) and the publication detail page
+// (injected by pub-self.js). Re-uses the .pub-tag pill, plus a touch
+// of left-margin, normal font-style (the listing's .pub-venue is
+// italic), and a small optical nudge.
+.pub-project-tag {
+  margin-left: 0.35rem;
+  vertical-align: 1px;
+  font-style: normal;
 }
 
 // Abstract block (talks and publications): offset by a left rule, upright
@@ -672,9 +759,12 @@ code {
   font-size: 0.9rem;
   color: var(--ml-body);
   margin: 0 0 0.15rem;
-
-  .pub-self { font-weight: 600; }
 }
+
+// Bolded self-author. Used by the Research listing template and by the
+// pub-detail Lua filter (which wraps "Martin Lukk" in <span class="pub-self">
+// inside the auto-rendered title-block author list).
+.pub-self { font-weight: 600; }
 
 .pub-venue {
   font-size: 0.85rem;
@@ -724,20 +814,14 @@ code {
   }
 }
 
-.pub-tags {
-  display: inline;
-  margin-left: 0.4rem;
-
-  .pub-tag {
-    display: inline-block;
-    font-size: 0.78rem;
-    padding: 0.05rem 0.45rem;
-    background: var(--ml-tag-bg);
-    color: var(--ml-tag-text);
-    border-radius: 10px;
-    margin-right: 0.3rem;
-    letter-spacing: 0.02em;
-  }
+.pub-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 0.05rem 0.45rem;
+  background: var(--ml-tag-bg);
+  color: var(--ml-tag-text);
+  border-radius: 10px;
+  letter-spacing: 0.02em;
 }
 
 // Project filter buttons (research page)
@@ -799,6 +883,111 @@ code {
     color: inherit;
   }
   .callout-body-container strong { color: var(--ml-heading); }
+}
+
+// Book page -------------------------------------------------------
+// /book/ reuses the pub-detail title block (via a manual .pub-marker)
+// so the H1 / authors / venue subtitle / project pill all match the
+// rest of the publications. The page-specific bits are below: the
+// cover figure and the "From the publisher" blurb block.
+
+// Intro block holds the cover and the publisher blurb. The cover
+// floats left so prose wraps to its right and reflows below it when
+// the description runs longer than the cover. `display: flow-root`
+// contains the float so the next section (Praise & reviews) starts
+// cleanly. Mobile stacks via the breakpoint below.
+.book-intro {
+  display: flow-root;
+  margin: 1.25rem 0 1.75rem;
+}
+
+// Cover. Subtle paper-shadow, no hover transform — the rising tile
+// effect was tacky.
+.book-cover-figure {
+  float: left;
+  // Nudge down so the cover top aligns optically with the blurb's
+  // bold "From the publisher." baseline.
+  margin: 0.25rem 1.4rem 0.4rem 0;
+}
+
+.book-cover-link {
+  display: inline-block;
+  line-height: 0;
+  border-radius: 1px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07),
+              0 6px 18px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+
+  &:focus-visible { outline: 2px solid var(--ml-link); outline-offset: 4px; }
+}
+
+.book-cover-img {
+  display: block;
+  width: 190px;
+  height: auto;
+}
+
+// "From the publisher" blurb. Plain prose with a bold inline label —
+// the abstract-style left rule would read as a column divider next
+// to the cover, so it's dropped here. Text wraps around the floated
+// cover and reflows full-width below it.
+.publisher-blurb {
+  margin: 0;
+  color: var(--ml-body);
+  font-size: 0.98rem;
+  line-height: 1.6;
+
+  p {
+    margin: 0 0 0.6rem;
+    &:last-child { margin-bottom: 0; }
+    &:first-of-type::before {
+      content: "From the publisher. ";
+      font-weight: 700;
+      color: var(--ml-heading);
+    }
+  }
+}
+
+// Blurbs -----------------------------------------------------------
+// Each blurb is a quote + attribution. Reuses the global blockquote
+// styling (left rule, italic) and tightens spacing so blurbs stack
+// cleanly. Attribution sits aligned with the quote, em-dash prefixed,
+// in muted body color.
+.book-blurb {
+  margin: 0 0 1.35rem;
+
+  > blockquote { margin: 0 0 0.45rem; }
+  > blockquote p:last-child { margin-bottom: 0; }
+}
+
+.book-blurb-cite {
+  display: block;
+  // `fit-content` keeps the hover underline scoped to the actual cite
+  // text. With plain `display: block` the box (and its border-bottom)
+  // spans the full column, producing a long line across the page on
+  // hover. Margin replaces padding so the underline doesn't carry an
+  // empty 1rem lead before the em-dash.
+  width: fit-content;
+  max-width: 100%;
+  margin-left: 1rem;
+  font-size: 0.88rem;
+  color: var(--ml-muted);
+  font-style: normal;
+  text-decoration: none;
+
+  &::before { content: "— "; }
+
+  &[href] {
+    color: var(--ml-muted);
+    border-bottom: 1px solid transparent;
+    transition: color 0.12s ease, border-color 0.12s ease;
+    text-decoration: none;
+    &:hover,
+    &:focus-visible {
+      color: var(--ml-link);
+      border-bottom-color: var(--ml-link);
+    }
+  }
 }
 
 // Footer ----------------------------------------------------------
@@ -932,6 +1121,14 @@ code {
     grid-template-columns: 1fr;
     gap: 0.15rem;
   }
+
+  // Book intro stacks on phones: cover above prose. Drop the float
+  // so it sits on its own line, and trim its width a touch.
+  .book-cover-figure {
+    float: none;
+    margin: 0 0 1rem;
+  }
+  .book-cover-img { width: 160px; }
 
   // Swap which footer copy is visible: hide the sidebar one (it would
   // appear at the top of the page on mobile) and reveal the page-end one.
