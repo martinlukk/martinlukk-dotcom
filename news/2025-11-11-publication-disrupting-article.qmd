@@ -7,7 +7,7 @@ categories: [publication]
 authors: ["Martin Lukk", "Nora Kenworthy", "Erik Schneiderhan", "Jeremy Snyder"]
 venue: "Journal of Philanthropy"
 year: 2025
-project: crowdfunding
+pub_project: crowdfunding
 doi: "10.1002/nvsm.70041"
 abstract: >
   Crowdfunding promised to revolutionize philanthropy by using digital technology

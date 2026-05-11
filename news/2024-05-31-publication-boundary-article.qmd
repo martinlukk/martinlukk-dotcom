@@ -7,7 +7,7 @@ categories: [publication]
 authors: ["Martin Lukk"]
 venue: "Socius"
 year: 2024
-project: culture-conflict
+pub_project: culture-conflict
 doi: "10.1177/23780231241251714"
 abstract: >
   Scholars have linked income inequality to the recent success of radical-right

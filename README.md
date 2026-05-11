@@ -14,7 +14,7 @@ Install Quarto: <https://quarto.org/docs/get-started/>.
 ## Repo layout
 
 ```
-_quarto.yml          site config (theme, partials, social meta, resources)
+_quarto.yml          site config (theme, partials, filters, social meta, resources)
 _includes/           HTML partials injected into every page
   header.html          topbar nav
   sidebar.html         left sidebar (photo, role, socials, copyright)
@@ -27,12 +27,19 @@ _templates/          EJS templates for Quarto listings
   news-item-recent.ejs    Home page (top 4 entries, hide_in_news-aware)
   news-item.ejs           generic news row (currently unused; kept as a base)
   media-list.ejs          Media page (year-grouped, filtered by category)
-  pub-list.ejs            Research page (year-grouped, filtered by category)
+  pub-list.ejs            Research page (chip set, BibTeX block, project pill)
+_filters/            Pandoc Lua filters wired up in _quarto.yml
+  pub-detail.lua       For pub qmds: injects the chip row, the BibTeX
+                       <script>, and a .pub-marker the SCSS uses to
+                       scope pub-flavored title-block styling
 assets/js/           Custom JS, served as static resources
   topnav.js            active-link highlight + mobile hamburger
   pub-filter.js        project filter on the Research page
   news-filter.js       category filter on the News page
-  chips.js             chip behavior (e.g., open-in-new-tab)
+  news-back.js         "← Back to ..." link injected on news detail pages
+  chips.js             chip behavior (open-in-new-tab)
+  pub-self.js          on pub pages: bold self-author, append project
+                       pill, wire Copy BibTeX chips (also on Research)
 styles/custom.scss   All site styling (overrides Quarto's cosmo theme)
 news/                The content store — see "Content model" below
 posts/               blog (disabled in nav until first post)
@@ -91,17 +98,26 @@ news_title: '"Politics of..." published in *Socius*'  # what News/Media listings
 authors: ["Martin Lukk"]
 venue: "Socius"
 year: 2024
-project: culture-conflict | crowdfunding   # matches a Research filter button
-doi: "10.1177/..."         # optional; renders as a chip on the detail page
-arxiv: "..."               # optional
+pub_project: culture-conflict | crowdfunding   # matches a Research filter button + renders a pill next to the venue line. NOTE: not `project:` — Quarto reserves that key for the website project config in _quarto.yml.
+doi: "10.1177/..."         # optional; renders the "Article" chip
+preprint: "https://..."    # optional; arXiv/SSRN/OSF/bioRxiv/etc. — renders the "Preprint" chip
+arxiv: "..."               # optional legacy alias for `preprint:` (still works)
 pdf: "..."                 # optional
-code: "..."                # optional
-project_page: "/foo/"     # optional; renders as a "project" chip on Research
+code: "https://..."        # optional — "Code" chip
+data: "https://..."        # optional — "Data" chip
+materials: "https://..."   # optional — "Materials" chip (stimuli, codebooks, etc.)
+prereg: "https://..."      # optional — "Prereg" chip (OSF Registry, AsPredicted, …)
+supplement: "https://..."  # optional — "Supplement" chip (online appendix / SI)
+slides: "https://..."      # optional — "Slides" chip
+project_page: "/foo/"     # optional; renders a "Project" chip (link to a project page on this site)
 book: "/book/"             # optional; for the book entry — routes the Research title link to /book/ instead of the news detail page
+cite_key: "lukk2024boundary"  # optional; overrides the auto-generated BibTeX cite key
 abstract: >
   Multi-line YAML folded string. Rendered manually in the qmd body via
   {{< meta abstract >}} below a short context paragraph.
 ```
+
+Chip vocabulary, in render order: **PDF · Article · Preprint · Code · Data · Materials · Prereg · Supplement · Slides · Project · Copy BibTeX**. Chips render only when the corresponding field is populated; "Copy BibTeX" always renders for entries that have authors + title + year. Chip labels name *what's at the link*, not the platform; the platform name (GitHub, OSF, Zenodo, AsPredicted, arXiv, …) appears in the chip's hover tooltip. Recognized hosts live in the `URL_PLATFORMS` table — duplicated in `_filters/pub-detail.lua` and `_templates/pub-list.ejs`; edit both when adding one.
 
 Pub qmd body convention: one short context paragraph (e.g., "Lead article in a *X* special issue"), then `::: {.abstract}` `{{< meta abstract >}}` `:::`.
 
@@ -136,10 +152,14 @@ the talk, blockquote of the review, etc.).
 
 ## How rendering works
 
-1. `_quarto.yml` declares the format (`html` with the `cosmo` theme + `styles/custom.scss`) and which partials to inject (`include-before-body`, `include-after-body`).
+1. `_quarto.yml` declares the format (`html` with the `cosmo` theme + `styles/custom.scss`), the partials to inject (`include-before-body`, `include-after-body`), and the Pandoc Lua filters (`filters:`).
 2. Each `.qmd` page is processed by Pandoc into HTML, with the partials wrapped around the content.
 3. Pages with a `listing:` block (`index.qmd`, `news/index.qmd`, `research.qmd`, `media/index.qmd`) scan `news/[0-9]*.qmd`. Quarto extracts frontmatter into an `items` array; the EJS template named in `template:` filters and renders. Each listing exposes only the `fields:` it needs — add a field name there if a template needs to read it.
-4. Publication detail pages: Quarto auto-renders title, subtitle, authors, date, and DOI into the title block from frontmatter. SCSS hides Quarto's auto-rendered abstract block (since pub qmds emit it manually via `{{< meta abstract >}}` further down the body) and restyles authors inline + DOI as a chip. The selector `header#title-block-header:has(.abstract)` scopes the pub-flavored title-block styling to publication pages only.
+4. Publication detail pages get three layers of rendering on top of Quarto's defaults:
+   - **Quarto** auto-renders title, subtitle, authors, date, and DOI into the title block from frontmatter.
+   - **`_filters/pub-detail.lua`** (a Pandoc Lua filter) detects `categories: [publication]` and prepends two raw-HTML blocks to the body: a `.pub-marker` (carries `data-project="..."` so the SCSS can scope pub styling and JS can read the project slug) and a `.pub-actions` chip row + a sibling `<script type="application/x-bibtex">` containing the generated BibTeX entry.
+   - **SCSS** scopes pub-flavored title-block styling via `#quarto-content:has(.pub-marker)` (hides the auto-rendered abstract block since pub qmds emit it manually via `{{< meta abstract >}}` further down the body; reorders the title block to title → authors → venue+year; reuses the listing's bolded self-author and pill-style project tag).
+   - **`assets/js/pub-self.js`** wraps "Martin Lukk" in `<span class="pub-self">` inside the auto-rendered author paragraphs (which Quarto pre-processes into a structured `by-author` field, so a server-side filter can't easily touch them), appends the project pill to the venue line, and wires up Copy-BibTeX click → `navigator.clipboard.writeText(scriptTag.textContent)`. The same Copy-BibTeX wiring runs on the Research listing, which embeds one `<script type="application/x-bibtex">` per pub item.
 5. Output goes to `_site/`. Quarto auto-rewrites paths so `/assets/js/foo.js` becomes `./assets/js/foo.js` on root pages and `../assets/js/foo.js` one level deep.
 
 ## Gotchas
@@ -152,6 +172,10 @@ the talk, blockquote of the review, etc.).
 - **Anything served as a static asset must be in `_quarto.yml > project > resources:`.** `assets/`, `cv.pdf`, and `favicon.ico` are listed there. Add new top-level static dirs to that list.
 - **`page-layout: custom`** disables Quarto's default sidebar/TOC chrome. We layer our own sidebar/topbar via `_includes/`. If you ever want Quarto's built-in `website.navbar`, remove the custom partials first.
 - **`<p>` inside a partial inherits the parent class's `font-size` only by accident** — Quarto/Bootstrap sets `p { font-size: 1rem }` globally, which can override inherited sizes. The fix in `styles/custom.scss` is to set `font-size: inherit` on the inner `p`.
+- **`project:` is reserved by Quarto** — it's used in `_quarto.yml` for the website project config, and Quarto strips it from per-document metadata before Pandoc filters see it. (The listing engine still exposes it to EJS via `item.project`, but a Lua filter reading `meta.project` will get `nil`.) Per-pub project slug lives under `pub_project:` instead.
+- **BibTeX in `<script type="application/x-bibtex">`, not `<template>`.** Pandoc processes the contents of `<template>` elements when they appear in EJS-rendered HTML: a leading `@article` gets wrapped in a `.citation` span, and embedded newlines collapse. `<script>` content is treated as raw CDATA by the HTML spec and by Pandoc, so it round-trips verbatim. The detail-page Lua filter and the listing's EJS template both emit `<script type="application/x-bibtex">` for the BibTeX payload.
+- **Chips name what's at the link, not where it's hosted.** Repeated platform names in a chip row (`Wiley · arXiv · GitHub · OSF`) read as alphabet soup; content-typed labels (`Article · Preprint · Code · Data`) stay coherent and degrade nicely when fields are missing. Platform names live in the chip's hover tooltip via `URL_PLATFORMS` (kept in sync between `_filters/pub-detail.lua` and `_templates/pub-list.ejs`).
+- **Quarto's `quarto preview` cache can desync from a separate `quarto render`.** If you run `quarto render` while a preview is already up, the preview server may start returning `Bad resource ID` for the rebuilt pages. Restart the preview to fix.
 
 ## Quarto in context
 

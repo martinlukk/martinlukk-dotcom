@@ -6,6 +6,9 @@ project:
     - favicon.ico
     - assets/
 
+filters:
+  - _filters/pub-detail.lua
+
 website:
   title: "Martin Lukk"
   description: "Sociologist studying politics, inequality, and the internet."

@@ -24,6 +24,111 @@ function bestTitleHref(item) {
   return '';
 }
 
+// Keep these in sync with _filters/pub-detail.lua — the listing and
+// the detail page render the same chip vocabulary (PDF / Article /
+// Preprint / Code / Data / Materials / Prereg / Supplement / Slides /
+// Project / Copy BibTeX), in the same order, with the same tooltip
+// behavior (publisher for Article, platform for everything else).
+var DOI_PUBLISHERS = {
+  '10.1002': 'Wiley',
+  '10.1177': 'Sage',
+  '10.1086': 'U Chicago',
+  '10.1093': 'Oxford',
+  '10.1007': 'Springer',
+  '10.1080': 'Taylor & Francis',
+  '10.1146': 'Annual Reviews',
+  '10.1126': 'Science',
+  '10.1038': 'Nature',
+  '10.1145': 'ACM',
+  '10.1109': 'IEEE',
+  '10.1257': 'AEA',
+};
+
+var URL_PLATFORMS = [
+  { re: /github\./i,      label: 'GitHub'      },
+  { re: /gitlab\./i,      label: 'GitLab'      },
+  { re: /bitbucket\./i,   label: 'Bitbucket'   },
+  { re: /osf\.io/i,       label: 'OSF'         },
+  { re: /zenodo\.org/i,   label: 'Zenodo'      },
+  { re: /dataverse/i,     label: 'Dataverse'   },
+  { re: /icpsr\.umich/i,  label: 'ICPSR'       },
+  { re: /aspredicted/i,   label: 'AsPredicted' },
+  { re: /arxiv\.org/i,    label: 'arXiv'       },
+  { re: /ssrn\.com/i,     label: 'SSRN'        },
+  { re: /biorxiv\.org/i,  label: 'bioRxiv'     },
+  { re: /medrxiv\.org/i,  label: 'medRxiv'     },
+  { re: /psyarxiv/i,      label: 'PsyArXiv'    },
+  { re: /researchgate/i,  label: 'ResearchGate'},
+  { re: /figshare/i,      label: 'Figshare'    },
+];
+
+var SKIP_WORDS = {
+  a: 1, an: 1, the: 1, on: 1, of: 1, in: 1, for: 1, to: 1,
+  and: 1, or: 1, is: 1,
+};
+
+function publisherLabel(doi) {
+  if (!doi) return null;
+  var m = String(doi).match(/^(10\.\d+)/);
+  return (m && DOI_PUBLISHERS[m[1]]) || null;
+}
+
+function platformLabel(url) {
+  if (!url) return null;
+  for (var i = 0; i < URL_PLATFORMS.length; i++) {
+    if (URL_PLATFORMS[i].re.test(url)) return URL_PLATFORMS[i].label;
+  }
+  return null;
+}
+
+function citeKey(item, authors, year) {
+  if (item.cite_key) return String(item.cite_key);
+  var first = String((authors && authors[0]) || '').trim();
+  var family = first.split(/\s+/).pop().toLowerCase().replace(/[^a-z]/g, '');
+  var y = String(year || '').replace(/[^\d]/g, '');
+  var titleClean = String(item.title || '').replace(/\*/g, '').replace(/-/g, ' ');
+  var word = '';
+  var parts = titleClean.split(/\s+/);
+  for (var i = 0; i < parts.length; i++) {
+    var clean = parts[i].toLowerCase().replace(/[^a-z]/g, '');
+    if (clean && !SKIP_WORDS[clean]) { word = clean; break; }
+  }
+  return family + y + word;
+}
+
+function bibtexEntry(item, authors, year, key) {
+  var isBook = !!item.book;
+  var entry = isBook ? 'book' : 'article';
+  var venue = String(item.venue || '');
+  var doi = String(item.doi || '');
+  var title = String(item.title || '').replace(/\*/g, '');
+
+  var lines = [
+    '@' + entry + '{' + key + ',',
+    '  author = {' + authors.join(' and ') + '},',
+    '  title = {' + title + '},',
+  ];
+  if (isBook) {
+    if (venue) lines.push('  publisher = {' + venue + '},');
+  } else {
+    if (venue) lines.push('  journal = {' + venue + '},');
+  }
+  if (year) lines.push('  year = {' + String(year) + '},');
+  if (doi) lines.push('  doi = {' + doi + '},');
+  lines[lines.length - 1] = lines[lines.length - 1].replace(/,$/, '');
+  lines.push('}');
+  return lines.join('\n');
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function escapeAttr(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;')
+                  .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 var pubs = items.filter(isPub);
 const byYear = {};
 pubs.forEach(function(item) {
@@ -37,19 +142,45 @@ var years = Object.keys(byYear).sort(function(a,b){ return (b|0) - (a|0); });
 <ul class="pub-list">
 <% byYear[year].forEach(function(item) {
   var href = bestTitleHref(item);
+  var authors = (item.authors || []).map(function(a){ return String(a).trim(); });
+  var key = citeKey(item, authors, year);
+  var bib = bibtexEntry(item, authors, year, key);
+  var bibtexId = 'bibtex-' + key;
 %>
-<li data-projects="<%= item.project || '' %>">
+<li data-projects="<%= item.pub_project || '' %>">
 <div class="pub-title"><% if (href) { %><a href="<%= href %>"><%= titleOf(item) %></a><% } else { %><%= titleOf(item) %><% } %></div>
-<div class="pub-authors"><% (item.authors || []).forEach(function(a, i) {
-    var clean = String(a).trim();
-    var isSelf = (clean === 'Martin Lukk' || clean === 'M. Lukk' || clean === 'Lukk, M.');
+<div class="pub-authors"><% authors.forEach(function(a, i) {
+    var isSelf = (a === 'Martin Lukk' || a === 'M. Lukk' || a === 'Lukk, M.');
     if (i > 0) { %>, <% }
-    if (isSelf) { %><span class="pub-self"><%= clean %></span><% } else { %><%= clean %><% }
+    if (isSelf) { %><span class="pub-self"><%= a %></span><% } else { %><%= a %><% }
 }); %></div>
-<div class="pub-venue"><%= item.venue || '' %><% if (item.venue && year) { %>, <% } %><%= year %></div>
-<% if (item.pdf || item.doi || item.arxiv || item.code || item.project_page) { %>
-<div class="chips"><% if (item.pdf) { %><a class="chip" href="<%= item.pdf %>">PDF</a><% } %><% if (item.doi) { %><a class="chip" href="https://doi.org/<%= item.doi %>">DOI</a><% } %><% if (item.arxiv) { %><a class="chip" href="<%= item.arxiv %>">arXiv</a><% } %><% if (item.code) { %><a class="chip" href="<%= item.code %>">code</a><% } %><% if (item.project_page) { %><a class="chip" href="<%= item.project_page %>">project</a><% } %></div>
-<% } %>
+<div class="pub-venue"><%= item.venue || '' %><% if (item.venue && year) { %>, <% } %><%= year %><% if (item.pub_project) { %> <span class="pub-tag pub-project-tag"><%= item.pub_project %></span><% } %></div>
+<%
+  // Chip render helper — `Article` carries publisher+DOI in title;
+  // every other non-Project chip carries a platform name in title
+  // when the URL host is recognized.
+  function chipWithPlatform(label, href) {
+    if (!href) return '';
+    var plat = platformLabel(href);
+    var titleAttr = plat ? (' title="' + escapeAttr(plat) + '"') : '';
+    return '<a class="chip" href="' + escapeAttr(href) + '"' + titleAttr + '>' + label + '</a>';
+  }
+  var preprintHref = item.preprint || item.arxiv;  // legacy alias
+%><div class="chips"><%- chipWithPlatform('PDF', item.pdf) %><%
+  if (item.doi) {
+    var pub = publisherLabel(item.doi);
+    var title = pub ? (pub + ' · DOI: ' + item.doi) : ('DOI: ' + item.doi);
+%><a class="chip" href="https://doi.org/<%= item.doi %>" title="<%= escapeAttr(title) %>">Article</a><% }
+%><%- chipWithPlatform('Preprint',   preprintHref) %><%
+%><%- chipWithPlatform('Code',       item.code) %><%
+%><%- chipWithPlatform('Data',       item.data) %><%
+%><%- chipWithPlatform('Materials',  item.materials) %><%
+%><%- chipWithPlatform('Prereg',     item.prereg) %><%
+%><%- chipWithPlatform('Supplement', item.supplement) %><%
+%><%- chipWithPlatform('Slides',     item.slides) %><%
+  if (item.project_page) { %><a class="chip" href="<%= item.project_page %>">Project</a><% }
+%><button type="button" class="chip pub-cite" aria-label="Copy BibTeX citation to clipboard" data-cite-target="<%= bibtexId %>">Copy BibTeX</button></div>
+<script type="application/x-bibtex" id="<%= bibtexId %>"><%= bib.replace(/<\/script>/g, '<\\/script>') %></script>
 </li>
 <% }); %>
 </ul>
