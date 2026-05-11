@@ -20,4 +20,4 @@ The book draws on a multi-method study of GoFundMe campaigns to ask: who actuall
 
 ## Related research
 
-The book opens onto the [crowdfunding](/research/) thread of my work, and supplies the empirical ground for [FairFund-Bench](/fairfund/), which audits how LLMs allocate help when given the same kinds of campaigns the book studies.
+The book opens onto the [crowdfunding](/research.html) thread of my work, and supplies the empirical ground for FairFund-Bench, which audits how LLMs allocate help when given the same kinds of campaigns the book studies.

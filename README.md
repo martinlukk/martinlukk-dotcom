@@ -36,7 +36,7 @@ assets/js/           Custom JS, served as static resources
 styles/custom.scss   All site styling (overrides Quarto's cosmo theme)
 news/                The content store — see "Content model" below
 posts/               blog (disabled in nav until first post)
-book/, fairfund/, media/   project pages (each with index.qmd)
+book/, media/        project pages (each with index.qmd)
 index.qmd            home page (lists 4 most recent news entries)
 research.qmd         Research index (reads news/, filtered to publications)
 cv.pdf, favicon.ico  static resources
@@ -91,12 +91,12 @@ news_title: '"Politics of..." published in *Socius*'  # what News/Media listings
 authors: ["Martin Lukk"]
 venue: "Socius"
 year: 2024
-project: culture-conflict | crowdfunding | fairfund  # matches a Research filter button
+project: culture-conflict | crowdfunding   # matches a Research filter button
 doi: "10.1177/..."         # optional; renders as a chip on the detail page
 arxiv: "..."               # optional
 pdf: "..."                 # optional
 code: "..."                # optional
-project_page: "/fairfund/" # optional; renders as a "project" chip on Research
+project_page: "/foo/"     # optional; renders as a "project" chip on Research
 book: "/book/"             # optional; for the book entry — routes the Research title link to /book/ instead of the news detail page
 abstract: >
   Multi-line YAML folded string. Rendered manually in the qmd body via
