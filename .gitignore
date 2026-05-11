@@ -6,6 +6,9 @@
 *_cache/
 **/*.quarto_ipynb
 
+# Local-only design scratch (see auto-memory project_bird_tweak.md)
+/_dev/
+
 # OS / editors
 .DS_Store
 Thumbs.db
