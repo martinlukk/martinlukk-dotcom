@@ -38,6 +38,19 @@
     });
   }
 
+  // Top-nav navigation is not a listing click, so it shouldn't carry an origin.
+  function wireOriginReset() {
+    var bar = document.querySelector('.ml-topbar');
+    if (!bar) return;
+    bar.addEventListener('click', function(e) {
+      var a = e.target.closest && e.target.closest('a');
+      if (!a) return;
+      if (a.target === '_blank') return;
+      try { sessionStorage.removeItem('lastOrigin'); } catch (err) {}
+    });
+  }
+
   highlightActiveLink();
   wireMobileToggle();
+  wireOriginReset();
 })();

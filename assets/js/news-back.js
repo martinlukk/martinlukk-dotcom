@@ -1,6 +1,24 @@
 (function() {
   var NEWS_FILTERS = ['publications', 'presentations', 'media', 'other'];
   var PUB_FILTERS = ['crowdfunding', 'culture-conflict'];
+  var VALID_ORIGINS = ['home', 'news', 'research', 'media'];
+
+  var ORIGINS = {
+    home: { href: '/', label: 'Back to Home' },
+    news: { href: '/news/', label: 'Back to News', storageKey: 'newsFilter', filters: NEWS_FILTERS },
+    research: { href: '/research.html', label: 'Back to Research', storageKey: 'pubFilter', filters: PUB_FILTERS },
+    media: { href: '/media/', label: 'Back to Media' }
+  };
+
+  function isHome() {
+    var p = location.pathname;
+    return p === '/' || p === '/index.html';
+  }
+
+  function isMediaListing() {
+    var p = location.pathname;
+    return p === '/media/' || p === '/media/index.html';
+  }
 
   function isNewsDetail() {
     var p = location.pathname;
@@ -27,8 +45,11 @@
     try {
       var u = new URL(document.referrer);
       if (u.origin !== location.origin) return null;
-      if (u.pathname === '/news/' || u.pathname === '/news/index.html') return 'news';
-      if (u.pathname === '/research.html' || u.pathname === '/research') return 'research';
+      var p = u.pathname;
+      if (p === '/' || p === '/index.html') return 'home';
+      if (p === '/news/' || p === '/news/index.html') return 'news';
+      if (p === '/research' || p === '/research.html') return 'research';
+      if (p === '/media/' || p === '/media/index.html') return 'media';
     } catch (e) {}
     return null;
   }
@@ -36,7 +57,7 @@
   function chooseOriginForNewsDetail() {
     try {
       var stored = sessionStorage.getItem('lastOrigin');
-      if (stored === 'news' || stored === 'research') return stored;
+      if (VALID_ORIGINS.indexOf(stored) !== -1) return stored;
     } catch (e) {}
     var ref = referrerOrigin();
     if (ref) return ref;
@@ -45,48 +66,54 @@
   }
 
   function chooseOriginForBook() {
-    // Book gets a back link ONLY when the user demonstrably came from Research.
+    // Book gets a back link ONLY when the user explicitly clicked through the
+    // Research publication list (top-nav clicks clear lastOrigin).
     try {
       var stored = sessionStorage.getItem('lastOrigin');
       if (stored === 'research') return 'research';
     } catch (e) {}
-    if (referrerOrigin() === 'research') return 'research';
     return null;
   }
 
   function injectBackLink(origin) {
     var title = document.getElementById('title-block-header');
     if (!title) return;
+    var cfg = ORIGINS[origin];
+    if (!cfg) return;
 
-    var baseHref, label, storageKey, validFilters;
-    if (origin === 'research') {
-      baseHref = '/research.html';
-      label = 'Back to Research';
-      storageKey = 'pubFilter';
-      validFilters = PUB_FILTERS;
-    } else {
-      baseHref = '/news/';
-      label = 'Back to News';
-      storageKey = 'newsFilter';
-      validFilters = NEWS_FILTERS;
+    var href = cfg.href;
+    if (cfg.storageKey && cfg.filters) {
+      var remembered = null;
+      try { remembered = sessionStorage.getItem(cfg.storageKey); } catch (e) {}
+      if (remembered && cfg.filters.indexOf(remembered) !== -1) {
+        href += '#' + remembered;
+      }
     }
-
-    var remembered = null;
-    try { remembered = sessionStorage.getItem(storageKey); } catch (e) {}
-    var href = baseHref;
-    if (remembered && validFilters.indexOf(remembered) !== -1) href += '#' + remembered;
 
     var link = document.createElement('a');
     link.className = 'news-back-link';
     link.href = href;
-    link.setAttribute('aria-label', label);
-    link.innerHTML = '<span class="news-back-arrow" aria-hidden="true">←</span> ' + label;
+    link.setAttribute('aria-label', cfg.label);
+    link.innerHTML = '<span class="news-back-arrow" aria-hidden="true">←</span> ' + cfg.label;
 
     title.parentNode.insertBefore(link, title);
   }
 
+  function recordOriginOn(container, origin) {
+    if (!container) return;
+    container.addEventListener('click', function(e) {
+      var a = e.target.closest && e.target.closest('a');
+      if (!a) return;
+      try { sessionStorage.setItem('lastOrigin', origin); } catch (err) {}
+    });
+  }
+
   function init() {
-    if (isNewsDetail()) {
+    if (isHome()) {
+      recordOriginOn(document.querySelector('.quarto-listing'), 'home');
+    } else if (isMediaListing()) {
+      recordOriginOn(document.querySelector('.quarto-listing'), 'media');
+    } else if (isNewsDetail()) {
       injectBackLink(chooseOriginForNewsDetail());
     } else if (isBookPage()) {
       var origin = chooseOriginForBook();
