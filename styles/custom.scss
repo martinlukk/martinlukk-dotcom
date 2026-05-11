@@ -63,6 +63,27 @@ body.quarto-light {
 .margin-sidebar,
 .quarto-title-banner { display: none !important; }
 
+// "← Back to news" link injected above the title block on news detail pages.
+.news-back-link {
+  display: block;
+  width: fit-content;
+  margin: 0 0 1.25rem;
+  font-size: 0.85rem;
+  color: var(--ml-muted);
+  text-decoration: none;
+  letter-spacing: 0.005em;
+
+  .news-back-arrow {
+    display: inline-block;
+    margin-right: 0.25rem;
+    transition: transform 0.15s ease;
+  }
+  &:hover {
+    color: var(--ml-link);
+    .news-back-arrow { transform: translateX(-2px); }
+  }
+}
+
 // Soften Quarto's title block (used on non-home pages).
 // Selector uses #title-block-header.default so we beat the cosmo
 // theme rules, which also lead with the ID + .default classes.

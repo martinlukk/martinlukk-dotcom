@@ -1,4 +1,7 @@
 (function() {
+  var VALID = ['all', 'crowdfunding', 'culture-conflict'];
+  var STORAGE_KEY = 'pubFilter';
+
   function init() {
     var bar = document.querySelector('[data-pub-filter]');
     if (!bar) return;
@@ -10,7 +13,6 @@
         var tags = (li.getAttribute('data-projects') || '').split(/\s+/);
         li.style.display = (f === 'all' || tags.indexOf(f) !== -1) ? '' : 'none';
       });
-      // Hide year headings whose section is now empty
       headings.forEach(function(h) {
         var ul = h.nextElementSibling;
         if (!ul) return;
@@ -21,12 +23,65 @@
       });
     }
 
+    function setActive(f) {
+      bar.querySelectorAll('button').forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-filter') === f);
+      });
+    }
+
+    function readHash() {
+      var h = (location.hash || '').replace(/^#/, '');
+      return VALID.indexOf(h) !== -1 ? h : null;
+    }
+
+    function persist(f) {
+      try {
+        if (f && f !== 'all') sessionStorage.setItem(STORAGE_KEY, f);
+        else sessionStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+    }
+
+    function updateHash(f) {
+      var newHash = (f && f !== 'all') ? '#' + f : '';
+      var url = location.pathname + location.search + newHash;
+      history.replaceState(null, '', url);
+    }
+
+    var initial = readHash();
+    if (!initial) {
+      try { initial = sessionStorage.getItem(STORAGE_KEY); } catch (e) {}
+      if (VALID.indexOf(initial) === -1) initial = null;
+    }
+    if (!initial) initial = 'all';
+    setActive(initial);
+    applyFilter(initial);
+    persist(initial);
+
     bar.addEventListener('click', function(e) {
       if (e.target.tagName !== 'BUTTON') return;
-      bar.querySelectorAll('button').forEach(function(b) { b.classList.remove('active'); });
-      e.target.classList.add('active');
-      applyFilter(e.target.getAttribute('data-filter'));
+      var f = e.target.getAttribute('data-filter');
+      setActive(f);
+      applyFilter(f);
+      persist(f);
+      updateHash(f);
     });
+
+    window.addEventListener('hashchange', function() {
+      var f = readHash() || 'all';
+      setActive(f);
+      applyFilter(f);
+      persist(f);
+    });
+
+    // Record the origin so detail-page back links know where to return.
+    var pubs = document.getElementById('listing-pubs');
+    if (pubs) {
+      pubs.addEventListener('click', function(e) {
+        var a = e.target.closest && e.target.closest('a');
+        if (!a) return;
+        try { sessionStorage.setItem('lastOrigin', 'research'); } catch (err) {}
+      });
+    }
   }
 
   if (document.readyState === 'loading') {
