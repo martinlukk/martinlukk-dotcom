@@ -124,7 +124,6 @@ header#title-block-header.quarto-title-block.default {
     color: var(--ml-heading);
     text-align: left;
   }
-  .quarto-title .description,
   .quarto-title .subtitle,
   .quarto-title p.subtitle.lead {
     font-size: 1.05rem;
@@ -135,6 +134,11 @@ header#title-block-header.quarto-title-block.default {
     max-width: 42rem;
     text-align: left;
   }
+  // `description` frontmatter powers social-share meta tags (og:description,
+  // twitter:description) but Quarto also renders it visibly under the H1.
+  // On news/talk/media entries that visible echo just repeats the title, so
+  // suppress the rendered copy. Listing pages use `subtitle` (still shown).
+  .quarto-title .description { display: none; }
   .quarto-categories { display: none; }
 
   // Date on individual news/post pages. Strip the labelled grid

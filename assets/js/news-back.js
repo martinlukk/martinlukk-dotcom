@@ -68,11 +68,13 @@
   }
 
   function chooseOriginForBook() {
-    // Book gets a back link ONLY when the user explicitly clicked through the
-    // Research publication list (top-nav clicks clear lastOrigin).
+    // Book gets a back link ONLY when the user explicitly clicked through
+    // either the Research publication list or the News timeline (the
+    // GoFailMe news entry links straight to /book/). Top-nav clicks clear
+    // lastOrigin, so direct visits stay arrow-less.
     try {
       var stored = sessionStorage.getItem('lastOrigin');
-      if (stored === 'research') return 'research';
+      if (stored === 'research' || stored === 'news') return stored;
     } catch (e) {}
     return null;
   }
@@ -112,9 +114,15 @@
   }
 
   function isNewsDetailHref(a) {
+    // Resolve against the current page so this works regardless of whether
+    // Quarto emits site-rooted (`/news/foo.html`), relative (`../news/foo.html`),
+    // or fully qualified hrefs.
     var href = a.getAttribute('href') || '';
-    if (href.indexOf('/news/') !== 0) return false;
-    if (href === '/news/' || href === '/news/index.html') return false;
+    if (!href) return false;
+    var p;
+    try { p = new URL(href, location.href).pathname; } catch (e) { return false; }
+    if (p.indexOf('/news/') !== 0) return false;
+    if (p === '/news/' || p === '/news/index.html') return false;
     return true;
   }
 
