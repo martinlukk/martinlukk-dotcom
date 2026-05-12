@@ -11,8 +11,9 @@ authors: ["Erik Schneiderhan", "Martin Lukk"]
 ::: {.pub-meta-strip}
 ::: {.chips .pub-actions}
 [Stanford University Press](https://www.sup.org/books/sociology/gofailme){.chip}
+[Excerpt](https://www.sup.org/books/sociology/gofailme/excerpts){.chip}
 [Amazon](https://www.amazon.com/dp/1503636925){.chip}
-[Google Books](https://books.google.com/books?isbn=9781503636927){.chip}
+[Google Books](https://www.google.com/books/edition/GoFailMe/ksOqzwEACAAJ){.chip}
 :::
 :::
 
@@ -35,51 +36,51 @@ The gaping holes in the U.S. and Canadian social safety nets mean that many peop
 ::: {.book-blurb}
 > "Cancer, emergency, dreams at risk. Through new technologies of crowdfunding, these crises elicit help from friends, family and strangers. While admirable, this extended altruism often disappoints and fails to meet the gaps in a weakening social safety net. Incisive, rigorously original, and accessible, *GoFailMe* illuminates how a new industry is reshaping social solidarity."
 
-[Elisabeth S. Clemens, *University of Chicago*]{.book-blurb-cite}
+[**Elisabeth S. Clemens**, *University of Chicago*]{.book-blurb-cite}
 :::
 
 ::: {.book-blurb}
 > "Crowdfunding has become an important part of contemporary philanthropy, providing opportunities for ethical expression as well as needed transfers of funds. Like social media, it offers individuals a chance to engage directly in providing help, whether to friends or to strangers, without relying on traditional institutions. In this first major study of digital philanthropy, Schneiderhan and Lukk provide narratives showing what this means for the donors and beneficiaries, and also what reveals about charity in a shifting social context."
 
-[Craig Calhoun, *Arizona State University*]{.book-blurb-cite}
+[**Craig Calhoun**, *Arizona State University*]{.book-blurb-cite}
 :::
 
 ::: {.book-blurb}
 > "In their compelling, well-documented book, [Schneiderhan and Lukk] examine thousands of crowdsourcing cases across Canada and the U.S. on websites like GoFundMe. Their book shows that sites like these often fail users and are rife with inequities that closely parallel the social problems that plague societies today.... For readers who are contemplating either setting up a crowdsourcing site or donating to one."
 
-[Ellen Gilbert, *Library Journal*]{.book-blurb-cite}
+[**Ellen Gilbert**, *Library Journal*]{.book-blurb-cite}
 :::
 
 ::: {.book-blurb}
 > "Schneiderhan and Lukk's book offers a detailed and data-driven account of the failures of digital crowdfunding in democratizing charity. The book is clearly written and accessible, appealing to readers of both academic and lay backgrounds. *GoFailMe* is a great resource for those seeking to expand their knowledge on the rise of and access to digital crowdfunding."
 
-[Daniela Zuzunaga Zegarra, *H-Sci-Med-Tech*](/news/2024-06-01-recognition-hsmt-review.html){.book-blurb-cite}
+[**Daniela Zuzunaga Zegarra**, *H-Sci-Med-Tech*](/news/2024-06-01-recognition-hsmt-review.html){.book-blurb-cite}
 :::
 
 ::: {.book-blurb}
 > "Overall, this is a well-researched book that provides a lively and well-written introduction to the claims and the realities of philanthropic crowdfunding, elucidating both how it reflects, reproduces, and — most intriguingly — reconfigures broader structures of inequality in the United States and Canada."
 
-[Emily Barman, *Social Forces*](/news/2024-08-30-recognition-social-forces-review.html){.book-blurb-cite}
+[**Emily Barman**, *Social Forces*](/news/2024-08-30-recognition-social-forces-review.html){.book-blurb-cite}
 :::
 
 ::: {.book-blurb}
 > "Schneiderhan and Lukk provide a highly interesting and original analysis of how crowdfunding sites, like other for-profit and technological solutions, fail to address social inequality as a structural phenomenon and instead conflate it with individual narratives, reshaping at the same time the future forms of charity in society."
 
-[Anne Kovalainen, *American Journal of Sociology*](/news/2024-11-01-recognition-ajs-review.html){.book-blurb-cite}
+[**Anne Kovalainen**, *American Journal of Sociology*](/news/2024-11-01-recognition-ajs-review.html){.book-blurb-cite}
 :::
 
 ::: {.book-blurb}
 > "*GoFailMe* offers a timely critique of donation crowdfunding, shedding sobering light on systemic flaws and calling for more equitable solutions — ones that do not capitalize on people's despair and that encourage us all to care for one another more."
 
-[Matthias Tröbinger, *Administrative Science Quarterly*](/news/2025-02-12-recognition-asq-review.html){.book-blurb-cite}
+[**Matthias Tröbinger**, *Administrative Science Quarterly*](/news/2025-02-12-recognition-asq-review.html){.book-blurb-cite}
 :::
 
 ::: {.book-blurb}
 > "Schneiderhan and Lukk's *GoFailMe* is a meticulously researched, critically engaged, and ethically driven book that contributes significantly to the ongoing discussions about technology, social inequality, and the future of social welfare systems. Its comprehensive analysis and proactive stance make it a pivotal read for those interested in understanding and improving the intersections of technology and social support."
 
-[Zilong Zhong, *Contemporary Sociology*](/news/2025-01-03-recognition-contemporary-sociology-review.html){.book-blurb-cite}
+[**Zilong Zhong**, *Contemporary Sociology*](/news/2025-01-03-recognition-contemporary-sociology-review.html){.book-blurb-cite}
 :::
 
-## Press & radio
+## In the press
 
-*GoFailMe* has been featured in *The Washington Post*, *Vox*, the *Associated Press*, and the *Vancouver Sun*, and on QR Calgary. See [Media](/media/) for the full list, and [Research](/research.html) for related articles.
+*GoFailMe* has been covered in [*The Washington Post*](/news/2024-03-12-media-washington-post.html), [*Vox*](/news/2025-10-09-media-vox-crowdfunding.html), the [*Associated Press*](/news/2025-12-09-media-ap-crowdfunding.html), and the [*Vancouver Sun*](/news/2026-03-28-media-vancouver-sun.html). See [Media](/media/) for the full list, or [Research](/research.html#crowdfunding) for related articles on crowdfunding.

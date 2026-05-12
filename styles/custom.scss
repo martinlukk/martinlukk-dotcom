@@ -977,6 +977,14 @@ code {
 
   &::before { content: "— "; }
 
+  // Lift the author name out of the muted attribution so it reads as
+  // a name first, venue second. The venue (wrapped in <em>) stays
+  // muted-italic.
+  strong {
+    color: var(--ml-body);
+    font-weight: 600;
+  }
+
   &[href] {
     color: var(--ml-muted);
     border-bottom: 1px solid transparent;
@@ -986,6 +994,7 @@ code {
     &:focus-visible {
       color: var(--ml-link);
       border-bottom-color: var(--ml-link);
+      strong { color: var(--ml-link); }
     }
   }
 }
