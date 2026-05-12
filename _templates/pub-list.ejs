@@ -26,9 +26,11 @@ function bestTitleHref(item) {
 
 // Keep these in sync with _filters/pub-detail.lua — the listing and
 // the detail page render the same chip vocabulary (PDF / Article /
-// Preprint / Code / Data / Materials / Prereg / Supplement / Slides /
-// Project / Copy BibTeX), in the same order, with the same tooltip
-// behavior (publisher for Article, platform for everything else).
+// Preprint / Code & Data / Data / Materials / Prereg / Supplement /
+// Slides / Project / Copy BibTeX), in the same order, with the same
+// tooltip behavior (publisher for Article, platform for everything
+// else). The `code` field drives the combined "Code & Data" chip;
+// `data` is reserved for the rare standalone dataset release.
 var DOI_PUBLISHERS = {
   '10.1002': 'Wiley',
   '10.1177': 'Sage',
@@ -166,18 +168,18 @@ var years = Object.keys(byYear).sort(function(a,b){ return (b|0) - (a|0); });
     return '<a class="chip" href="' + escapeAttr(href) + '"' + titleAttr + '>' + label + '</a>';
   }
   var preprintHref = item.preprint || item.arxiv;  // legacy alias
-%><div class="chips"><%- chipWithPlatform('PDF', item.pdf) %><%
+%><div class="chips"><%= chipWithPlatform('PDF', item.pdf) %><%
   if (item.doi) {
     var pub = publisherLabel(item.doi);
     var title = pub ? (pub + ' · DOI: ' + item.doi) : ('DOI: ' + item.doi);
 %><a class="chip" href="https://doi.org/<%= item.doi %>" title="<%= escapeAttr(title) %>">Article</a><% }
-%><%- chipWithPlatform('Preprint',   preprintHref) %><%
-%><%- chipWithPlatform('Code',       item.code) %><%
-%><%- chipWithPlatform('Data',       item.data) %><%
-%><%- chipWithPlatform('Materials',  item.materials) %><%
-%><%- chipWithPlatform('Prereg',     item.prereg) %><%
-%><%- chipWithPlatform('Supplement', item.supplement) %><%
-%><%- chipWithPlatform('Slides',     item.slides) %><%
+%><%= chipWithPlatform('Preprint',   preprintHref) %><%
+%><%= chipWithPlatform('Code & Data', item.code) %><%
+%><%= chipWithPlatform('Data',       item.data) %><%
+%><%= chipWithPlatform('Materials',  item.materials) %><%
+%><%= chipWithPlatform('Prereg',     item.prereg) %><%
+%><%= chipWithPlatform('Supplement', item.supplement) %><%
+%><%= chipWithPlatform('Slides',     item.slides) %><%
   if (item.project_page) { %><a class="chip" href="<%= item.project_page %>">Project</a><% }
 %><button type="button" class="chip pub-cite" aria-label="Copy BibTeX citation to clipboard" data-cite-target="<%= bibtexId %>">Copy BibTeX</button></div>
 <script type="application/x-bibtex" id="<%= bibtexId %>"><%= bib.replace(/<\/script>/g, '<\\/script>') %></script>

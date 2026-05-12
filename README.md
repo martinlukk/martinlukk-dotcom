@@ -103,8 +103,8 @@ doi: "10.1177/..."         # optional; renders the "Article" chip
 preprint: "https://..."    # optional; arXiv/SSRN/OSF/bioRxiv/etc. — renders the "Preprint" chip
 arxiv: "..."               # optional legacy alias for `preprint:` (still works)
 pdf: "..."                 # optional
-code: "https://..."        # optional — "Code" chip
-data: "https://..."        # optional — "Data" chip
+code: "https://..."        # optional — "Code & Data" chip (typical replication repo)
+data: "https://..."        # optional — "Data" chip (rare: standalone dataset release, no accompanying code)
 materials: "https://..."   # optional — "Materials" chip (stimuli, codebooks, etc.)
 prereg: "https://..."      # optional — "Prereg" chip (OSF Registry, AsPredicted, …)
 supplement: "https://..."  # optional — "Supplement" chip (online appendix / SI)
@@ -117,7 +117,7 @@ abstract: >
   {{< meta abstract >}} below a short context paragraph.
 ```
 
-Chip vocabulary, in render order: **PDF · Article · Preprint · Code · Data · Materials · Prereg · Supplement · Slides · Project · Copy BibTeX**. Chips render only when the corresponding field is populated; "Copy BibTeX" always renders for entries that have authors + title + year. Chip labels name *what's at the link*, not the platform; the platform name (GitHub, OSF, Zenodo, AsPredicted, arXiv, …) appears in the chip's hover tooltip. Recognized hosts live in the `URL_PLATFORMS` table — duplicated in `_filters/pub-detail.lua` and `_templates/pub-list.ejs`; edit both when adding one.
+Chip vocabulary, in render order: **PDF · Article · Preprint · Code & Data · Data · Materials · Prereg · Supplement · Slides · Project · Copy BibTeX**. Chips render only when the corresponding field is populated; "Copy BibTeX" always renders for entries that have authors + title + year. Chip labels name *what's at the link*, not the platform; the platform name (GitHub, OSF, Zenodo, AsPredicted, arXiv, …) appears in the chip's hover tooltip. Recognized hosts live in the `URL_PLATFORMS` table — duplicated in `_filters/pub-detail.lua` and `_templates/pub-list.ejs`; edit both when adding one.
 
 Pub qmd body convention: one short context paragraph (e.g., "Lead article in a *X* special issue"), then `::: {.abstract}` `{{< meta abstract >}}` `:::`.
 
@@ -174,7 +174,7 @@ the talk, blockquote of the review, etc.).
 - **`<p>` inside a partial inherits the parent class's `font-size` only by accident** — Quarto/Bootstrap sets `p { font-size: 1rem }` globally, which can override inherited sizes. The fix in `styles/custom.scss` is to set `font-size: inherit` on the inner `p`.
 - **`project:` is reserved by Quarto** — it's used in `_quarto.yml` for the website project config, and Quarto strips it from per-document metadata before Pandoc filters see it. (The listing engine still exposes it to EJS via `item.project`, but a Lua filter reading `meta.project` will get `nil`.) Per-pub project slug lives under `pub_project:` instead.
 - **BibTeX in `<script type="application/x-bibtex">`, not `<template>`.** Pandoc processes the contents of `<template>` elements when they appear in EJS-rendered HTML: a leading `@article` gets wrapped in a `.citation` span, and embedded newlines collapse. `<script>` content is treated as raw CDATA by the HTML spec and by Pandoc, so it round-trips verbatim. The detail-page Lua filter and the listing's EJS template both emit `<script type="application/x-bibtex">` for the BibTeX payload.
-- **Chips name what's at the link, not where it's hosted.** Repeated platform names in a chip row (`Wiley · arXiv · GitHub · OSF`) read as alphabet soup; content-typed labels (`Article · Preprint · Code · Data`) stay coherent and degrade nicely when fields are missing. Platform names live in the chip's hover tooltip via `URL_PLATFORMS` (kept in sync between `_filters/pub-detail.lua` and `_templates/pub-list.ejs`).
+- **Chips name what's at the link, not where it's hosted.** Repeated platform names in a chip row (`Wiley · arXiv · GitHub · OSF`) read as alphabet soup; content-typed labels (`Article · Preprint · Code & Data`) stay coherent and degrade nicely when fields are missing. Platform names live in the chip's hover tooltip via `URL_PLATFORMS` (kept in sync between `_filters/pub-detail.lua` and `_templates/pub-list.ejs`).
 - **Quarto's `quarto preview` cache can desync from a separate `quarto render`.** If you run `quarto render` while a preview is already up, the preview server may start returning `Bad resource ID` for the rebuilt pages. Restart the preview to fix.
 
 ## Quarto in context
