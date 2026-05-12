@@ -1,6 +1,6 @@
 ---
 title: "Media"
-pagetitle: "Media — Martin Lukk"
+pagetitle: "Media"
 subtitle: "Press, podcasts, and other public-facing appearances."
 listing:
   contents: "../news/[0-9]*.qmd"

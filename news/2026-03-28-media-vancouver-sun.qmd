@@ -6,8 +6,4 @@ outlet: "Vancouver Sun"
 outlet_url: "https://vancouversun.com/news/gofundme-has-changed-the-way-many-british-columbians-donate-to-causes"
 ---
 
-::: {.chips .entry-actions}
-[Article](https://vancouversun.com/news/gofundme-has-changed-the-way-many-british-columbians-donate-to-causes){.chip title="Vancouver Sun"}
-:::
-
 I was quoted in Glenda Luymes's article, ["People 'want to help': GoFundMe has changed the way many British Columbians donate to causes,"](https://vancouversun.com/news/gofundme-has-changed-the-way-many-british-columbians-donate-to-causes) in the *Vancouver Sun*, on GoFundMe use in B.C. to respond to tragedies like the Tumbler Ridge shooting.

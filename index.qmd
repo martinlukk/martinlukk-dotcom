@@ -16,7 +16,7 @@ listing:
 
 I am a social scientist studying _politics, inequality, and digital platforms._ I am particularly interested in how AI evaluates deservingness and how cultural divisions become sources of political conflict.
 
-I am an author of the book [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](book/) (Stanford University Press). I received my Ph.D. in sociology from the University of Toronto.
+I co-authored [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](book/) (Stanford University Press). I received my Ph.D. in sociology from the University of Toronto.
 
 ## News
 

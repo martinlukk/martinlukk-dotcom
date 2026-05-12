@@ -24,13 +24,18 @@ function bestTitleHref(item) {
   return '';
 }
 
-// Keep these in sync with _filters/pub-detail.lua — the listing and
-// the detail page render the same chip vocabulary (PDF / Article /
-// Preprint / Code & Data / Data / Materials / Prereg / Supplement /
-// Slides / Project / Copy BibTeX), in the same order, with the same
-// tooltip behavior (publisher for Article, platform for everything
-// else). The `code` field drives the combined "Code & Data" chip;
-// `data` is reserved for the rare standalone dataset release.
+// KEEP-IN-SYNC with `_filters/pub-detail.lua`: DOI_PUBLISHERS,
+// URL_PLATFORMS, SKIP_WORDS, citeKey, and bibtexEntry are all
+// duplicated in the Lua filter that renders pub detail pages. Edit
+// both when adding a publisher, platform, or stop-word, or when
+// changing cite-key / BibTeX rules. The chip vocabulary (PDF /
+// Article / Preprint / Code & Data / Data / Materials / Prereg /
+// Supplement / Slides / Publisher / Excerpt / Buy / Preview /
+// Project / Copy BibTeX) renders in the same order in both places
+// with the same tooltip behavior (publisher for Article, platform
+// for everything else). The `code` field drives the combined
+// "Code & Data" chip; `data` is reserved for the rare standalone
+// dataset release.
 var DOI_PUBLISHERS = {
   '10.1002': 'Wiley',
   '10.1177': 'Sage',
@@ -47,27 +52,41 @@ var DOI_PUBLISHERS = {
 };
 
 var URL_PLATFORMS = [
-  { re: /github\./i,      label: 'GitHub'      },
-  { re: /gitlab\./i,      label: 'GitLab'      },
-  { re: /bitbucket\./i,   label: 'Bitbucket'   },
-  { re: /osf\.io/i,       label: 'OSF'         },
-  { re: /zenodo\.org/i,   label: 'Zenodo'      },
-  { re: /dataverse/i,     label: 'Dataverse'   },
-  { re: /icpsr\.umich/i,  label: 'ICPSR'       },
-  { re: /aspredicted/i,   label: 'AsPredicted' },
-  { re: /arxiv\.org/i,    label: 'arXiv'       },
-  { re: /ssrn\.com/i,     label: 'SSRN'        },
-  { re: /biorxiv\.org/i,  label: 'bioRxiv'     },
-  { re: /medrxiv\.org/i,  label: 'medRxiv'     },
-  { re: /psyarxiv/i,      label: 'PsyArXiv'    },
-  { re: /researchgate/i,  label: 'ResearchGate'},
-  { re: /figshare/i,      label: 'Figshare'    },
+  { re: /github\./i,        label: 'GitHub'        },
+  { re: /gitlab\./i,        label: 'GitLab'        },
+  { re: /bitbucket\./i,     label: 'Bitbucket'     },
+  { re: /osf\.io/i,         label: 'OSF'           },
+  { re: /zenodo\.org/i,     label: 'Zenodo'        },
+  { re: /dataverse/i,       label: 'Dataverse'     },
+  { re: /icpsr\.umich/i,    label: 'ICPSR'         },
+  { re: /aspredicted/i,     label: 'AsPredicted'   },
+  { re: /arxiv\.org/i,      label: 'arXiv'         },
+  { re: /ssrn\.com/i,       label: 'SSRN'          },
+  { re: /biorxiv\.org/i,    label: 'bioRxiv'       },
+  { re: /medrxiv\.org/i,    label: 'medRxiv'       },
+  { re: /psyarxiv/i,        label: 'PsyArXiv'      },
+  { re: /researchgate/i,    label: 'ResearchGate'  },
+  { re: /figshare/i,        label: 'Figshare'      },
+  { re: /amazon\./i,        label: 'Amazon'        },
+  { re: /google\.com\/books/i, label: 'Google Books' },
 ];
 
 var SKIP_WORDS = {
   a: 1, an: 1, the: 1, on: 1, of: 1, in: 1, for: 1, to: 1,
   and: 1, or: 1, is: 1,
 };
+
+// KEEP-IN-SYNC with `_includes/pub-filter.html` and `assets/js/pub-self.js`.
+// Project pill display labels — keys are the `pub_project` slug from
+// frontmatter, values are the human-readable label shown on listings,
+// detail pages, and filter buttons.
+var PROJECT_LABELS = {
+  'crowdfunding':     'Crowdfunding',
+  'culture-conflict': 'Culture & conflict',
+};
+function projectLabel(slug) {
+  return (slug && PROJECT_LABELS[slug]) || slug || '';
+}
 
 function publisherLabel(doi) {
   if (!doi) return null;
@@ -149,14 +168,14 @@ var years = Object.keys(byYear).sort(function(a,b){ return (b|0) - (a|0); });
   var bib = bibtexEntry(item, authors, year, key);
   var bibtexId = 'bibtex-' + key;
 %>
-<li data-projects="<%= item.pub_project || '' %>">
+<li data-projects="<%= escapeAttr(item.pub_project || '') %>">
 <div class="pub-title"><% if (href) { %><a href="<%= href %>"><%= titleOf(item) %></a><% } else { %><%= titleOf(item) %><% } %></div>
 <div class="pub-authors"><% authors.forEach(function(a, i) {
     var isSelf = (a === 'Martin Lukk' || a === 'M. Lukk' || a === 'Lukk, M.');
     if (i > 0) { %>, <% }
     if (isSelf) { %><span class="pub-self"><%= a %></span><% } else { %><%= a %><% }
 }); %></div>
-<div class="pub-venue"><%= item.venue || '' %><% if (item.venue && year) { %>, <% } %><%= year %><% if (item.pub_project) { %> <span class="pub-tag pub-project-tag"><%= item.pub_project %></span><% } %></div>
+<div class="pub-venue"><%- item.venue || '' %><% if (item.venue && year) { %>, <% } %><%- year %><% if (item.pub_project) { %> <span class="pub-tag pub-project-tag"><%- projectLabel(item.pub_project) %></span><% } %></div>
 <%
   // Chip render helper — `Article` carries publisher+DOI in title;
   // every other non-Project chip carries a platform name in title
@@ -180,6 +199,16 @@ var years = Object.keys(byYear).sort(function(a,b){ return (b|0) - (a|0); });
 %><%= chipWithPlatform('Prereg',     item.prereg) %><%
 %><%= chipWithPlatform('Supplement', item.supplement) %><%
 %><%= chipWithPlatform('Slides',     item.slides) %><%
+  // Book-specific chips: rendered when the entry has `book:` set.
+  // Tooltip for "Publisher" uses item.venue (e.g., "Stanford University
+  // Press"); the other three use URL_PLATFORMS via chipWithPlatform.
+  if (item.publisher_url) {
+    var pubLabel = item.venue || platformLabel(item.publisher_url);
+    var pubTitle = pubLabel ? (' title="' + escapeAttr(pubLabel) + '"') : '';
+%><a class="chip" href="<%= escapeAttr(item.publisher_url) %>"<%= pubTitle %>>Publisher</a><% }
+%><%= chipWithPlatform('Excerpt', item.excerpt_url) %><%
+%><%= chipWithPlatform('Buy',     item.buy_url)     %><%
+%><%= chipWithPlatform('Preview', item.preview_url) %><%
   if (item.project_page) { %><a class="chip" href="<%= item.project_page %>">Project</a><% }
 %><button type="button" class="chip pub-cite" aria-label="Copy BibTeX citation to clipboard" data-cite-target="<%= bibtexId %>">Copy BibTeX</button></div>
 <script type="application/x-bibtex" id="<%= bibtexId %>"><%= bib.replace(/<\/script>/g, '<\\/script>') %></script>

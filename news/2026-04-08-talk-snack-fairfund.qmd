@@ -5,8 +5,8 @@ categories: [talk]
 ---
 
 ::: {.chips .entry-actions}
-[slides (HTML)](/assets/presentations/2026-04-snack-fairfund/slides.html){.chip}
-[slides (PDF)](/assets/presentations/2026-04-snack-fairfund/slides.pdf){.chip}
+[Slides (HTML)](/assets/presentations/2026-04-snack-fairfund/slides.html){.chip}
+[Slides (PDF)](/assets/presentations/2026-04-snack-fairfund/slides.pdf){.chip}
 :::
 
 I presented "Fair Fund? Automated Evaluations of Deservingness in Recommendation Systems and Large Language Models" at the Symbols, Norms, Action, Culture, Knowledge (SNACK) Workshop, hosted by the University of Toronto's Department of Sociology.

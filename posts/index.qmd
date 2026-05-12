@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-pagetitle: "Blog — Martin Lukk"
+pagetitle: "Blog"
 listing:
   contents: "*.qmd"
   exclude:

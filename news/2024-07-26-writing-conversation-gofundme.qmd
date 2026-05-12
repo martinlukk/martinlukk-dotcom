@@ -6,8 +6,4 @@ outlet: "The Conversation"
 outlet_url: "https://theconversation.com/what-gofundme-conceals-the-campaigns-that-fail-234336"
 ---
 
-::: {.chips .entry-actions}
-[Op-ed](https://theconversation.com/what-gofundme-conceals-the-campaigns-that-fail-234336){.chip title="The Conversation"}
-:::
-
 My op-ed, ["What GoFundMe conceals: The campaigns that fail,"](https://theconversation.com/what-gofundme-conceals-the-campaigns-that-fail-234336) with Erik Schneiderhan, has been published in *The Conversation*. It draws on findings from my book [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](/book/) (Stanford University Press) to discuss the unsuccessful campaigns and disappointed users the platform doesn't advertise, and what this says about for-profit philanthropy in an algorithmic age.

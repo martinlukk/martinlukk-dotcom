@@ -1,20 +1,18 @@
 ---
 title: "GoFailMe: The Unfulfilled Promise of Digital Crowdfunding"
-pagetitle: "GoFailMe — Martin Lukk"
+pagetitle: "GoFailMe"
 subtitle: "Stanford University Press, 2023"
 authors: ["Erik Schneiderhan", "Martin Lukk"]
 ---
 
-::: {.pub-marker data-project="crowdfunding" hidden="" aria-hidden="true"}
+::: {.pub-marker hidden="" aria-hidden="true"}
 :::
 
-::: {.pub-meta-strip}
 ::: {.chips .pub-actions}
-[Stanford University Press](https://www.sup.org/books/sociology/gofailme){.chip}
-[Excerpt](https://www.sup.org/books/sociology/gofailme/excerpts){.chip}
-[Amazon](https://www.amazon.com/dp/1503636925){.chip}
-[Google Books](https://www.google.com/books/edition/GoFailMe/ksOqzwEACAAJ){.chip}
-:::
+[Publisher](https://www.sup.org/books/sociology/gofailme){.chip title="Stanford University Press"}
+[Excerpt](https://www.sup.org/books/sociology/gofailme/excerpts){.chip title="Stanford University Press"}
+[Buy](https://www.amazon.com/dp/1503636925){.chip title="Amazon"}
+[Preview](https://www.google.com/books/edition/GoFailMe/ksOqzwEACAAJ){.chip title="Google Books"}
 :::
 
 ::: {.book-intro}
@@ -40,7 +38,7 @@ The gaping holes in the U.S. and Canadian social safety nets mean that many peop
 :::
 
 ::: {.book-blurb}
-> "Crowdfunding has become an important part of contemporary philanthropy, providing opportunities for ethical expression as well as needed transfers of funds. Like social media, it offers individuals a chance to engage directly in providing help, whether to friends or to strangers, without relying on traditional institutions. In this first major study of digital philanthropy, Schneiderhan and Lukk provide narratives showing what this means for the donors and beneficiaries, and also what reveals about charity in a shifting social context."
+> "Crowdfunding has become an important part of contemporary philanthropy, providing opportunities for ethical expression as well as needed transfers of funds. Like social media, it offers individuals a chance to engage directly in providing help, whether to friends or to strangers, without relying on traditional institutions. In this first major study of digital philanthropy, Schneiderhan and Lukk provide narratives showing what this means for the donors and beneficiaries, and also what it reveals about charity in a shifting social context."
 
 [**Craig Calhoun**, *Arizona State University*]{.book-blurb-cite}
 :::

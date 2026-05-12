@@ -6,8 +6,4 @@ outlet: "The Washington Post"
 outlet_url: "https://www.washingtonpost.com/dc-md-va/2024/03/11/tiktok-unhoused-man-gofundme/"
 ---
 
-::: {.chips .entry-actions}
-[Article](https://www.washingtonpost.com/dc-md-va/2024/03/11/tiktok-unhoused-man-gofundme/){.chip title="The Washington Post"}
-:::
-
 I was quoted in Kyle Swenson and Amber Ferguson's article, ["A TikToker raised $400K for an unhoused man. Then things got messy,"](https://www.washingtonpost.com/dc-md-va/2024/03/11/tiktok-unhoused-man-gofundme/) in *The Washington Post*, on a viral crowdfunding campaign in D.C.

@@ -4,10 +4,7 @@ date: "2025-10-22"
 categories: [media]
 outlet: "U.N. Special Rapporteur"
 outlet_url: "https://www.srpoverty.org/2025/10/01/far-right-populism-and-the-future-of-social-protection/"
+outlet_label: "Report"
 ---
 
-::: {.chips .entry-actions}
-[Report](https://www.srpoverty.org/2025/10/01/far-right-populism-and-the-future-of-social-protection/){.chip title="U.N. Special Rapporteur"}
-:::
-
-My research was featured in [U.N. Special Rapporteur Olivier De Schutter's report](https://www.srpoverty.org/2025/10/01/far-right-populism-and-the-future-of-social-protection/) on how economic insecurity has fueled far-right politics, presented to the United Nations General Assembly. The original study, ["Politics of Boundary Consolidation: Income Inequality, Ethnonationalism, and Radical-Right Voting,"](https://journals.sagepub.com/doi/full/10.1177/23780231241251714) appeared in *Socius*.
+My research was featured in [U.N. Special Rapporteur Olivier De Schutter's report](https://www.srpoverty.org/2025/10/01/far-right-populism-and-the-future-of-social-protection/) on how economic insecurity has fueled far-right politics. The report was presented to the United Nations General Assembly. The original study, ["Politics of Boundary Consolidation: Income Inequality, Ethnonationalism, and Radical-Right Voting,"](https://doi.org/10.1177/23780231241251714) appeared in *Socius*.

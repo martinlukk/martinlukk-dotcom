@@ -5,9 +5,16 @@ project:
     - cv.pdf
     - favicon.ico
     - assets/
+  # `posts/` is the blog directory; excluded from rendering until the
+  # first post lands. To enable: drop the exclusion below and
+  # uncomment the Blog link in `_includes/header.html`.
+  render:
+    - "**/*.qmd"
+    - "!posts/**"
 
 filters:
   - _filters/pub-detail.lua
+  - _filters/media-detail.lua
 
 website:
   title: "Martin Lukk"

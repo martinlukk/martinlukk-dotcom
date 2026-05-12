@@ -25,24 +25,27 @@ _includes/           HTML partials injected into every page
 _templates/          EJS templates for Quarto listings
   news-item-grouped.ejs   News page (year-grouped, all entries)
   news-item-recent.ejs    Home page (top 4 entries, hide_in_news-aware)
-  news-item.ejs           generic news row (currently unused; kept as a base)
   media-list.ejs          Media page (year-grouped, filtered by category)
   pub-list.ejs            Research page (chip set, BibTeX block, project pill)
 _filters/            Pandoc Lua filters wired up in _quarto.yml
   pub-detail.lua       For pub qmds: injects the chip row, the BibTeX
                        <script>, and a .pub-marker the SCSS uses to
                        scope pub-flavored title-block styling
+  media-detail.lua     For media/writing qmds: injects an Article /
+                       Op-ed / Report chip from outlet + outlet_url
+                       + (optional) outlet_label frontmatter
 assets/js/           Custom JS, served as static resources
   topnav.js            active-link highlight + mobile hamburger
   pub-filter.js        project filter on the Research page
   news-filter.js       category filter on the News page
   news-back.js         "← Back to ..." link injected on news detail pages
   chips.js             chip behavior (open-in-new-tab)
+  external-links.js    inline external body links: open in new tab
   pub-self.js          on pub pages: bold self-author, append project
                        pill, wire Copy BibTeX chips (also on Research)
 styles/custom.scss   All site styling (overrides Quarto's cosmo theme)
 news/                The content store — see "Content model" below
-posts/               blog (disabled in nav until first post)
+posts/               blog (excluded from build in _quarto.yml until first post lands)
 book/, media/        project pages (each with index.qmd)
 index.qmd            home page (lists 4 most recent news entries)
 research.qmd         Research index (reads news/, filtered to publications)
@@ -111,22 +114,33 @@ supplement: "https://..."  # optional — "Supplement" chip (online appendix / S
 slides: "https://..."      # optional — "Slides" chip
 project_page: "/foo/"     # optional; renders a "Project" chip (link to a project page on this site)
 book: "/book/"             # optional; for the book entry — routes the Research title link to /book/ instead of the news detail page
+publisher_url: "..."       # optional (book only); renders "Publisher" chip
+excerpt_url: "..."         # optional (book only); renders "Excerpt" chip
+buy_url: "..."             # optional (book only); renders "Buy" chip (e.g., Amazon)
+preview_url: "..."         # optional (book only); renders "Preview" chip (e.g., Google Books)
 cite_key: "lukk2024boundary"  # optional; overrides the auto-generated BibTeX cite key
 abstract: >
   Multi-line YAML folded string. Rendered manually in the qmd body via
   {{< meta abstract >}} below a short context paragraph.
 ```
 
-Chip vocabulary, in render order: **PDF · Article · Preprint · Code & Data · Data · Materials · Prereg · Supplement · Slides · Project · Copy BibTeX**. Chips render only when the corresponding field is populated; "Copy BibTeX" always renders for entries that have authors + title + year. Chip labels name *what's at the link*, not the platform; the platform name (GitHub, OSF, Zenodo, AsPredicted, arXiv, …) appears in the chip's hover tooltip. Recognized hosts live in the `URL_PLATFORMS` table — duplicated in `_filters/pub-detail.lua` and `_templates/pub-list.ejs`; edit both when adding one.
+Chip vocabulary, in render order: **PDF · Article · Preprint · Code & Data · Data · Materials · Prereg · Supplement · Slides · Publisher · Excerpt · Buy · Preview · Project · Copy BibTeX**. Chips render only when the corresponding field is populated; "Copy BibTeX" always renders for entries that have authors + title + year. Chip labels name *what's at the link*, not the platform; the platform name (GitHub, OSF, Zenodo, AsPredicted, arXiv, …) appears in the chip's hover tooltip. Recognized hosts live in the `URL_PLATFORMS` table — duplicated in `_filters/pub-detail.lua` and `_templates/pub-list.ejs`; edit both when adding one.
 
 Pub qmd body convention: one short context paragraph (e.g., "Lead article in a *X* special issue"), then `::: {.abstract}` `{{< meta abstract >}}` `:::`.
 
 **Media / writing** — add outlet info:
 
 ```yaml
-outlet: "The Washington Post"
-outlet_url: "https://..."
+outlet: "The Washington Post"   # outlet name; shown as chip tooltip
+outlet_url: "https://..."       # link target; required for chip to render
+outlet_label: "Report"          # optional chip-label override; default is
+                                # "Op-ed" for `categories: [writing]`,
+                                # else "Article"
 ```
+
+`_filters/media-detail.lua` reads these and prepends a single chip to the
+body; no chip block in the qmd body is needed. Entries with no `outlet_url`
+(e.g., a radio segment with an inline audio player) get no chip.
 
 `writing` is grouped with `media` everywhere (News filter, Media page) — use
 it for op-eds and other public-facing prose. The body can contain whatever

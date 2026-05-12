@@ -1,6 +1,6 @@
 ---
 title: "News"
-pagetitle: "News — Martin Lukk"
+pagetitle: "News"
 subtitle: "A running log of publications, talks, media, and other updates."
 listing:
   contents: "*.qmd"

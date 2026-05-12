@@ -17,6 +17,12 @@ local SKIP_WORDS = {
   ["for"] = true, to = true, ["and"] = true, ["or"] = true, ["is"] = true,
 }
 
+-- KEEP-IN-SYNC with `_templates/pub-list.ejs`: DOI_PUBLISHERS and
+-- URL_PLATFORMS below, plus SKIP_WORDS, cite_key, and bibtex_entry
+-- are all duplicated in the EJS listing template in JavaScript form.
+-- Edit both when adding a publisher, platform, or stop-word, or when
+-- changing cite-key / BibTeX generation rules.
+--
 -- DOI registrant prefix → human-friendly publisher label. Used to
 -- enrich the Article chip's hover tooltip (the chip label itself is
 -- always "Article" — naming the publisher in the chip got too

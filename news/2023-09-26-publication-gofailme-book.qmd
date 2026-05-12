@@ -9,6 +9,10 @@ venue: "Stanford University Press"
 year: 2023
 pub_project: crowdfunding
 book: /book/
+publisher_url: "https://www.sup.org/books/sociology/gofailme"
+excerpt_url: "https://www.sup.org/books/sociology/gofailme/excerpts"
+buy_url: "https://www.amazon.com/dp/1503636925"
+preview_url: "https://www.google.com/books/edition/GoFailMe/ksOqzwEACAAJ"
 ---
 
 Co-authored with Erik Schneiderhan. Full overview, praise, and reviews on the [book page](/book/).

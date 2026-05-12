@@ -13,6 +13,14 @@
   //      briefly flashes a "Copied!" confirmation.
   var SELF = ['Martin Lukk', 'M. Lukk', 'Lukk, M.'];
 
+  // KEEP-IN-SYNC with `_includes/pub-filter.html` and `_templates/pub-list.ejs`.
+  // Project pill display labels — keys are the `pub_project` slug from
+  // frontmatter, values are the human-readable label.
+  var PROJECT_LABELS = {
+    'crowdfunding':     'Crowdfunding',
+    'culture-conflict': 'Culture & conflict',
+  };
+
   function boldSelf() {
     document.querySelectorAll(
       'header#title-block-header .quarto-title-meta-contents > p'
@@ -32,7 +40,7 @@
     if (!sub) return;
     var tag = document.createElement('span');
     tag.className = 'pub-tag pub-project-tag';
-    tag.textContent = project;
+    tag.textContent = PROJECT_LABELS[project] || project;
     sub.appendChild(document.createTextNode(' '));
     sub.appendChild(tag);
   }

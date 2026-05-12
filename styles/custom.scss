@@ -885,8 +885,9 @@ audio.entry-audio {
   letter-spacing: 0.02em;
 }
 
-// Project filter buttons (research page)
-.pub-filter {
+// Filter button bar — shared by Research (project filter) and News
+// (category filter). The same .filter-bar selector covers both.
+.filter-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;

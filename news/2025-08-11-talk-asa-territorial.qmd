@@ -5,7 +5,7 @@ categories: [talk]
 ---
 
 ::: {.chips .entry-actions}
-[slides (PDF)](/assets/presentations/2025-08-asa-territorial/lukk_ess25.pdf){.chip}
+[Slides (PDF)](/assets/presentations/2025-08-asa-territorial/asa25.pdf){.chip}
 :::
 
 I presented "Beyond Cosmopolitans and Nationalists: Territorial Identities in European Cleavage Politics" at the American Sociological Association Annual Meeting in Chicago, IL.
