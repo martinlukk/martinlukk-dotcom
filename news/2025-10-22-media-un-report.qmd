@@ -1,6 +1,7 @@
 ---
 title: "Research featured in U.N. Special Rapporteur report on economic insecurity and radical politics"
 date: "2025-10-22"
+description: "Research featured in a U.N. Special Rapporteur report on economic insecurity and far-right politics."
 categories: [media]
 outlet: "U.N. Special Rapporteur"
 outlet_url: "https://www.srpoverty.org/2025/10/01/far-right-populism-and-the-future-of-social-protection/"

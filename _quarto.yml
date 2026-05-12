@@ -18,13 +18,14 @@ filters:
 
 website:
   title: "Martin Lukk"
-  description: "Sociologist studying politics, inequality, and the internet."
+  description: "Social scientist studying politics, inequality, and digital platforms."
   site-url: "https://www.martinlukk.com"
   favicon: favicon.ico
+  image: /images/sharing.png    # default og:image / twitter:image, used on
+                                # any page that doesn't set its own
   open-graph: true
   twitter-card:
     creator: "@martin_lukk"
-    image: /images/sharing.png
   page-navigation: false
   back-to-top-navigation: false
 

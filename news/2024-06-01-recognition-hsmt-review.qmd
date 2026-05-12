@@ -1,6 +1,7 @@
 ---
 title: "*GoFailMe* reviewed on *H-Sci-Med-Tech*"
 date: "2024-06-01"
+description: "Daniela Zuzunaga Zegarra reviewed GoFailMe in H-Sci-Med-Tech."
 categories: [recognition]
 ---
 

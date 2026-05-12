@@ -1,6 +1,7 @@
 ---
 title: "*GoFailMe* reviewed in *Contemporary Sociology*"
 date: "2025-01-03"
+description: "Zilong Zhong reviewed GoFailMe in Contemporary Sociology."
 categories: [recognition]
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "Presented at Law of Giving Symposium, University of Windsor"
 date: "2024-06-26"
+description: "Talk on algorithms in personal crowdfunding at the Law of Giving Symposium."
 categories: [talk]
 ---
 

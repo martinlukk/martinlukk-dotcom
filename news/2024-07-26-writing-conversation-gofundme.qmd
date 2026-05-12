@@ -1,6 +1,7 @@
 ---
 title: 'Op-ed "What GoFundMe conceals: The campaigns that fail" published in *The Conversation*'
 date: "2024-07-26"
+description: "Op-ed in The Conversation on the GoFundMe campaigns that don't succeed."
 categories: [writing]
 outlet: "The Conversation"
 outlet_url: "https://theconversation.com/what-gofundme-conceals-the-campaigns-that-fail-234336"

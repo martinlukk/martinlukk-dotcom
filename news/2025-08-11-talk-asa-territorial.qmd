@@ -1,6 +1,7 @@
 ---
 title: "Presented at ASA Annual Meeting, Chicago"
 date: "2025-08-11"
+description: "Talk on territorial identities in European cleavage politics at the ASA Annual Meeting in Chicago."
 categories: [talk]
 ---
 

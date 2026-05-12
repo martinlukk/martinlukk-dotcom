@@ -1,6 +1,7 @@
 ---
 title: "Presented at ASA Annual Meeting, Montreal"
 date: "2024-08-10"
+description: "Talk on a formal model of social influence at the ASA Annual Meeting in Montreal."
 categories: [talk]
 ---
 

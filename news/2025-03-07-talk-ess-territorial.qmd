@@ -1,6 +1,7 @@
 ---
 title: "Presented at Eastern Sociological Society Conference, Boston"
 date: "2025-03-07"
+description: "Talk on territorial identities in European cleavage politics at the ESS Annual Meeting in Boston."
 categories: [talk]
 ---
 

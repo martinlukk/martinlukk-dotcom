@@ -1,6 +1,7 @@
 ---
 title: "*GoFailMe* reviewed in *American Journal of Sociology*"
 date: "2024-11-01"
+description: "Anne Kovalainen reviewed GoFailMe in the American Journal of Sociology."
 categories: [recognition]
 ---
 

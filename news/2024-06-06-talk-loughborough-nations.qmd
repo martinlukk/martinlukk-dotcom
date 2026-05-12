@@ -1,6 +1,7 @@
 ---
 title: "Presented at Nations and Nationalisms Conference, Loughborough University"
 date: "2024-06-06"
+description: "Talk on cosmopolitans, nationalists, and the identity component in cleavage politics."
 categories: [talk]
 ---
 

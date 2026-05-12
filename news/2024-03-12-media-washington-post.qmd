@@ -1,6 +1,7 @@
 ---
 title: "Quoted in *The Washington Post* on viral crowdfunding"
 date: "2024-03-12"
+description: "Quoted in The Washington Post on a viral GoFundMe campaign in Washington, D.C."
 categories: [media]
 outlet: "The Washington Post"
 outlet_url: "https://www.washingtonpost.com/dc-md-va/2024/03/11/tiktok-unhoused-man-gofundme/"

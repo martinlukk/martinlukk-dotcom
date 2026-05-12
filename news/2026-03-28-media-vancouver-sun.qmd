@@ -1,6 +1,7 @@
 ---
 title: "Quoted in the *Vancouver Sun* on crowdfunding and tragedy response"
 date: "2026-03-28"
+description: "Quoted in the Vancouver Sun on GoFundMe use in B.C. for tragedy response."
 categories: [media]
 outlet: "Vancouver Sun"
 outlet_url: "https://vancouversun.com/news/gofundme-has-changed-the-way-many-british-columbians-donate-to-causes"

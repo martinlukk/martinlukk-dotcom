@@ -1,6 +1,7 @@
 ---
 title: "Interviewed on *QR Calgary Mornings* about crowdfunding and AI"
 date: "2026-03-17"
+description: "Interviewed on QR Calgary Mornings about GoFundMe's AI fundraising coach."
 categories: [media]
 outlet: "QR Calgary Mornings"
 ---

@@ -1,6 +1,7 @@
 ---
 title: "Quoted in *Vox* on crowdfunding and inequality"
 date: "2025-10-09"
+description: "Quoted in Vox on the challenges of digital crowdfunding."
 categories: [media]
 outlet: "Vox"
 outlet_url: "https://www.vox.com/future-perfect/464196/gofundme-crowdfunding-generosity-nonprofit-giving-charity-crisis"

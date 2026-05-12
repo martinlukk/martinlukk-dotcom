@@ -1,6 +1,7 @@
 ---
 title: "Quoted in the *Associated Press* on crowdfunding for essential needs"
 date: "2025-12-09"
+description: "Quoted in the Associated Press on the growth of crowdfunding for essential needs."
 categories: [media]
 outlet: "Associated Press"
 outlet_url: "https://apnews.com/article/gofundme-crowdfunding-affordability-99fa9ee7434f1ba8c714aa53f9cf99b8"

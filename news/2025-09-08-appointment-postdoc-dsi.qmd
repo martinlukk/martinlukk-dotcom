@@ -1,6 +1,7 @@
 ---
 title: "Started as Postdoctoral Research Fellow at the Data Sciences Institute"
 date: "2025-09-08"
+description: "Started as a Postdoctoral Research Fellow at the Data Sciences Institute, University of Toronto."
 categories: [appointment]
 ---
 

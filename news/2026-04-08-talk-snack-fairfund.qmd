@@ -1,6 +1,7 @@
 ---
 title: "Presented at SNACK Workshop, University of Toronto"
 date: "2026-04-08"
+description: "Talk on automated evaluations of deservingness in recommendation systems and LLMs at the SNACK Workshop."
 categories: [talk]
 ---
 

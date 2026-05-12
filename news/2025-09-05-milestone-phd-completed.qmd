@@ -1,6 +1,7 @@
 ---
 title: "Completed Ph.D. in sociology at the University of Toronto"
 date: "2025-09-05"
+description: "Completed my Ph.D. in sociology at the University of Toronto."
 categories: [milestone]
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "*GoFailMe* reviewed in *Administrative Science Quarterly*"
 date: "2025-02-12"
+description: "Matthias Tröbinger reviewed GoFailMe in Administrative Science Quarterly."
 categories: [recognition]
 ---
 
