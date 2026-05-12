@@ -5,6 +5,9 @@
 *_files/
 *_cache/
 **/*.quarto_ipynb
+# Stray render output that lands at repo root (e.g., from editor extensions
+# that ignore `output-dir: _site`)
+/index.html
 
 # Local-only design scratch (see auto-memory project_bird_tweak.md)
 /_dev/
