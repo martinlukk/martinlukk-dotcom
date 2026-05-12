@@ -4,4 +4,4 @@ date: "2025-09-08"
 categories: [appointment]
 ---
 
-I have started a new position as Postdoctoral Research Fellow at the [Data Sciences Institute](https://datasciences.utoronto.ca/), University of Toronto.
+I started a new position as Postdoctoral Research Fellow at the [Data Sciences Institute](https://datasciences.utoronto.ca/), University of Toronto.

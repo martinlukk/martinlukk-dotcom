@@ -4,4 +4,4 @@ date: "2025-09-05"
 categories: [milestone]
 ---
 
-I completed my Ph.D. in sociology at the University of Toronto. :balloon::clinking_glasses: My dissertation is available [here](https://utoronto.scholaris.ca/items/33640fd2-8fb0-4db5-a3ef-694f7d094af9).
+:balloon::clinking_glasses: I completed my Ph.D. in sociology at the University of Toronto. My dissertation is available [here](https://utoronto.scholaris.ca/items/33640fd2-8fb0-4db5-a3ef-694f7d094af9).

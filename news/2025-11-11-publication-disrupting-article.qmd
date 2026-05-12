@@ -28,7 +28,7 @@ abstract: >
   alternative approaches to charitable giving.
 ---
 
-The lead article in a [Dialogues special issue](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)3064-7878.evolution-of-traditional) on crowdfunding.
+The lead article in a [Dialogues](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)3064-7878.evolution-of-traditional) special issue on crowdfunding.
 
 ::: {.abstract}
 {{< meta abstract >}}

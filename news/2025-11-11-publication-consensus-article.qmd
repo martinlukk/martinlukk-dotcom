@@ -32,7 +32,7 @@ abstract: >
   crowdfunding involves.
 ---
 
-A reply to responses to our lead article in a [Dialogues special issue](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)3064-7878.evolution-of-traditional) on crowdfunding.
+A reply to responses to our lead article in a [Dialogues](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)3064-7878.evolution-of-traditional) special issue on crowdfunding.
 
 ::: {.abstract}
 {{< meta abstract >}}
