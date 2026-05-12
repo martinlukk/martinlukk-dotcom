@@ -6,4 +6,8 @@ outlet: "Associated Press"
 outlet_url: "https://apnews.com/article/gofundme-crowdfunding-affordability-99fa9ee7434f1ba8c714aa53f9cf99b8"
 ---
 
-I was quoted in James Pollard's article, ["More people crowdfunded for essential needs like food and housing in 2025, according to GoFundMe"](https://apnews.com/article/gofundme-crowdfunding-affordability-99fa9ee7434f1ba8c714aa53f9cf99b8), in the Associated Press, on the growth of crowdfunding for essential needs, drawing on research from my book, [*GoFailMe*](/book/) (Stanford University Press), which shows that very few people raise the money they need on GoFundMe.
+::: {.chips .entry-actions}
+[Article](https://apnews.com/article/gofundme-crowdfunding-affordability-99fa9ee7434f1ba8c714aa53f9cf99b8){.chip title="Associated Press"}
+:::
+
+I was quoted in James Pollard's article, ["More people crowdfunded for essential needs like food and housing in 2025, according to GoFundMe,"](https://apnews.com/article/gofundme-crowdfunding-affordability-99fa9ee7434f1ba8c714aa53f9cf99b8) in the Associated Press, on the growth of crowdfunding for essential needs.

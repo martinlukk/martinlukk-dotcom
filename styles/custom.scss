@@ -101,6 +101,17 @@ header#title-block-header.quarto-title-block.default {
   padding: 0;
   border: 0;
 
+  // When the body opens with a chip row (media / talks) or an audio
+  // embed (radio interviews), there's no venue/abstract line between
+  // the date and the next block — the default 2.5rem gap reads as a
+  // void. Tighten the title block's bottom margin in those cases so
+  // the date sits close to what follows. Mirrors the publication
+  // detail page's compact title block.
+  &:has(+ .entry-actions),
+  &:has(+ audio.entry-audio) {
+    margin-bottom: 0.5rem;
+  }
+
   .quarto-title h1.title,
   .quarto-title .title.h1 {
     font-family: inherit;
@@ -283,6 +294,27 @@ button.pub-cite {
     margin: 0;
     &:first-of-type::before {
       content: "Abstract. ";
+      font-weight: 700;
+    }
+  }
+}
+
+// Review citation block (book-review news entries): mirrors `.abstract`
+// styling so the bibliographic citation reads as metadata (upright,
+// left rule, bold lead-in) and is visually distinct from the italic
+// blockquote that holds the review excerpt above it.
+.review-citation {
+  margin: 1rem 0 0;
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: 3px solid var(--ml-rule-strong);
+  color: #252930;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 42rem;
+  p {
+    margin: 0;
+    &:first-of-type::before {
+      content: "Citation. ";
       font-weight: 700;
     }
   }
@@ -795,6 +827,32 @@ code {
 // tight under the venue line — keep that compact spacing there.
 .pub-list .chips {
   margin: 0.3rem 0 0;
+}
+
+// Entry-level chip row at the top of a news detail page (media,
+// writing, talks). Sits between the title block and the descriptive
+// text. Pubs use the heavier `.pub-actions` treatment (hairline rule
+// below) because the abstract block beneath balances the visual
+// weight; news entries are usually a brief paragraph, so the rule
+// reads as overkill — drop it here and tighten the surrounding
+// margins. The companion rule on `#title-block-header:has(+
+// .entry-actions)` tightens the date↔chip gap from above.
+.entry-actions {
+  margin: 0.4rem 0 1rem;
+}
+
+// Embedded audio player (radio interviews — rare). Needs
+// `display: block` so it participates in the same column layout as
+// the rest of the body (the `#quarto-content > *` rule applies a
+// sidebar-offset margin-left + max-width). Left as the default
+// `display: inline`, the inline-vs-float interaction stacks the
+// margin-left on top of the sidebar's float offset and wraps the
+// player below the sidebar at medium widths. We keep the audio at
+// its UA-native width otherwise (no `width: 100%`, which broke the
+// native scrubber rendering when stretched).
+audio.entry-audio {
+  display: block;
+  margin: 1.25rem 0 1.75rem;
 }
 
 .chip {

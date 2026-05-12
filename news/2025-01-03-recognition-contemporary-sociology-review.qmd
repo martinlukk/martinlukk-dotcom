@@ -8,4 +8,6 @@ My book [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](/book/) (S
 
 > Schneiderhan and Lukk's *GoFailMe* is a meticulously researched, critically engaged, and ethically driven book that contributes significantly to the ongoing discussions about technology, social inequality, and the future of social welfare systems. Its comprehensive analysis and proactive stance make it a pivotal read for those interested in understanding and improving the intersections of technology and social support.
 
-> **Citation.** Zhong, Zilong. 2025. Review of *GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*, by Erik Schneiderhan and Martin Lukk. *Contemporary Sociology* 54(1).
+::: {.review-citation}
+Zhong, Zilong. 2025. Review of *GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*, by Erik Schneiderhan and Martin Lukk. *Contemporary Sociology* 54(1).
+:::

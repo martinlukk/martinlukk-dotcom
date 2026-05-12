@@ -1,0 +1,15 @@
+- "Built with Quarto" and "Data Sciences Institute" links should open in new window
+- In news entries about media quotes, I don't like ", drawing on findings from my book GoFailMe (Stanford University Press), about how networks and algorithmic visibility shape who gets funded" etc. It's fine for the op-ed and QR Calgary but feels a bit "too much" for the short news appearances. Trim the entries to cut that out and be short and to the point. Fix issues where commas incorrectly appear outside the quotes article title. 
+- Does copyright year increment automatically? I think no. What do I do? Rerender next year?
+- add slides in presentations/lukk_ess25.pdf to 2025-08-11-talk-asa-territorial.html
+- I don't like how the citations are rendered for GoFailMe book reviews (e.g., Citation. Tröbinger, Matthias. 2025. Review of GoFailMe: The Unfulfilled Promise of Digital Crowdfunding, by Erik Schneiderhan and Martin Lukk. Administrative Science Quarterly 70(3).). Same style as the quote. Could this styling be harmonized with abstract style for publications, helping distinguish citation from quote? Maybe italics to indicate quotation?
+- GoFailMe publication news item should just link to /book
+- For Socius pub, omit "Develops a theory of boundary consolidation to reconcile competing accounts of how income inequality shapes radical-right politics, tested with time-series cross-sectional data from 38 countries." which doesn't add much.
+- If someone filters by "Media" in "All news", then clicks on "Media" or "Book" in the menu bar, and then goes back to "all news" via the homepage, the filter for "Media" persists. I think it should reset in this case (but remain when clicking the back arrow within news, i.e., current behavior).
+- When someone clicks on a link to a book review from /book, the arrow currently goes back to news but should go back to Book. Include a "back to news" link ONLY if they access the book this way?
+- Google Books link for GoFailMe should go directly to https://www.google.com/books/edition/GoFailMe/ksOqzwEACAAJ
+- Discuss with me about whether "News" should be a topmenu item. I like a simply menu bar and the news kind of live on "home" anyway. 
+- For QR Calgary Mornings entry, would it make sense to put audio thing above text?
+- Media entries feel a bit empty. Add a chip with direct link to the article/op-ed/report to match publications/presentations? Links already available from article title in text. Probably fine to duplicate?
+- Links in "The lead article in a Dialogues special issue on crowdfunding." and "A reply to responses to our lead article in a Dialogues special issue on crowdfunding." should open in new tab. 
+- Should cliking on my face do anything different/special/unexpected?

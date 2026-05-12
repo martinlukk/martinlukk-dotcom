@@ -1,13 +1,14 @@
 (function() {
   var NEWS_FILTERS = ['publications', 'presentations', 'media', 'other'];
   var PUB_FILTERS = ['crowdfunding', 'culture-conflict'];
-  var VALID_ORIGINS = ['home', 'news', 'research', 'media'];
+  var VALID_ORIGINS = ['home', 'news', 'research', 'media', 'book'];
 
   var ORIGINS = {
     home: { href: '/', label: 'Back to Home' },
     news: { href: '/news/', label: 'Back to News', storageKey: 'newsFilter', filters: NEWS_FILTERS },
     research: { href: '/research.html', label: 'Back to Research', storageKey: 'pubFilter', filters: PUB_FILTERS },
-    media: { href: '/media/', label: 'Back to Media' }
+    media: { href: '/media/', label: 'Back to Media' },
+    book: { href: '/book/', label: 'Back to Book' }
   };
 
   function isHome() {
@@ -50,6 +51,7 @@
       if (p === '/news/' || p === '/news/index.html') return 'news';
       if (p === '/research' || p === '/research.html') return 'research';
       if (p === '/media/' || p === '/media/index.html') return 'media';
+      if (p === '/book/' || p === '/book/index.html') return 'book';
     } catch (e) {}
     return null;
   }
@@ -99,13 +101,21 @@
     title.parentNode.insertBefore(link, title);
   }
 
-  function recordOriginOn(container, origin) {
+  function recordOriginOn(container, origin, hrefFilter) {
     if (!container) return;
     container.addEventListener('click', function(e) {
       var a = e.target.closest && e.target.closest('a');
       if (!a) return;
+      if (hrefFilter && !hrefFilter(a)) return;
       try { sessionStorage.setItem('lastOrigin', origin); } catch (err) {}
     });
+  }
+
+  function isNewsDetailHref(a) {
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('/news/') !== 0) return false;
+    if (href === '/news/' || href === '/news/index.html') return false;
+    return true;
   }
 
   function init() {
@@ -113,11 +123,16 @@
       recordOriginOn(document.querySelector('.quarto-listing'), 'home');
     } else if (isMediaListing()) {
       recordOriginOn(document.querySelector('.quarto-listing'), 'media');
-    } else if (isNewsDetail()) {
-      injectBackLink(chooseOriginForNewsDetail());
     } else if (isBookPage()) {
+      // Reviews on /book/ link to news detail pages. Record `book` as
+      // the origin so the detail-page back arrow returns to /book/.
+      // Scope to /news/* hrefs so top-nav and other links don't clobber
+      // an unrelated origin.
+      recordOriginOn(document.body, 'book', isNewsDetailHref);
       var origin = chooseOriginForBook();
       if (origin) injectBackLink(origin);
+    } else if (isNewsDetail()) {
+      injectBackLink(chooseOriginForNewsDetail());
     }
   }
 

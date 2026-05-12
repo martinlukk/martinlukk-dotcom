@@ -8,4 +8,6 @@ My book [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](/book/) (S
 
 > *GoFailMe* offers a timely critique of donation crowdfunding, shedding sobering light on systemic flaws and calling for more equitable solutions—ones that do not capitalize on people's despair and that encourage us all to care for one another more.
 
-> **Citation.** Tröbinger, Matthias. 2025. Review of *GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*, by Erik Schneiderhan and Martin Lukk. *Administrative Science Quarterly* 70(3).
+::: {.review-citation}
+Tröbinger, Matthias. 2025. Review of *GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*, by Erik Schneiderhan and Martin Lukk. *Administrative Science Quarterly* 70(3).
+:::

@@ -44,13 +44,13 @@
       history.replaceState(null, '', url);
     }
 
-    // Initial state: prefer URL hash, then sessionStorage, else "all".
-    var initial = readHash();
-    if (!initial) {
-      try { initial = sessionStorage.getItem(STORAGE_KEY); } catch (e) {}
-      if (VALID.indexOf(initial) === -1) initial = null;
-    }
-    if (!initial) initial = 'all';
+    // Initial state: prefer URL hash, else "all". sessionStorage is
+    // intentionally NOT used as a fallback here — it exists only so
+    // the news-detail back-link can re-attach the active filter via a
+    // hash. Restoring it on a fresh /news/ visit would surprise users
+    // who arrive from the homepage or topnav after filtering earlier
+    // in the session.
+    var initial = readHash() || 'all';
     setActive(initial);
     applyFilter(initial);
     persist(initial);

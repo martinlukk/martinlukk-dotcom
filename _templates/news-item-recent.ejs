@@ -5,7 +5,7 @@ var visible = items.filter(function(item) { return !item.hide_in_news; }).slice(
 <% visible.forEach(function(item) { %>
 <div class="news-item">
 <div class="news-date"><% if (item.date) { %><%= new Date(item.date).toLocaleDateString('en-US', {year: 'numeric', month: 'short'}) %><% } %></div>
-<div class="news-text"><% var t = item.news_title || item.title; if (item.path) { %><a href="<%= item.path %>"><%- t %></a><% } else { %><%- t %><% } %></div>
+<div class="news-text"><% var t = item.news_title || item.title; var href = item.book || item.path; if (href) { %><a href="<%= href %>"><%- t %></a><% } else { %><%- t %><% } %></div>
 </div>
 <% }); %>
 </div>

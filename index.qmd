@@ -8,7 +8,7 @@ listing:
     type: custom
     template: _templates/news-item-recent.ejs
     sort: "date desc"
-    fields: [date, title, news_title, hide_in_news]
+    fields: [date, title, news_title, hide_in_news, book]
     page-size: 100
 ---
 

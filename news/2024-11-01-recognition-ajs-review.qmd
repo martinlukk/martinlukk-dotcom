@@ -8,4 +8,6 @@ My book [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](/book/) (S
 
 > Schneiderhan and Lukk provide a highly interesting and original analysis of how crowdfunding sites, like other for-profit and technological solutions, fail to address social inequality as a structural phenomenon and instead conflate it with individual narratives, reshaping at the same time the future forms of charity in society.
 
-> **Citation.** Kovalainen, Anne. 2024. Review of *GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*, by Erik Schneiderhan and Martin Lukk. *American Journal of Sociology* 130(3).
+::: {.review-citation}
+Kovalainen, Anne. 2024. Review of *GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*, by Erik Schneiderhan and Martin Lukk. *American Journal of Sociology* 130(3).
+:::

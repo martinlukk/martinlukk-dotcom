@@ -6,4 +6,8 @@ outlet: "Vox"
 outlet_url: "https://www.vox.com/future-perfect/464196/gofundme-crowdfunding-generosity-nonprofit-giving-charity-crisis"
 ---
 
-I was quoted in Sara Herschander's article, ["What to do when every crisis needs your $20"](https://www.vox.com/future-perfect/464196/gofundme-crowdfunding-generosity-nonprofit-giving-charity-crisis), in *Vox*, on the challenges of digital crowdfunding, drawing on findings from my book [*GoFailMe*](/book/) (Stanford University Press), about how the platform can be inefficient and emotionally onerous, with the top 5 percent of campaigns receiving half of all donations.
+::: {.chips .entry-actions}
+[Article](https://www.vox.com/future-perfect/464196/gofundme-crowdfunding-generosity-nonprofit-giving-charity-crisis){.chip title="Vox"}
+:::
+
+I was quoted in Sara Herschander's article, ["What to do when every crisis needs your $20,"](https://www.vox.com/future-perfect/464196/gofundme-crowdfunding-generosity-nonprofit-giving-charity-crisis) in *Vox*, on the challenges of digital crowdfunding.

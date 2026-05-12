@@ -8,4 +8,6 @@ My book [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](/book/) (S
 
 > Overall, this is a well-researched book that provides a lively and well-written introduction to the claims and the realities of philanthropic crowdfunding, elucidating both how it reflects, reproduces, and—most intriguingly—reconfigures broader structures of inequality in the United States and Canada.
 
-> **Citation.** Barman, Emily. 2024. Review of *GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*, by Erik Schneiderhan and Martin Lukk. *Social Forces* 103(2):e21.
+::: {.review-citation}
+Barman, Emily. 2024. Review of *GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*, by Erik Schneiderhan and Martin Lukk. *Social Forces* 103(2):e21.
+:::
