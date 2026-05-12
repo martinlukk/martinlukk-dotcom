@@ -18,6 +18,7 @@ $line-height-base: 1.55;
 :root {
   --ml-content-max: 720px;
   --ml-sidebar-width: 260px;
+  --ml-sidebar-rule-width: 250px;
   --ml-page-pad: 1.5rem;
   --ml-gap: 2.5rem;
   --ml-topbar-height: 60px;
@@ -601,6 +602,8 @@ button.pub-cite {
   list-style: none;
   padding: 0.7rem 0 0;
   margin: 0.5rem 0 0;
+  width: var(--ml-sidebar-rule-width);
+  max-width: 100%;
   border-top: 1px solid var(--ml-rule);
   display: flex;
   flex-direction: column;
@@ -707,7 +710,7 @@ code {
 
 // Listings (Quarto) -----------------------------------------------
 .quarto-listing {
-  margin-top: 0.5rem;
+  margin-top: -0.2rem;
 
   .listing-title { font-weight: 600; }
   .listing-actions-group { display: none; }
@@ -1091,6 +1094,8 @@ audio.entry-audio {
 .ml-sidebar-footer {
   margin: 0.7rem 0 0;
   padding: 0.55rem 0 0;
+  width: var(--ml-sidebar-rule-width);
+  max-width: 100%;
   border-top: 1px solid var(--ml-rule);
 }
 
