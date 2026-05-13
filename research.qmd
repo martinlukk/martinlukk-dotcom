@@ -4,7 +4,9 @@ pagetitle: "Research"
 subtitle: "Articles, working papers, and a book. Filter by project, or scroll chronologically."
 listing:
   id: pubs
-  contents: "news/[0-9]*.qmd"
+  contents:
+    - "news/[0-9]*.qmd"
+    - "working-papers/[0-9]*.qmd"
   template: _templates/pub-list.ejs
   sort: "date desc"
   page-size: 100

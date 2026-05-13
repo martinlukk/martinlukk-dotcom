@@ -1,9 +1,11 @@
 <%
-function isPub(item) {
+function hasCategory(item, name) {
   var cats = item.categories || [];
   if (!Array.isArray(cats)) cats = [cats];
-  return cats.indexOf('publication') !== -1;
+  return cats.indexOf(name) !== -1;
 }
+function isPub(item) { return hasCategory(item, 'publication'); }
+function isWP(item)  { return hasCategory(item, 'working-paper'); }
 
 function yearOf(item) {
   if (item.year) return item.year;
@@ -120,7 +122,8 @@ function citeKey(item, authors, year) {
 
 function bibtexEntry(item, authors, year, key) {
   var isBook = !!item.book;
-  var entry = isBook ? 'book' : 'article';
+  var isWp = isWP(item);
+  var entry = isBook ? 'book' : (isWp ? 'unpublished' : 'article');
   var venue = String(item.venue || '');
   var doi = String(item.doi || '');
   var title = String(item.title || '').replace(/\*/g, '');
@@ -132,6 +135,8 @@ function bibtexEntry(item, authors, year, key) {
   ];
   if (isBook) {
     if (venue) lines.push('  publisher = {' + venue + '},');
+  } else if (isWp) {
+    lines.push('  note = {' + (venue || 'Working paper') + '},');
   } else {
     if (venue) lines.push('  journal = {' + venue + '},');
   }
@@ -151,6 +156,102 @@ function escapeAttr(s) {
                   .replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+// Chip render helper — `Article` carries publisher+DOI in title;
+// every other non-Project chip carries a platform name in title
+// when the URL host is recognized.
+function chipWithPlatform(label, href) {
+  if (!href) return '';
+  var plat = platformLabel(href);
+  var titleAttr = plat ? (' title="' + escapeAttr(plat) + '"') : '';
+  return '<a class="chip" href="' + escapeAttr(href) + '"' + titleAttr + '>' + label + '</a>';
+}
+
+// Render one <li>. Working papers share everything but the venue line:
+// they have no journal/year of record, so the line falls back to a
+// venue string (e.g. "Working paper" or "Under review at X") plus the
+// project pill. Pubs render `<venue>, <year>` as before.
+function renderItem(item) {
+  var year = yearOf(item);
+  var href = bestTitleHref(item);
+  var authors = (item.authors || []).map(function(a){ return String(a).trim(); });
+  var key = citeKey(item, authors, year);
+  var bib = bibtexEntry(item, authors, year, key);
+  var bibtexId = 'bibtex-' + key;
+  var preprintHref = item.preprint || item.arxiv;
+
+  var out = '';
+  out += '<li data-projects="' + escapeAttr(item.pub_project || '') + '">';
+
+  out += '<div class="pub-title">';
+  if (href) {
+    out += '<a href="' + escapeAttr(href) + '">' + escapeHtml(titleOf(item)) + '</a>';
+  } else {
+    out += escapeHtml(titleOf(item));
+  }
+  out += '</div>';
+
+  out += '<div class="pub-authors">';
+  authors.forEach(function(a, i) {
+    if (i > 0) out += ', ';
+    var isSelf = (a === 'Martin Lukk' || a === 'M. Lukk' || a === 'Lukk, M.');
+    if (isSelf) {
+      out += '<span class="pub-self">' + escapeHtml(a) + '</span>';
+    } else {
+      out += escapeHtml(a);
+    }
+  });
+  out += '</div>';
+
+  out += '<div class="pub-venue">';
+  var venueText = item.venue || '';
+  if (venueText) out += venueText;
+  if (venueText && year) out += ', ';
+  if (year) out += year;
+  if (item.pub_project) {
+    out += ' <span class="pub-tag pub-project-tag">' + projectLabel(item.pub_project) + '</span>';
+  }
+  out += '</div>';
+
+  out += '<div class="chips">';
+  out += chipWithPlatform('PDF', item.pdf);
+  if (item.doi) {
+    var pub = publisherLabel(item.doi);
+    var title = pub ? (pub + ' · DOI: ' + item.doi) : ('DOI: ' + item.doi);
+    out += '<a class="chip" href="https://doi.org/' + escapeAttr(item.doi) +
+           '" title="' + escapeAttr(title) + '">Article</a>';
+  }
+  out += chipWithPlatform('Preprint',    preprintHref);
+  out += chipWithPlatform('Code & Data', item.code);
+  out += chipWithPlatform('Data',        item.data);
+  out += chipWithPlatform('Materials',   item.materials);
+  out += chipWithPlatform('Prereg',      item.prereg);
+  out += chipWithPlatform('Supplement',  item.supplement);
+  out += chipWithPlatform('Slides',      item.slides);
+  // Book-specific chips: rendered when the entry has `book:` set.
+  // Tooltip for "Publisher" uses item.venue (e.g., "Stanford University
+  // Press"); the other three use URL_PLATFORMS via chipWithPlatform.
+  if (item.publisher_url) {
+    var pubLabel = item.venue || platformLabel(item.publisher_url);
+    var pubTitle = pubLabel ? (' title="' + escapeAttr(pubLabel) + '"') : '';
+    out += '<a class="chip" href="' + escapeAttr(item.publisher_url) + '"' + pubTitle + '>Publisher</a>';
+  }
+  out += chipWithPlatform('Excerpt', item.excerpt_url);
+  out += chipWithPlatform('Buy',     item.buy_url);
+  out += chipWithPlatform('Preview', item.preview_url);
+  if (item.project_page) {
+    out += '<a class="chip" href="' + escapeAttr(item.project_page) + '">Project</a>';
+  }
+  out += '<button type="button" class="chip pub-cite" aria-label="Copy BibTeX citation to clipboard" data-cite-target="' + bibtexId + '">Copy BibTeX</button>';
+  out += '</div>';
+
+  out += '<script type="application/x-bibtex" id="' + bibtexId + '">' +
+         bib.replace(/<\/script>/g, '<\\/script>') +
+         '</script>';
+  out += '</li>';
+  return out;
+}
+
+var wps  = items.filter(isWP);
 var pubs = items.filter(isPub);
 const byYear = {};
 pubs.forEach(function(item) {
@@ -159,61 +260,15 @@ pubs.forEach(function(item) {
 });
 var years = Object.keys(byYear).sort(function(a,b){ return (b|0) - (a|0); });
 %>
+<% if (wps.length) { %>
+<h2 class="pub-year wp-heading">Working Papers</h2>
+<ul class="pub-list">
+<% wps.forEach(function(item) { %><%= renderItem(item) %><% }); %>
+</ul>
+<% } %>
 <% years.forEach(function(year) { %>
 <h2 class="pub-year"><%= year %></h2>
 <ul class="pub-list">
-<% byYear[year].forEach(function(item) {
-  var href = bestTitleHref(item);
-  var authors = (item.authors || []).map(function(a){ return String(a).trim(); });
-  var key = citeKey(item, authors, year);
-  var bib = bibtexEntry(item, authors, year, key);
-  var bibtexId = 'bibtex-' + key;
-%>
-<li data-projects="<%= escapeAttr(item.pub_project || '') %>">
-<div class="pub-title"><% if (href) { %><a href="<%= href %>"><%= titleOf(item) %></a><% } else { %><%= titleOf(item) %><% } %></div>
-<div class="pub-authors"><% authors.forEach(function(a, i) {
-    var isSelf = (a === 'Martin Lukk' || a === 'M. Lukk' || a === 'Lukk, M.');
-    if (i > 0) { %>, <% }
-    if (isSelf) { %><span class="pub-self"><%= a %></span><% } else { %><%= a %><% }
-}); %></div>
-<div class="pub-venue"><%- item.venue || '' %><% if (item.venue && year) { %>, <% } %><%- year %><% if (item.pub_project) { %> <span class="pub-tag pub-project-tag"><%- projectLabel(item.pub_project) %></span><% } %></div>
-<%
-  // Chip render helper — `Article` carries publisher+DOI in title;
-  // every other non-Project chip carries a platform name in title
-  // when the URL host is recognized.
-  function chipWithPlatform(label, href) {
-    if (!href) return '';
-    var plat = platformLabel(href);
-    var titleAttr = plat ? (' title="' + escapeAttr(plat) + '"') : '';
-    return '<a class="chip" href="' + escapeAttr(href) + '"' + titleAttr + '>' + label + '</a>';
-  }
-  var preprintHref = item.preprint || item.arxiv;  // legacy alias
-%><div class="chips"><%= chipWithPlatform('PDF', item.pdf) %><%
-  if (item.doi) {
-    var pub = publisherLabel(item.doi);
-    var title = pub ? (pub + ' · DOI: ' + item.doi) : ('DOI: ' + item.doi);
-%><a class="chip" href="https://doi.org/<%= item.doi %>" title="<%= escapeAttr(title) %>">Article</a><% }
-%><%= chipWithPlatform('Preprint',   preprintHref) %><%
-%><%= chipWithPlatform('Code & Data', item.code) %><%
-%><%= chipWithPlatform('Data',       item.data) %><%
-%><%= chipWithPlatform('Materials',  item.materials) %><%
-%><%= chipWithPlatform('Prereg',     item.prereg) %><%
-%><%= chipWithPlatform('Supplement', item.supplement) %><%
-%><%= chipWithPlatform('Slides',     item.slides) %><%
-  // Book-specific chips: rendered when the entry has `book:` set.
-  // Tooltip for "Publisher" uses item.venue (e.g., "Stanford University
-  // Press"); the other three use URL_PLATFORMS via chipWithPlatform.
-  if (item.publisher_url) {
-    var pubLabel = item.venue || platformLabel(item.publisher_url);
-    var pubTitle = pubLabel ? (' title="' + escapeAttr(pubLabel) + '"') : '';
-%><a class="chip" href="<%= escapeAttr(item.publisher_url) %>"<%= pubTitle %>>Publisher</a><% }
-%><%= chipWithPlatform('Excerpt', item.excerpt_url) %><%
-%><%= chipWithPlatform('Buy',     item.buy_url)     %><%
-%><%= chipWithPlatform('Preview', item.preview_url) %><%
-  if (item.project_page) { %><a class="chip" href="<%= item.project_page %>">Project</a><% }
-%><button type="button" class="chip pub-cite" aria-label="Copy BibTeX citation to clipboard" data-cite-target="<%= bibtexId %>">Copy BibTeX</button></div>
-<script type="application/x-bibtex" id="<%= bibtexId %>"><%= bib.replace(/<\/script>/g, '<\\/script>') %></script>
-</li>
-<% }); %>
+<% byYear[year].forEach(function(item) { %><%= renderItem(item) %><% }); %>
 </ul>
 <% }); %>

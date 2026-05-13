@@ -64,16 +64,24 @@ local URL_PLATFORMS = {
   { pattern = "figshare",      label = "Figshare"    },
 }
 
-local function is_publication(meta)
+local function has_category(meta, name)
   local cats = meta.categories
   if cats == nil then return false end
   if cats.t == "MetaList" then
     for _, c in ipairs(cats) do
-      if pandoc.utils.stringify(c) == "publication" then return true end
+      if pandoc.utils.stringify(c) == name then return true end
     end
     return false
   end
-  return pandoc.utils.stringify(cats) == "publication"
+  return pandoc.utils.stringify(cats) == name
+end
+
+local function is_publication(meta)
+  return has_category(meta, "publication")
+end
+
+local function is_working_paper(meta)
+  return has_category(meta, "working-paper")
 end
 
 local function meta_str(meta, key)
@@ -193,7 +201,15 @@ end
 
 local function bibtex_entry(meta, authors, year, title)
   local is_book = meta.book ~= nil
-  local entry_type = is_book and "book" or "article"
+  local is_wp = is_working_paper(meta)
+  local entry_type
+  if is_book then
+    entry_type = "book"
+  elseif is_wp then
+    entry_type = "unpublished"
+  else
+    entry_type = "article"
+  end
   local key = cite_key(meta, authors, year, title)
   local clean_title = title:gsub("%*", "")
   local venue = meta_str(meta, "venue") or ""
@@ -206,6 +222,8 @@ local function bibtex_entry(meta, authors, year, title)
   }
   if is_book then
     if venue ~= "" then lines[#lines + 1] = "  publisher = {" .. venue .. "}," end
+  elseif is_wp then
+    lines[#lines + 1] = "  note = {" .. (venue ~= "" and venue or "Working paper") .. "},"
   else
     if venue ~= "" then lines[#lines + 1] = "  journal = {" .. venue .. "}," end
   end
@@ -260,7 +278,7 @@ local function build_actions_block(meta)
 end
 
 function Pandoc(doc)
-  if not is_publication(doc.meta) then return nil end
+  if not (is_publication(doc.meta) or is_working_paper(doc.meta)) then return nil end
   table.insert(doc.blocks, 1, marker_block(doc.meta))
   local actions = build_actions_block(doc.meta)
   if actions then

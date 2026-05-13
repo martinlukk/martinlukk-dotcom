@@ -28,6 +28,11 @@
     return true;
   }
 
+  function isWorkingPaperDetail() {
+    var p = location.pathname;
+    return p.indexOf('/working-papers/') === 0;
+  }
+
   function isBookPage() {
     var p = location.pathname;
     return p === '/book/' || p === '/book/index.html';
@@ -141,6 +146,10 @@
       if (origin) injectBackLink(origin);
     } else if (isNewsDetail()) {
       injectBackLink(chooseOriginForNewsDetail());
+    } else if (isWorkingPaperDetail()) {
+      // Working-paper detail pages always come from Research; no News
+      // path leads to them. Route the back link there directly.
+      injectBackLink('research');
     }
   }
 
