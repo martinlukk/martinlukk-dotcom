@@ -257,6 +257,86 @@ local function build_cite_parts(meta)
   return cite_chip, tpl
 end
 
+-- Google Scholar `citation_*` meta tags injected into <head> so Scholar
+-- can identify publication detail pages, link them to the author's
+-- profile, and extract structured citation info. Spec:
+-- https://scholar.google.com/intl/en/scholar/inclusion.html#indexing
+local function citation_meta_html(meta)
+  local authors = authors_list(meta)
+  local title = meta_str(meta, "title")
+  local year = meta_str(meta, "year")
+  local date = meta_str(meta, "date")
+  if not title or #authors == 0 or (not date and not year) then return nil end
+
+  -- Scholar wants YYYY or YYYY/MM/DD. `date:` arrives stringified to
+  -- "May 31, 2024" (Quarto applies `date-format: long` before filters
+  -- run), so parse the long form back to YYYY/MM/DD; if anything looks
+  -- off, fall back to `year:`.
+  local MONTHS = {
+    January=1, February=2, March=3, April=4, May=5, June=6,
+    July=7, August=8, September=9, October=10, November=11, December=12,
+  }
+  local pub_date
+  if date then
+    local mname, d, y = date:match("(%a+)%s+(%d+),%s+(%d+)")
+    local mnum = mname and MONTHS[mname]
+    if mnum then
+      pub_date = string.format("%04d/%02d/%02d", tonumber(y), mnum, tonumber(d))
+    end
+  end
+  pub_date = pub_date or year
+  local venue = meta_str(meta, "venue")
+  local doi = meta_str(meta, "doi")
+  local preprint = meta_str(meta, "preprint") or meta_str(meta, "arxiv")
+  local pdf = meta_str(meta, "pdf")
+  local is_book = meta.book ~= nil
+  local is_wp = is_working_paper(meta)
+  local clean_title = title:gsub("%*", "")
+
+  local tags = {}
+  local function tag(name, value)
+    if value and value ~= "" then
+      tags[#tags + 1] = '<meta name="' .. name .. '" content="' .. escape_attr(value) .. '">'
+    end
+  end
+
+  tag("citation_title", clean_title)
+  for _, a in ipairs(authors) do tag("citation_author", a) end
+  tag("citation_publication_date", pub_date)
+  if is_book then
+    tag("citation_publisher", venue)
+  elseif is_wp then
+    -- For working papers on a preprint server (SocArXiv/arXiv/SSRN/etc.),
+    -- the server is the publisher; `venue:` already names it.
+    tag("citation_publisher", venue)
+  else
+    tag("citation_journal_title", venue)
+  end
+  tag("citation_doi", doi)
+  tag("citation_pdf_url", pdf)
+  -- A canonical landing URL helps Scholar deduplicate; DOI URL for
+  -- journal articles, preprint server URL for working papers.
+  if doi then
+    tag("citation_abstract_html_url", "https://doi.org/" .. doi)
+  elseif preprint then
+    tag("citation_abstract_html_url", preprint)
+  end
+
+  return table.concat(tags, "\n")
+end
+
+local function add_header_include(meta, html)
+  local block = pandoc.MetaBlocks({ pandoc.RawBlock("html", html) })
+  local existing = meta["header-includes"]
+  if existing == nil then
+    meta["header-includes"] = pandoc.MetaList({ block })
+  elseif existing.t == "MetaList" then
+    table.insert(existing, block)
+  else
+    meta["header-includes"] = pandoc.MetaList({ existing, block })
+  end
+end
+
 local function marker_block(meta)
   local project = meta_str(meta, "pub_project") or ""
   local attrs = ' hidden aria-hidden="true"'
@@ -283,6 +363,10 @@ function Pandoc(doc)
   local actions = build_actions_block(doc.meta)
   if actions then
     table.insert(doc.blocks, 2, actions)
+  end
+  local citation_html = citation_meta_html(doc.meta)
+  if citation_html then
+    add_header_include(doc.meta, citation_html)
   end
   return doc
 end
