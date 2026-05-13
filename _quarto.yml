@@ -21,7 +21,7 @@ website:
   description: "Computational social scientist studying how humans and automated systems decide who deserves what."
   site-url: "https://www.martinlukk.com"
   favicon: favicon.ico
-  image: /images/sharing.png    # default og:image / twitter:image, used on
+  image: /images/sharing.jpg    # default og:image / twitter:image, used on
                                 # any page that doesn't set its own
   open-graph: true
   twitter-card:
