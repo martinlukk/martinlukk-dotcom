@@ -25,7 +25,7 @@ $line-height-base: 1.55;
 
   --ml-body: #494e52;
   --ml-heading: #1a1a1a;
-  --ml-muted: #7a8288;
+  --ml-muted: #6c7378;
   --ml-rule: #f0f1f2;
   --ml-rule-strong: #e2e4e7;
   --ml-link: #0f4d92;
@@ -498,6 +498,12 @@ button.pub-cite {
   &.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   &.open span:nth-child(2) { opacity: 0; }
   &.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  &:focus-visible {
+    outline: 2px solid var(--ml-link);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 }
 
 // Two-column layout -----------------------------------------------
