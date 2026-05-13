@@ -1,0 +1,35 @@
+---
+title: "Bearing Witness and the Limits of War Photojournalism: Ron Haviv in Bijeljina"
+subtitle: "*Human Rights Quarterly*, 2015"
+news_title: '"Bearing Witness and the Limits of War Photojournalism: Ron Haviv in Bijeljina" published in *Human Rights Quarterly*'
+date: "2015-08-01"
+categories: [publication]
+hide_in_news: true
+authors: ["Martin Lukk", "Keith Doubt"]
+venue: "Human Rights Quarterly"
+year: 2015
+pub_project: culture-conflict
+doi: "10.1353/hrq.2015.0047"
+abstract: >
+  Photojournalist Ron Haviv's 1992 photograph of a Bosnian Muslim man on
+  his knees, pleading to the camera for his life in Bijeljina, was taken
+  while Haviv was traveling with Željko "Arkan" Ražnatović's paramilitary
+  Tigers at the outset of the war in Bosnia-Herzegovina. Analyzing the
+  photograph through Harold Garfinkel's account of status degradation
+  ceremonies, this article argues that Haviv was not a detached observer
+  but a constitutive participant: the violence in Bijeljina took the form
+  of a degradation ceremony in which the photographer—and, through his
+  images, the watching world—played the structurally indispensable role of
+  witness. War photojournalism's limits emerge from this involvement. The
+  camera does not stand outside the violence it records, even when the
+  resulting images later serve as evidence, as Haviv's did at the Hague.
+  Taking the photograph seriously as a sociological event rather than a
+  document raises uncomfortable questions about how bearing witness can
+  sustain, and not only indict, ethnic cleansing.
+---
+
+Ron Haviv [responded](https://doi.org/10.1353/hrq.2016.0019){target="_blank" rel="noopener"} in *Human Rights Quarterly* 38(1); our [reply](/news/2016-02-01-publication-response-haviv-article.html) appeared in the same issue.
+
+::: {.abstract}
+{{< meta abstract >}}
+:::

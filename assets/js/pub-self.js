@@ -17,8 +17,9 @@
   // Project pill display labels — keys are the `pub_project` slug from
   // frontmatter, values are the human-readable label.
   var PROJECT_LABELS = {
-    'crowdfunding':     'Crowdfunding',
-    'culture-conflict': 'Culture & conflict',
+    'crowdfunding':      'Crowdfunding',
+    'culture-conflict':  'Culture & conflict',
+    'disability-policy': 'Disability & policy',
   };
 
   function boldSelf() {
@@ -26,8 +27,14 @@
       'header#title-block-header .quarto-title-meta-contents > p'
     ).forEach(function(p) {
       var t = (p.textContent || '').trim();
+      // Quarto emits each author as `<p>Name </p>` with a trailing space;
+      // strip it so the CSS-injected ", " separator doesn't render as
+      // "Name , Next". The self-author case bolds via span replacement
+      // (which also trims); the other case overwrites the plain text.
       if (SELF.indexOf(t) !== -1) {
         p.innerHTML = '<span class="pub-self">' + t + '</span>';
+      } else if (p.textContent !== t) {
+        p.textContent = t;
       }
     });
   }

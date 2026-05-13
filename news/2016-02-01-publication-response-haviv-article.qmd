@@ -1,0 +1,34 @@
+---
+title: "Response to Ron Haviv"
+subtitle: "*Human Rights Quarterly*, 2016"
+news_title: '"Response to Ron Haviv" published in *Human Rights Quarterly*'
+date: "2016-02-01"
+categories: [publication]
+hide_in_news: true
+authors: ["Martin Lukk", "Keith Doubt"]
+venue: "Human Rights Quarterly"
+year: 2016
+pub_project: culture-conflict
+doi: "10.1353/hrq.2016.0002"
+abstract: >
+  A reply to photojournalist Ron Haviv's response (*HRQ* 38(1):208–10) to
+  our article "Bearing Witness and the Limits of War Photojournalism"
+  (*HRQ* 37(3):629–36). The reply addresses Haviv's empirical and
+  methodological criticisms and updates the record with newly discovered
+  information about the photograph's subject—Hajrush Ziberi, an ethnic
+  Albanian from Macedonia whose remains were identified through DNA
+  analysis after being found in the Sava. We use the exchange to restate
+  the aim of the original work:
+  setting aside the photographer's intentions to better evaluate the
+  unintended and potentially pernicious consequences of photographic
+  practice in contexts of political violence, and to make the case that
+  war photographers are rarely afforded the detached objectivity of
+  forensic photographers but tend to be participants, constitutive of the
+  events they capture.
+---
+
+A reply to Ron Haviv's [response](https://doi.org/10.1353/hrq.2016.0019){target="_blank" rel="noopener"} to our [original article](/news/2015-08-01-publication-bearing-witness-article.html).
+
+::: {.abstract}
+{{< meta abstract >}}
+:::

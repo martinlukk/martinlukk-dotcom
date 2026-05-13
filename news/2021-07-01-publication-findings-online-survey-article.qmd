@@ -1,0 +1,38 @@
+---
+title: "Findings from an Online Survey on the Mental Health Effects of COVID-19 on Canadians with Disabilities and Chronic Health Conditions"
+subtitle: "*Disability and Health Journal*, 2021"
+news_title: '"Findings from an Online Survey on the Mental Health Effects of COVID-19 on Canadians with Disabilities and Chronic Health Conditions" published in *Disability and Health Journal*'
+date: "2021-07-01"
+categories: [publication]
+hide_in_news: true
+authors: ["David Pettinicchio", "Michelle Maroto", "Lei Chai", "Martin Lukk"]
+venue: "Disability and Health Journal"
+year: 2021
+pub_project: disability-policy
+doi: "10.1016/j.dhjo.2021.101085"
+abstract: >
+  Although the COVID-19 pandemic has led to worsening mental health outcomes
+  throughout the Canadian population, its effects have been more acute among
+  already marginalized groups, including people with disabilities and chronic
+  health conditions. This paper examines how heightened fears of contracting
+  the virus, financial impacts, and social isolation contribute to declining
+  mental health among this already vulnerable group. Using original national
+  quota-based online survey data (n = 1,027) collected in June 2020, three
+  logistic regression models investigate the relationship between COVID-19's
+  effects on finances, concerns about contracting the virus, changes in
+  loneliness and belonging, and measures taken to combat the spread of
+  COVID-19 and reports of increased anxiety, stress, and despair, net of
+  covariates. Models show that increased anxiety, stress, and despair were
+  associated with negative financial effects of COVID-19, greater concerns
+  about contracting COVID-19, increased loneliness, and decreased feelings of
+  belonging. Net of other covariates, increased measures taken to combat
+  COVID-19 was not significantly associated with mental health outcomes.
+  Findings address how the global health crisis is contributing to declining
+  mental health status through heightened concerns over contracting the
+  virus, increases in economic insecurity, and growing social isolation,
+  speaking to how health pandemics exacerbate health inequalities.
+---
+
+::: {.abstract}
+{{< meta abstract >}}
+:::

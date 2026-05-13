@@ -208,13 +208,21 @@ header#title-block-header.quarto-title-block.default {
     }
     .quarto-title-meta-contents {
       text-wrap: pretty;
+      // `font-size: 0` on the container collapses the inter-element
+      // whitespace between author `<p>` tags (Quarto emits each author on
+      // its own indented line); children restore their own font-size.
+      // Combined with pub-self.js trimming each author's trailing space,
+      // this leaves the CSS-injected ", " sitting flush after each name.
+      font-size: 0;
     }
     .quarto-title-meta-contents > p {
       display: inline;
       color: inherit;
+      font-size: 0.95rem;
     }
     .quarto-title-meta-contents > p + p::before {
       content: ", ";
+      font-size: 0.95rem;
     }
 
     // Venue, Year — italic muted, mirrors the listing's `.pub-venue` line.

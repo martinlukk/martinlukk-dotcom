@@ -1,6 +1,6 @@
 (function() {
   var NEWS_FILTERS = ['publications', 'presentations', 'media', 'other'];
-  var PUB_FILTERS = ['crowdfunding', 'culture-conflict'];
+  var PUB_FILTERS = ['crowdfunding', 'culture-conflict', 'disability-policy'];
   var VALID_ORIGINS = ['home', 'news', 'research', 'media', 'book'];
 
   var ORIGINS = {

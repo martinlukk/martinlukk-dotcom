@@ -1,5 +1,5 @@
 (function() {
-  var VALID = ['all', 'crowdfunding', 'culture-conflict'];
+  var VALID = ['all', 'crowdfunding', 'culture-conflict', 'disability-policy'];
   var STORAGE_KEY = 'pubFilter';
 
   function init() {

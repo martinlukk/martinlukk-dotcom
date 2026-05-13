@@ -1,0 +1,38 @@
+---
+title: "Worthy? Crowdfunding the Canadian Health Care and Education Sectors"
+subtitle: "*Canadian Review of Sociology*, 2018"
+news_title: '"Worthy? Crowdfunding the Canadian Health Care and Education Sectors" published in *Canadian Review of Sociology*'
+date: "2018-08-01"
+categories: [publication]
+hide_in_news: true
+authors: ["Martin Lukk", "Erik Schneiderhan", "Joanne Soares"]
+venue: "Canadian Review of Sociology"
+year: 2018
+pub_project: crowdfunding
+doi: "10.1111/cars.12210"
+abstract: >
+  Crowdfunding, the practice of asking for money from others using the
+  Internet, is a major private means through which Canadians are funding
+  their health care and education. Crowdfunding has proliferated in Canada
+  during the 2010s and continues to grow, approaching the revenues of
+  Canada's major traditional charities. Proponents describe it as an
+  empowering practice from which anyone can benefit. If its gains are
+  inequitably distributed, however, increasing reliance on this private
+  funding mechanism, especially in core areas of welfare state provision,
+  can further exacerbate inequalities of opportunity and income. This study
+  asks why Canadians turn to health care and education crowdfunding and how
+  equitably funds are raised using this novel method. Based on a mixed
+  methods analysis of 319 campaigns conducted on two prominent crowdfunding
+  platforms between 2012 and 2014, we find that crowdfunding users' needs
+  frequently correspond to known gaps in the contemporary social safety
+  net, including in the area of cancer care, and that campaigns for older
+  and visible minority Canadians face a disadvantage. We argue that health
+  care and education crowdfunding is a response to the shortcomings of
+  Canadian welfare state provision, but one that reproduces offline
+  inequalities with potentially perilous consequences for democratic life
+  and individual suffering.
+---
+
+::: {.abstract}
+{{< meta abstract >}}
+:::

@@ -1,0 +1,33 @@
+---
+title: "Working Differently or Not at All: COVID-19's Effects on Employment among People with Disabilities and Chronic Health Conditions"
+subtitle: "*Sociological Perspectives*, 2021"
+news_title: '"Working Differently or Not at All" published in *Sociological Perspectives*'
+date: "2021-10-01"
+categories: [publication]
+hide_in_news: true
+authors: ["Michelle Maroto", "David Pettinicchio", "Martin Lukk"]
+venue: "Sociological Perspectives"
+year: 2021
+pub_project: disability-policy
+doi: "10.1177/07311214211012018"
+abstract: >
+  The COVID-19 pandemic has drastically changed employment situations for
+  workers everywhere. This is especially true among people with disabilities
+  and chronic health conditions who face greater risks in contracting COVID-19
+  and experience larger disadvantages within the labor market. Drawing from
+  original data gathered through a national online survey (N = 1,027) and
+  integrated set of virtual interviews (N = 50) with Canadians with
+  disabilities and chronic health conditions, our findings show that although
+  the pandemic has not directly led to job losses for most people with
+  disabilities and chronic health conditions, respondents who have lost
+  employment due to COVID-19 are struggling. Even though employed workers have
+  been faring better, half were concerned about losing their jobs within the
+  next year, and these concerns were more prevalent among part-time and
+  non-union workers. Our findings emphasize the potential for growing economic
+  insecurity as the pandemic continues to wreak havoc on employment situations
+  among marginalized groups.
+---
+
+::: {.abstract}
+{{< meta abstract >}}
+:::

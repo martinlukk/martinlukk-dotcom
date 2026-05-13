@@ -1,0 +1,33 @@
+---
+title: "Trading Blame: Drawing Boundaries around the Righteous, Deserving and Vulnerable in Times of Crisis"
+subtitle: "*Sociology*, 2023"
+news_title: '"Trading Blame: Drawing Boundaries around the Righteous, Deserving and Vulnerable in Times of Crisis" published in *Sociology*'
+date: "2023-01-18"
+categories: [publication]
+hide_in_news: true
+authors: ["Jordan Foster", "David Pettinicchio", "Michelle Maroto", "Andy Holmes", "Martin Lukk"]
+venue: "Sociology"
+year: 2023
+pub_project: culture-conflict
+doi: "10.1177/00380385221137181"
+abstract: >
+  Symbolic boundaries shape how we see and understand both ourselves and those
+  around us. Amid periods of crisis, these boundaries can appear more salient,
+  sharpening distinctions between "us" and "them" and reinforcing inequalities
+  in the social landscape. Based on 50 in-depth interviews about pandemic
+  experiences among Canadians with disabilities and chronic health conditions,
+  we examine how this community distinguishes between the "deserving" and
+  "undeserving", and how emotions related to blame and resentment inform the
+  boundaries they draw. We find that people with disabilities and chronic
+  health conditions drew boundaries based on unequal health statuses and
+  vulnerabilities and between those who are and are not legitimately entitled
+  to government aid. Underlying these dimensions are a familiar set of moral
+  tropes that respondents use to assert their own superiority and to inveigh
+  their frustrations. Together, they play an important role in solidifying
+  boundaries between groups, complicating public perceptions of policy
+  responses to crisis.
+---
+
+::: {.abstract}
+{{< meta abstract >}}
+:::

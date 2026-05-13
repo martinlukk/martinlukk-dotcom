@@ -1,0 +1,32 @@
+---
+title: "Perceptions of Canadian Federal Policy Responses to COVID-19 Among People with Disabilities and Chronic Health Conditions"
+subtitle: "*Canadian Public Policy*, 2021"
+news_title: '"Perceptions of Canadian Federal Policy Responses to COVID-19 Among People with Disabilities and Chronic Health Conditions" published in *Canadian Public Policy*'
+date: "2021-06-01"
+categories: [publication]
+hide_in_news: true
+authors: ["David Pettinicchio", "Michelle Maroto", "Martin Lukk"]
+venue: "Canadian Public Policy"
+year: 2021
+pub_project: disability-policy
+doi: "10.3138/cpp.2021-012"
+abstract: >
+  This study examines how people with disabilities and chronic health
+  conditions—members of a large and diverse group often overlooked by Canadian
+  public policy—are making sense of the Canadian federal government's response
+  to COVID-19. Using original national online survey data collected in June
+  2020 (N = 1,027), we investigate how members of this group view the
+  government's overall response. Although survey results show broad support
+  for the federal government's pandemic response, findings also indicate
+  fractures based on disability type and specific health condition, political
+  partisanship, region, and experiences with COVID-19. Among these,
+  identification with the Liberal party and receipt of CERB stand out as
+  associated with more positive views. Further examination of qualitative
+  responses shows that these views are also linked to differing perspectives
+  surrounding government benefits and spending, partisan divisions, and other
+  social and cultural cleavages.
+---
+
+::: {.abstract}
+{{< meta abstract >}}
+:::
