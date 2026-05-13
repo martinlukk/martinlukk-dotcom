@@ -1,6 +1,6 @@
 ---
 pagetitle: "Martin Lukk"
-description: "Computational social scientist studying how humans and automated systems make decisions about who deserves what."
+description: "Computational social scientist studying how humans and automated systems decide who deserves what."
 page-layout: custom
 listing:
   - id: news-recent
@@ -14,7 +14,7 @@ listing:
 
 # About
 
-I am a computational social scientist studying how humans and automated systems make decisions about who deserves what. My research investigates _algorithmic fairness_, _crowdfunding and social welfare_, and _political identity and conflict_.
+I am a computational social scientist studying how humans and automated systems decide who deserves what. My research spans _algorithmic fairness_, _crowdfunding and social welfare_, and _political identity and conflict_.
 
 I co-authored [*GoFailMe: The Unfulfilled Promise of Digital Crowdfunding*](book/) (Stanford University Press) and am developing FairFund-Bench, a benchmark evaluating distributive bias in LLM allocation decisions. I received my Ph.D. in sociology from the University of Toronto.
 
