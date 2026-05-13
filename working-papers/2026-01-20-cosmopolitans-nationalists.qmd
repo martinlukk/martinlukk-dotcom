@@ -9,6 +9,7 @@ year: 2026
 pub_project: political-conflict
 preprint: "https://osf.io/preprints/socarxiv/qhkps_v1"
 code: "https://github.com/martinlukk/cleavage-identity"
+slides: "/assets/presentations/2025-08-asa-territorial/asa25.pdf"
 abstract: >
   What is the relationship between global and local identification, and how
   is it linked to political conflict? These questions are central to
