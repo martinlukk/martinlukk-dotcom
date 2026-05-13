@@ -8,7 +8,7 @@ hide_in_news: true
 authors: ["Jordan Foster", "David Pettinicchio", "Michelle Maroto", "Andy Holmes", "Martin Lukk"]
 venue: "Sociology"
 year: 2023
-pub_project: culture-conflict
+pub_project: crowdfunding-welfare
 doi: "10.1177/00380385221137181"
 abstract: >
   Symbolic boundaries shape how we see and understand both ourselves and those

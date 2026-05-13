@@ -8,7 +8,7 @@ hide_in_news: true
 authors: ["Martin Lukk", "Keith Doubt"]
 venue: "Human Rights Quarterly"
 year: 2016
-pub_project: culture-conflict
+pub_project: political-conflict
 doi: "10.1353/hrq.2016.0002"
 abstract: >
   A reply to photojournalist Ron Haviv's response (*HRQ* 38(1):208–10) to

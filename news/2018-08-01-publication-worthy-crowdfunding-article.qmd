@@ -8,7 +8,7 @@ hide_in_news: true
 authors: ["Martin Lukk", "Erik Schneiderhan", "Joanne Soares"]
 venue: "Canadian Review of Sociology"
 year: 2018
-pub_project: crowdfunding
+pub_project: crowdfunding-welfare
 doi: "10.1111/cars.12210"
 abstract: >
   Crowdfunding, the practice of asking for money from others using the

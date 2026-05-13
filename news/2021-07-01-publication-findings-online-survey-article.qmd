@@ -8,7 +8,7 @@ hide_in_news: true
 authors: ["David Pettinicchio", "Michelle Maroto", "Lei Chai", "Martin Lukk"]
 venue: "Disability and Health Journal"
 year: 2021
-pub_project: disability-policy
+pub_project: crowdfunding-welfare
 doi: "10.1016/j.dhjo.2021.101085"
 abstract: >
   Although the COVID-19 pandemic has led to worsening mental health outcomes

@@ -1,5 +1,5 @@
 (function() {
-  var VALID = ['all', 'crowdfunding', 'culture-conflict', 'disability-policy'];
+  var VALID = ['all', 'algorithmic-fairness', 'crowdfunding-welfare', 'political-conflict'];
   var STORAGE_KEY = 'pubFilter';
 
   function init() {
@@ -7,11 +7,15 @@
     if (!bar) return;
     var items = document.querySelectorAll('.pub-list > li');
     var headings = document.querySelectorAll('.pub-year');
+    var empty = document.querySelector('[data-pub-empty]');
 
     function applyFilter(f) {
+      var anyShown = false;
       items.forEach(function(li) {
         var tags = (li.getAttribute('data-projects') || '').split(/\s+/);
-        li.style.display = (f === 'all' || tags.indexOf(f) !== -1) ? '' : 'none';
+        var show = (f === 'all' || tags.indexOf(f) !== -1);
+        li.style.display = show ? '' : 'none';
+        if (show) anyShown = true;
       });
       headings.forEach(function(h) {
         var ul = h.nextElementSibling;
@@ -21,6 +25,7 @@
         h.style.display = anyVisible ? '' : 'none';
         ul.style.display = anyVisible ? '' : 'none';
       });
+      if (empty) empty.hidden = anyShown;
     }
 
     function setActive(f) {

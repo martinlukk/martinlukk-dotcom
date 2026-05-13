@@ -17,9 +17,9 @@
   // Project pill display labels — keys are the `pub_project` slug from
   // frontmatter, values are the human-readable label.
   var PROJECT_LABELS = {
-    'crowdfunding':      'Crowdfunding',
-    'culture-conflict':  'Culture & conflict',
-    'disability-policy': 'Disability & policy',
+    'algorithmic-fairness':  'Algorithmic Fairness',
+    'crowdfunding-welfare':  'Crowdfunding & Social Welfare',
+    'political-conflict':    'Political Identity & Conflict',
   };
 
   function boldSelf() {

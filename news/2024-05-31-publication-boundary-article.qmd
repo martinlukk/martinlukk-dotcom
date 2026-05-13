@@ -7,7 +7,7 @@ categories: [publication]
 authors: ["Martin Lukk"]
 venue: "Socius"
 year: 2024
-pub_project: culture-conflict
+pub_project: political-conflict
 doi: "10.1177/23780231241251714"
 code: "https://github.com/martinlukk/boundary-consolidation"
 supplement: "https://osf.io/2xsv6/files/tm2xy"

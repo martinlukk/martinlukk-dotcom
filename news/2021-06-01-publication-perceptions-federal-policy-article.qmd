@@ -8,7 +8,7 @@ hide_in_news: true
 authors: ["David Pettinicchio", "Michelle Maroto", "Martin Lukk"]
 venue: "Canadian Public Policy"
 year: 2021
-pub_project: disability-policy
+pub_project: crowdfunding-welfare
 doi: "10.3138/cpp.2021-012"
 abstract: >
   This study examines how people with disabilities and chronic health

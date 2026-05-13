@@ -7,7 +7,7 @@ categories: [publication]
 authors: ["Erik Schneiderhan", "Martin Lukk"]
 venue: "Stanford University Press"
 year: 2023
-pub_project: crowdfunding
+pub_project: crowdfunding-welfare
 book: /book/
 publisher_url: "https://www.sup.org/books/sociology/gofailme"
 excerpt_url: "https://www.sup.org/books/sociology/gofailme/excerpts"

@@ -8,7 +8,7 @@ hide_in_news: true
 authors: ["Michelle Maroto", "David Pettinicchio", "Martin Lukk"]
 venue: "Sociological Perspectives"
 year: 2021
-pub_project: disability-policy
+pub_project: crowdfunding-welfare
 doi: "10.1177/07311214211012018"
 abstract: >
   The COVID-19 pandemic has drastically changed employment situations for
