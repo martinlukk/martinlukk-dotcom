@@ -1,0 +1,16 @@
+---
+title: "FairFund-Bench: Evaluating Deservingness Bias in LLM Allocation Decisions"
+date: "2026-04-08"
+categories: [working-paper]
+authors: ["Martin Lukk"]
+year: 2026
+pub_project: algorithmic-fairness
+slides: "/assets/presentations/2026-04-snack-fairfund/slides.pdf"
+abstract: >
+  In preparation. Presented at the SNACK Workshop, University of
+  Toronto Department of Sociology, April 2026.
+---
+
+::: {.abstract}
+{{< meta abstract >}}
+:::
