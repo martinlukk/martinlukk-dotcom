@@ -5,9 +5,16 @@
 *_files/
 *_cache/
 **/*.quarto_ipynb
-# Stray render output that lands at repo root (e.g., from editor extensions
-# that ignore `output-dir: _site`)
+# Stray render output that lands next to .qmd sources (e.g., from editor
+# extensions that ignore `output-dir: _site`). Canonical builds live in
+# /_site/; these siblings are always garbage.
 /index.html
+/404.html
+/book/*.html
+/media/*.html
+/news/*.html
+/posts/*.html
+/working-papers/*.html
 
 # Local-only design scratch (see auto-memory project_bird_tweak.md)
 /_dev/
