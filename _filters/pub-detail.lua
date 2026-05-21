@@ -93,6 +93,14 @@ local function meta_str(meta, key)
   return s
 end
 
+local function meta_bool(meta, key)
+  local v = meta[key]
+  if v == nil then return false end
+  if type(v) == "boolean" then return v end
+  local s = pandoc.utils.stringify(v):lower()
+  return s == "true" or s == "yes" or s == "1"
+end
+
 local function escape_attr(s)
   return (s:gsub("&", "&amp;"):gsub('"', "&quot;"):gsub("<", "&lt;"):gsub(">", "&gt;"))
 end
@@ -237,6 +245,7 @@ end
 -- Returns (cite_chip_html, template_html) or (nil, nil) if not enough
 -- metadata to form a citation.
 local function build_cite_parts(meta)
+  if meta_bool(meta, "no_bibtex") then return nil, nil end
   local authors = authors_list(meta)
   local title = meta_str(meta, "title") or ""
   local year = meta_str(meta, "year") or ""

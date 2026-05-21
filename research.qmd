@@ -12,7 +12,7 @@ listing:
   page-size: 100
   categories: false
   feed: false
-  fields: [title, date, categories, authors, venue, pub_project, doi, pdf, preprint, arxiv, code, data, materials, prereg, supplement, slides, project_page, book, publisher_url, excerpt_url, buy_url, preview_url, cite_key]
+  fields: [title, date, categories, authors, venue, pub_project, doi, pdf, preprint, arxiv, code, data, materials, prereg, supplement, slides, project_page, book, publisher_url, excerpt_url, buy_url, preview_url, cite_key, no_bibtex]
 ---
 
 {{< include _includes/pub-filter.html >}}

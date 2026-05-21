@@ -6,6 +6,8 @@ authors: ["Martin Lukk"]
 year: 2026
 pub_project: algorithmic-fairness
 slides: "/assets/presentations/2026-04-snack-fairfund/slides.pdf"
+prereg: "https://osf.io/ajfk2"
+no_bibtex: true
 abstract: >
   In preparation. Presented at the SNACK Workshop, University of
   Toronto Department of Sociology, April 2026.
