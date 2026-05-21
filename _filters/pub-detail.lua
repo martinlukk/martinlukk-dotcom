@@ -44,7 +44,7 @@ local DOI_PUBLISHERS = {
 
 -- URL-host → human-friendly platform label. Drives the hover tooltip
 -- on each non-Article chip (Preprint / Code & Data / Data / Materials /
--- Prereg / Supplement / Slides) so readers see "GitHub" or "OSF" on
+-- Preregistration / Supplement / Slides) so readers see "GitHub" or "OSF" on
 -- hover without the chip itself naming a vendor.
 local URL_PLATFORMS = {
   { pattern = "github%.",      label = "GitHub"      },
@@ -178,7 +178,7 @@ local function chip_links_html(meta)
   add_with_platform("Code & Data",   meta_str(meta, "code"))
   add_with_platform("Data",          meta_str(meta, "data"))
   add_with_platform("Materials",     meta_str(meta, "materials"))
-  add_with_platform("Prereg",        meta_str(meta, "prereg"))
+  add_with_platform("Preregistration", meta_str(meta, "prereg"))
   add_with_platform("Supplement",    meta_str(meta, "supplement"))
   add_with_platform("Slides",        meta_str(meta, "slides"))
   add("Project", meta_str(meta, "project_page"))

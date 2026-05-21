@@ -31,7 +31,7 @@ function bestTitleHref(item) {
 // duplicated in the Lua filter that renders pub detail pages. Edit
 // both when adding a publisher, platform, or stop-word, or when
 // changing cite-key / BibTeX rules. The chip vocabulary (PDF /
-// Article / Preprint / Code & Data / Data / Materials / Prereg /
+// Article / Preprint / Code & Data / Data / Materials / Preregistration /
 // Supplement / Slides / Publisher / Excerpt / Buy / Preview /
 // Project / Copy BibTeX) renders in the same order in both places
 // with the same tooltip behavior (publisher for Article, platform
@@ -224,7 +224,7 @@ function renderItem(item) {
   out += chipWithPlatform('Code & Data', item.code);
   out += chipWithPlatform('Data',        item.data);
   out += chipWithPlatform('Materials',   item.materials);
-  out += chipWithPlatform('Prereg',      item.prereg);
+  out += chipWithPlatform('Preregistration', item.prereg);
   out += chipWithPlatform('Supplement',  item.supplement);
   out += chipWithPlatform('Slides',      item.slides);
   // Book-specific chips: rendered when the entry has `book:` set.
