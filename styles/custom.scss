@@ -800,13 +800,11 @@ code {
 }
 
 .pub-title {
-  font-weight: 600;
+  font-weight: 400;
   font-size: 1rem;
+  color: var(--ml-heading);
   margin: 0 0 0.15rem;
   line-height: 1.35;
-
-  a { color: var(--ml-heading); text-decoration: none; }
-  a:hover { color: var(--ml-link); text-decoration: underline; }
 }
 
 .pub-authors {
@@ -815,10 +813,11 @@ code {
   margin: 0 0 0.15rem;
 }
 
-// Bolded self-author. Used by the Research listing template and by the
+// Self-author emphasis. Used by the Research listing template and by the
 // pub-detail Lua filter (which wraps "Martin Lukk" in <span class="pub-self">
-// inside the auto-rendered title-block author list).
-.pub-self { font-weight: 600; }
+// inside the auto-rendered title-block author list). Medium weight — a
+// gentle highlight that doesn't out-weigh the semibold title above it.
+.pub-self { font-weight: 500; }
 
 .pub-venue {
   font-size: 0.85rem;
@@ -850,6 +849,82 @@ code {
 .pub-list .chips {
   margin: 0.3rem 0 0;
 }
+
+// Each Research entry is a disclosure. Collapsed, it is just the
+// citation with a caret tucked into a left gutter; clicking anywhere on
+// the reference folds out a detail pane. Keeping the toggle on the
+// citation line (rather than a row of its own) keeps entries tight and
+// scannable side-by-side.
+.pub-entry {
+  margin: 0;                     // drop the UA/Bootstrap <details> bottom
+                                 // margin so the list item's own padding
+                                 // sets the gap before the next hairline
+
+  > summary {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    cursor: pointer;
+    list-style: none;            // strip the default disclosure triangle
+
+    &::-webkit-details-marker { display: none; }
+
+    // Caret sized to read as a triangle (not a dot), aligned to the
+    // title's first line, rotating from ▸ to ▾ when the entry opens.
+    // Kept muted grey — a neutral affordance, not an accent.
+    &::before {
+      content: "";
+      flex: 0 0 auto;
+      margin-top: 0.42rem;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid var(--ml-muted);
+      transition: transform 0.12s ease;
+    }
+
+    // Hover feedback: tint the title the accent navy (no underline, so it
+    // doesn't read as a link), signalling the row is interactive.
+    &:hover .pub-title { color: var(--ml-link); }
+  }
+
+  &[open] > summary::before { transform: rotate(90deg); }
+
+  // Let the citation wrap inside the flex row; drop the venue's trailing
+  // margin since the pane (or list spacing) handles separation.
+  .pub-citation { min-width: 0; }
+  .pub-title { transition: color 0.12s ease; }
+  .pub-venue { margin-bottom: 0; }
+}
+
+// The folded-out detail pane: aligned under the citation text (offset by
+// the caret gutter — its 7px width plus the 0.5rem summary gap). Chips
+// sit on top, the abstract below.
+.pub-pane {
+  margin: 0.9rem 0 0 calc(0.5rem + 7px);
+
+  .chips { margin: 0 0 0.55rem; }
+  .chips:last-child { margin-bottom: 0; }   // book: chips only, no abstract
+}
+
+.pub-abstract {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ml-body);
+  max-width: 42rem;
+  margin: 0;
+
+  // Bold "Abstract." lead-in, matching the detail-page .abstract block.
+  &::before {
+    content: "Abstract. ";
+    font-weight: 700;
+  }
+}
+
+// The book's pane shows the publisher's blurb, not an author abstract —
+// relabel its lead-in to match the book's detail page.
+.pub-abstract.pub-publisher-note::before { content: "From the publisher. "; }
 
 // Entry-level chip row at the top of a news detail page (media,
 // writing, talks). Sits between the title block and the descriptive

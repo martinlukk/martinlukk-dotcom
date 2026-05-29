@@ -10,8 +10,33 @@ code: "https://github.com/martinlukk/fairfund-bench"
 prereg: "https://osf.io/ajfk2"
 no_bibtex: true
 abstract: >
-  In preparation. Presented at the SNACK Workshop, University of
-  Toronto Department of Sociology, April 2026.
+  Large language models (LLMs) are increasingly involved in the
+  distribution of scarce resources in contexts like social services,
+  credit, and employment, raising concerns about biased allocations
+  based on characteristics like race and gender. Recent LLM audits have
+  produced inconsistent results, however, finding evidence of both
+  positive and negative discrimination towards women and ethnic
+  minorities, even for the same models. We show that this disagreement
+  can arise from differences in audit format and introduce
+  FairFund-Bench, a benchmark that systematically varies several key
+  features of previous audit designs: the evaluation task (rating,
+  ranking, or allocation), comparison context (single or
+  multi-stimulus), and whether the audit is transparent or disguised.
+  The benchmark comprises 600 requests for financial assistance
+  generated from human-authored templates (calibrated against 1.3M real
+  GoFundMe campaigns) across three domains, four race and two gender
+  categories (signaled using validated names), and five causal framings
+  of need derived from welfare deservingness theory. Across 14 leading
+  models, race and gender biases in allocation are 2-5 times larger in
+  multi-stimulus prompts that make demographic differences less obvious
+  to the model. Causal framing effects, by contrast, exceed any
+  demographic effect on the same task by roughly an order of magnitude
+  and are consistent across models and tasks. Findings highlight how
+  conclusions about bias in current LLMs are sensitive to small
+  differences in audit design. The benchmark scores models on four
+  criteria (demographic bias, normative alignment, cross-task
+  consistency, and cross-context consistency), is publicly available,
+  and can be readily adapted to other substantive domains.
 ---
 
 ::: {.abstract}

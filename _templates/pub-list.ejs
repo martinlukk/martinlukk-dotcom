@@ -17,15 +17,6 @@ function titleOf(item) {
   return item.title;
 }
 
-function bestTitleHref(item) {
-  if (item.book) return item.book;
-  if (item.path) return item.path;
-  if (item.project_page) return item.project_page;
-  if (item.doi) return 'https://doi.org/' + item.doi;
-  if (item.arxiv) return item.arxiv;
-  return '';
-}
-
 // KEEP-IN-SYNC with `_filters/pub-detail.lua`: DOI_PUBLISHERS,
 // URL_PLATFORMS, SKIP_WORDS, citeKey, and bibtexEntry are all
 // duplicated in the Lua filter that renders pub detail pages. Edit
@@ -156,6 +147,13 @@ function escapeAttr(s) {
                   .replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+// Listing abstracts are plain prose (YAML folds them to one paragraph).
+// Escape everything, then re-enable simple *emphasis* — the only markdown
+// any abstract uses. Detail pages run the same text through pandoc.
+function abstractHtml(s) {
+  return escapeHtml(String(s).trim()).replace(/\*([^*]+)\*/g, '<em>$1</em>');
+}
+
 // Chip render helper — `Article` carries publisher+DOI in title;
 // every other non-Project chip carries a platform name in title
 // when the URL host is recognized.
@@ -172,7 +170,6 @@ function chipWithPlatform(label, href) {
 // project pill. Pubs render `<venue>, <year>` as before.
 function renderItem(item) {
   var year = yearOf(item);
-  var href = bestTitleHref(item);
   var authors = (item.authors || []).map(function(a){ return String(a).trim(); });
   var key = citeKey(item, authors, year);
   var bib = bibtexEntry(item, authors, year, key);
@@ -182,69 +179,92 @@ function renderItem(item) {
   var out = '';
   out += '<li data-projects="' + escapeAttr(item.pub_project || '') + '">';
 
-  out += '<div class="pub-title">';
-  if (href) {
-    out += '<a href="' + escapeAttr(href) + '">' + escapeHtml(titleOf(item)) + '</a>';
-  } else {
-    out += escapeHtml(titleOf(item));
-  }
-  out += '</div>';
+  // Citation block — title, authors, venue/year + project pill. Built
+  // into a string so it can serve as the disclosure <summary>. Every
+  // title is plain text — clicking the citation toggles the pane. `*...*`
+  // in a title renders as italics (used for book titles).
+  var titleHtml = escapeHtml(titleOf(item)).replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  var citeHtml = '';
+  citeHtml += '<div class="pub-title">' + titleHtml + '</div>';
 
-  out += '<div class="pub-authors">';
+  citeHtml += '<div class="pub-authors">';
   authors.forEach(function(a, i) {
-    if (i > 0) out += ', ';
+    if (i > 0) citeHtml += ', ';
     var isSelf = (a === 'Martin Lukk' || a === 'M. Lukk' || a === 'Lukk, M.');
     if (isSelf) {
-      out += '<span class="pub-self">' + escapeHtml(a) + '</span>';
+      citeHtml += '<span class="pub-self">' + escapeHtml(a) + '</span>';
     } else {
-      out += escapeHtml(a);
+      citeHtml += escapeHtml(a);
     }
   });
-  out += '</div>';
+  citeHtml += '</div>';
 
-  out += '<div class="pub-venue">';
+  citeHtml += '<div class="pub-venue">';
   var venueText = item.venue || '';
-  if (venueText) out += venueText;
-  if (venueText && year) out += ', ';
-  if (year) out += year;
+  if (venueText) citeHtml += venueText;
+  if (venueText && year) citeHtml += ', ';
+  if (year) citeHtml += year;
   if (item.pub_project) {
-    out += ' <span class="pub-tag pub-project-tag">' + projectLabel(item.pub_project) + '</span>';
+    citeHtml += ' <span class="pub-tag pub-project-tag">' + projectLabel(item.pub_project) + '</span>';
   }
-  out += '</div>';
+  citeHtml += '</div>';
 
-  out += '<div class="chips">';
-  out += chipWithPlatform('PDF', item.pdf);
+  // Build the action chips into a string so they can be placed either
+  // inline (entries with no abstract) or inside the disclosure below.
+  var chipsHtml = '';
+  chipsHtml += chipWithPlatform('PDF', item.pdf);
   if (item.doi) {
     var pub = publisherLabel(item.doi);
     var title = pub ? (pub + ' · DOI: ' + item.doi) : ('DOI: ' + item.doi);
-    out += '<a class="chip" href="https://doi.org/' + escapeAttr(item.doi) +
+    chipsHtml += '<a class="chip" href="https://doi.org/' + escapeAttr(item.doi) +
            '" title="' + escapeAttr(title) + '">Article</a>';
   }
-  out += chipWithPlatform('Preprint',    preprintHref);
-  out += chipWithPlatform('Code & Data', item.code);
-  out += chipWithPlatform('Data',        item.data);
-  out += chipWithPlatform('Materials',   item.materials);
-  out += chipWithPlatform('Preregistration', item.prereg);
-  out += chipWithPlatform('Supplement',  item.supplement);
-  out += chipWithPlatform('Slides',      item.slides);
+  chipsHtml += chipWithPlatform('Preprint',    preprintHref);
+  chipsHtml += chipWithPlatform('Code & Data', item.code);
+  chipsHtml += chipWithPlatform('Data',        item.data);
+  chipsHtml += chipWithPlatform('Materials',   item.materials);
+  chipsHtml += chipWithPlatform('Preregistration', item.prereg);
+  chipsHtml += chipWithPlatform('Supplement',  item.supplement);
+  chipsHtml += chipWithPlatform('Slides',      item.slides);
   // Book-specific chips: rendered when the entry has `book:` set.
   // Tooltip for "Publisher" uses item.venue (e.g., "Stanford University
   // Press"); the other three use URL_PLATFORMS via chipWithPlatform.
   if (item.publisher_url) {
     var pubLabel = item.venue || platformLabel(item.publisher_url);
     var pubTitle = pubLabel ? (' title="' + escapeAttr(pubLabel) + '"') : '';
-    out += '<a class="chip" href="' + escapeAttr(item.publisher_url) + '"' + pubTitle + '>Publisher</a>';
+    chipsHtml += '<a class="chip" href="' + escapeAttr(item.publisher_url) + '"' + pubTitle + '>Publisher</a>';
   }
-  out += chipWithPlatform('Excerpt', item.excerpt_url);
-  out += chipWithPlatform('Buy',     item.buy_url);
-  out += chipWithPlatform('Preview', item.preview_url);
+  chipsHtml += chipWithPlatform('Excerpt', item.excerpt_url);
+  chipsHtml += chipWithPlatform('Buy',     item.buy_url);
+  chipsHtml += chipWithPlatform('Preview', item.preview_url);
   if (item.project_page) {
-    out += '<a class="chip" href="' + escapeAttr(item.project_page) + '">Project</a>';
+    chipsHtml += '<a class="chip" href="' + escapeAttr(item.project_page) + '">Project</a>';
   }
   if (!item.no_bibtex) {
-    out += '<button type="button" class="chip pub-cite" aria-label="Copy BibTeX citation to clipboard" data-cite-target="' + bibtexId + '">Copy BibTeX</button>';
+    chipsHtml += '<button type="button" class="chip pub-cite" aria-label="Copy BibTeX citation to clipboard" data-cite-target="' + bibtexId + '">Copy BibTeX</button>';
   }
-  out += '</div>';
+
+  // The whole citation is a disclosure: collapsed it's just the
+  // reference line (with a caret tucked at the start); clicking it folds
+  // out a detail pane — chips on top, abstract below — so the resting
+  // list stays tight and scannable side-by-side. An entry with neither
+  // an abstract nor any chips renders as a plain, non-toggling citation.
+  if (item.abstract || chipsHtml) {
+    out += '<details class="pub-entry">';
+    out += '<summary><div class="pub-citation">' + citeHtml + '</div></summary>';
+    out += '<div class="pub-pane">';
+    if (chipsHtml) out += '<div class="chips">' + chipsHtml + '</div>';
+    if (item.abstract) {
+      // The book's "abstract" is the publisher's blurb — flag it so the
+      // lead-in reads "From the publisher." instead of "Abstract."
+      var absCls = item.book ? 'pub-abstract pub-publisher-note' : 'pub-abstract';
+      out += '<div class="' + absCls + '">' + abstractHtml(item.abstract) + '</div>';
+    }
+    out += '</div>';
+    out += '</details>';
+  } else {
+    out += citeHtml;
+  }
 
   if (!item.no_bibtex) {
     out += '<script type="application/x-bibtex" id="' + bibtexId + '">' +
