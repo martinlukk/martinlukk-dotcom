@@ -573,12 +573,12 @@ button.pub-cite {
   &:focus-visible { outline: 2px solid var(--ml-link); outline-offset: 2px; }
 }
 
-// Trim only the transparent halo outside the PNG's baked-in circle —
-// the crop inside the circle stays as in the source.
+// The PNG's circle already fills the square, so it maps 1:1 onto the
+// circular container — no halo trimming needed.
 .ml-sidebar-photo {
-  width: 125%;
+  width: 100%;
   height: auto;
-  margin: -12.5%;
+  margin: 0;
   display: block;
 }
 
