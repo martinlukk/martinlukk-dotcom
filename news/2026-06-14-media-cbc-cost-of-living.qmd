@@ -1,5 +1,5 @@
 ---
-title: "Interviewed on CBC's *Cost of Living* podcast about crowdfunding everyday costs"
+title: "Interviewed on CBC's *Cost of Living* podcast about crowdfunding everyday expenses"
 date: "2026-06-14"
 description: "Interviewed on CBC's Cost of Living podcast about the growing practice of crowdfunding to pay for everyday expenses."
 categories: [media]
