@@ -1,12 +1,18 @@
--- For media/writing detail pages, inject a single chip generated from
+-- For media/writing detail pages, inject a chip row generated from
 -- `outlet_url` + `outlet_label` + `outlet` frontmatter. Mirrors the
 -- pattern in `pub-detail.lua` for publication pages.
 --
 -- Frontmatter contract (see README "Media / writing"):
 --   outlet:        human-readable outlet name (e.g., "Vox") — chip tooltip
---   outlet_url:    link target — required for a chip to render
+--   outlet_url:    link target — required for the primary chip to render
 --   outlet_label:  chip label override — optional; defaults to "Op-ed" for
 --                  `categories: [writing]`, else "Article"
+--
+-- Optional second chip (e.g., a podcast segment plus its companion
+-- write-up), rendered after the primary one in the same row:
+--   outlet2_url:   link target — required for the second chip to render
+--   outlet2_label: chip label override — optional; defaults to "Article"
+--   outlet2:       human-readable outlet name — second chip tooltip
 --
 -- Entries with no `outlet_url` (e.g., a radio segment with an inline audio
 -- player) get no chip. That's the intentional opt-out.
@@ -52,17 +58,25 @@ local function default_label(cats)
   return "Article"
 end
 
+local function chip_html(url, label, outlet)
+  local title_attr = outlet and (' title="' .. escape_attr(outlet) .. '"') or ""
+  return '<a class="chip" href="' .. escape_attr(url) .. '"' .. title_attr .. '>' .. label .. '</a>'
+end
+
 function Pandoc(doc)
   if not is_media_like(doc.meta) then return nil end
   local url = meta_str(doc.meta, "outlet_url")
   if not url then return nil end
   local label = meta_str(doc.meta, "outlet_label") or default_label(categories(doc.meta))
-  local outlet = meta_str(doc.meta, "outlet")
-  local title_attr = outlet and (' title="' .. escape_attr(outlet) .. '"') or ""
-  local chip_html =
-    '<div class="chips entry-actions">' ..
-    '<a class="chip" href="' .. escape_attr(url) .. '"' .. title_attr .. '>' .. label .. '</a>' ..
-    '</div>'
-  table.insert(doc.blocks, 1, pandoc.RawBlock("html", chip_html))
+  local chips = chip_html(url, label, meta_str(doc.meta, "outlet"))
+
+  local url2 = meta_str(doc.meta, "outlet2_url")
+  if url2 then
+    local label2 = meta_str(doc.meta, "outlet2_label") or "Article"
+    chips = chips .. chip_html(url2, label2, meta_str(doc.meta, "outlet2"))
+  end
+
+  local row = '<div class="chips entry-actions">' .. chips .. '</div>'
+  table.insert(doc.blocks, 1, pandoc.RawBlock("html", row))
   return doc
 end

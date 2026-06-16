@@ -136,10 +136,14 @@ outlet_url: "https://..."       # link target; required for chip to render
 outlet_label: "Report"          # optional chip-label override; default is
                                 # "Op-ed" for `categories: [writing]`,
                                 # else "Article"
+outlet2_url: "https://..."      # optional second chip (e.g., a podcast plus
+outlet2_label: "Article"        # its companion write-up); label defaults to
+outlet2: "CBC Cost of Living"   # "Article", outlet2 is its tooltip
 ```
 
-`_filters/media-detail.lua` reads these and prepends a single chip to the
-body; no chip block in the qmd body is needed. Entries with no `outlet_url`
+`_filters/media-detail.lua` reads these and prepends a chip row to the
+body; no chip block in the qmd body is needed. The `outlet2_*` fields add a
+second chip after the first. Entries with no `outlet_url`
 (e.g., a radio segment with an inline audio player) get no chip.
 
 `writing` is grouped with `media` everywhere (News filter, Media page) — use

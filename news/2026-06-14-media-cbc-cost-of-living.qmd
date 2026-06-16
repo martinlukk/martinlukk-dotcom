@@ -1,0 +1,14 @@
+---
+title: "Interviewed on CBC's *Cost of Living* podcast about crowdfunding everyday costs"
+date: "2026-06-14"
+description: "Interviewed on CBC's Cost of Living podcast about the growing practice of crowdfunding to pay for everyday expenses."
+categories: [media]
+outlet: "CBC Cost of Living"
+outlet_url: "https://www.cbc.ca/listen/live-radio/1-379-cost-of-living/clip/16220567-canadians-crowdfunding-pay-bills"
+outlet_label: "Podcast"
+outlet2_url: "https://www.cbc.ca/radio/costofliving/cost-of-living-canadian-crownfunding-bills-expensive-9.7235630"
+outlet2_label: "Article"
+outlet2: "CBC Cost of Living"
+---
+
+I was interviewed by Danielle Nerman on CBC's [*Cost of Living*](https://www.cbc.ca/listen/live-radio/1-379-cost-of-living/clip/16220567-canadians-crowdfunding-pay-bills) podcast about the growing practice of Canadians using crowdfunding to cover everyday expenses like rent, groceries, and utilities. I was also quoted in Catherine Zhu's companion article, ["Some Canadians are crowdfunding their way through the cost of living crisis."](https://www.cbc.ca/radio/costofliving/cost-of-living-canadian-crownfunding-bills-expensive-9.7235630)
