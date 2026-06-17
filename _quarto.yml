@@ -5,6 +5,7 @@ project:
     - cv.pdf
     - favicon.ico
     - assets/
+    - googlee6c6bb62e9939b64.html   # Google Search Console verification
   # `posts/` is the blog directory; excluded from rendering until the
   # first post lands. To enable: drop the exclusion below and
   # uncomment the Blog link in `_includes/header.html`.
