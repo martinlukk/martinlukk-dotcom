@@ -18,7 +18,8 @@ function titleOf(item) {
 }
 
 // KEEP-IN-SYNC with `_filters/pub-detail.lua`: DOI_PUBLISHERS,
-// URL_PLATFORMS, SKIP_WORDS, citeKey, and bibtexEntry are all
+// URL_PLATFORMS, SKIP_WORDS, citeKey, the `proceedings`/`booktitle`
+// handling, and bibtexEntry are all
 // duplicated in the Lua filter that renders pub detail pages. Edit
 // both when adding a publisher, platform, or stop-word, or when
 // changing cite-key / BibTeX rules. The chip vocabulary (PDF /
@@ -42,6 +43,7 @@ var DOI_PUBLISHERS = {
   '10.1145': 'ACM',
   '10.1109': 'IEEE',
   '10.1257': 'AEA',
+  '10.18653': 'ACL',
 };
 
 var URL_PLATFORMS = [
@@ -61,6 +63,7 @@ var URL_PLATFORMS = [
   { re: /researchgate/i,    label: 'ResearchGate'  },
   { re: /figshare/i,        label: 'Figshare'      },
   { re: /amazon\./i,        label: 'Amazon'        },
+  { re: /aclanthology\.org/i, label: 'ACL Anthology' },
   { re: /google\.com\/books/i, label: 'Google Books' },
 ];
 
@@ -114,8 +117,13 @@ function citeKey(item, authors, year) {
 function bibtexEntry(item, authors, year, key) {
   var isBook = !!item.book;
   var isWp = isWP(item);
-  var entry = isBook ? 'book' : (isWp ? 'unpublished' : 'article');
+  // Conference/proceedings papers set `proceedings: true` and may give a
+  // full `booktitle:` (e.g. "Findings of the Association for Computational
+  // Linguistics: EMNLP 2026") when the venue line shows a shorter label.
+  var isProc = !!item.proceedings;
+  var entry = isBook ? 'book' : (isWp ? 'unpublished' : (isProc ? 'inproceedings' : 'article'));
   var venue = String(item.venue || '');
+  var booktitle = String(item.booktitle || item.venue || '');
   var doi = String(item.doi || '');
   var title = String(item.title || '').replace(/\*/g, '');
 
@@ -128,6 +136,8 @@ function bibtexEntry(item, authors, year, key) {
     if (venue) lines.push('  publisher = {' + venue + '},');
   } else if (isWp) {
     lines.push('  note = {' + (venue || 'Working paper') + '},');
+  } else if (isProc) {
+    if (booktitle) lines.push('  booktitle = {' + booktitle + '},');
   } else {
     if (venue) lines.push('  journal = {' + venue + '},');
   }
@@ -201,9 +211,19 @@ function renderItem(item) {
 
   citeHtml += '<div class="pub-venue">';
   var venueText = item.venue || '';
-  if (venueText) citeHtml += venueText;
-  if (venueText && year) citeHtml += ', ';
-  if (year) citeHtml += year;
+  if (item.forthcoming) {
+    // Accepted but not yet in the volume of record. The year belongs to
+    // the venue's own name ("Findings of EMNLP 2026"), so it attaches
+    // without a comma and the status takes the comma slot instead.
+    citeHtml += venueText;
+    if (venueText && year) citeHtml += ' ';
+    if (year) citeHtml += year;
+    citeHtml += ', forthcoming';
+  } else {
+    if (venueText) citeHtml += venueText;
+    if (venueText && year) citeHtml += ', ';
+    if (year) citeHtml += year;
+  }
   if (item.pub_project) {
     citeHtml += ' <span class="pub-tag pub-project-tag">' + projectLabel(item.pub_project) + '</span>';
   }

@@ -1,10 +1,14 @@
 ---
 title: "FairFund-Bench: Evaluating Distributive Bias in LLM Resource Allocation"
-subtitle: "arXiv, 2026"
-date: "2026-07-31"
-categories: [working-paper]
+subtitle: "*Findings of EMNLP 2026*, forthcoming"
+news_title: '"FairFund-Bench" accepted to *Findings of EMNLP 2026*'
+date: "2026-08-21"
+categories: [publication]
 authors: ["Martin Lukk"]
-venue: "arXiv"
+venue: "Findings of EMNLP"
+forthcoming: true
+booktitle: "Findings of the Association for Computational Linguistics: EMNLP 2026"
+proceedings: true
 year: 2026
 pub_project: algorithmic-fairness
 preprint: "https://arxiv.org/abs/2607.28934"

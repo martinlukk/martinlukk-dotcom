@@ -19,9 +19,10 @@ local SKIP_WORDS = {
 
 -- KEEP-IN-SYNC with `_templates/pub-list.ejs`: DOI_PUBLISHERS and
 -- URL_PLATFORMS below, plus SKIP_WORDS, cite_key, and bibtex_entry
--- are all duplicated in the EJS listing template in JavaScript form.
--- Edit both when adding a publisher, platform, or stop-word, or when
--- changing cite-key / BibTeX generation rules.
+-- are all duplicated in the EJS listing template in JavaScript form,
+-- as is the `proceedings`/`booktitle` handling. Edit both when adding a
+-- publisher, platform, or stop-word, or when changing cite-key / BibTeX
+-- generation rules.
 --
 -- DOI registrant prefix → human-friendly publisher label. Used to
 -- enrich the Article chip's hover tooltip (the chip label itself is
@@ -40,6 +41,7 @@ local DOI_PUBLISHERS = {
   ["10.1145"] = "ACM",
   ["10.1109"] = "IEEE",
   ["10.1257"] = "AEA",
+  ["10.18653"] = "ACL",
 }
 
 -- URL-host → human-friendly platform label. Drives the hover tooltip
@@ -62,6 +64,7 @@ local URL_PLATFORMS = {
   { pattern = "psyarxiv",      label = "PsyArXiv"    },
   { pattern = "researchgate",  label = "ResearchGate"},
   { pattern = "figshare",      label = "Figshare"    },
+  { pattern = "aclanthology%.org", label = "ACL Anthology" },
 }
 
 local function has_category(meta, name)
@@ -99,6 +102,12 @@ local function meta_bool(meta, key)
   if type(v) == "boolean" then return v end
   local s = pandoc.utils.stringify(v):lower()
   return s == "true" or s == "yes" or s == "1"
+end
+
+-- Conference/proceedings papers set `proceedings: true`; `booktitle:`
+-- carries the full proceedings name when `venue:` shows a shorter label.
+local function is_proceedings(meta)
+  return meta_bool(meta, "proceedings")
 end
 
 local function escape_attr(s)
@@ -210,11 +219,14 @@ end
 local function bibtex_entry(meta, authors, year, title)
   local is_book = meta.book ~= nil
   local is_wp = is_working_paper(meta)
+  local is_proc = is_proceedings(meta)
   local entry_type
   if is_book then
     entry_type = "book"
   elseif is_wp then
     entry_type = "unpublished"
+  elseif is_proc then
+    entry_type = "inproceedings"
   else
     entry_type = "article"
   end
@@ -232,6 +244,9 @@ local function bibtex_entry(meta, authors, year, title)
     if venue ~= "" then lines[#lines + 1] = "  publisher = {" .. venue .. "}," end
   elseif is_wp then
     lines[#lines + 1] = "  note = {" .. (venue ~= "" and venue or "Working paper") .. "},"
+  elseif is_proc then
+    local booktitle = meta_str(meta, "booktitle") or venue
+    if booktitle ~= "" then lines[#lines + 1] = "  booktitle = {" .. booktitle .. "}," end
   else
     if venue ~= "" then lines[#lines + 1] = "  journal = {" .. venue .. "}," end
   end
@@ -300,6 +315,7 @@ local function citation_meta_html(meta)
   local pdf = meta_str(meta, "pdf")
   local is_book = meta.book ~= nil
   local is_wp = is_working_paper(meta)
+  local is_proc = is_proceedings(meta)
   local clean_title = title:gsub("%*", "")
 
   local tags = {}
@@ -318,6 +334,8 @@ local function citation_meta_html(meta)
     -- For working papers on a preprint server (SocArXiv/arXiv/SSRN/etc.),
     -- the server is the publisher; `venue:` already names it.
     tag("citation_publisher", venue)
+  elseif is_proc then
+    tag("citation_conference_title", meta_str(meta, "booktitle") or venue)
   else
     tag("citation_journal_title", venue)
   end
