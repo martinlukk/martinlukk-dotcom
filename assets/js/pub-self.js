@@ -17,7 +17,7 @@
   // Project pill display labels — keys are the `pub_project` slug from
   // frontmatter, values are the human-readable label.
   var PROJECT_LABELS = {
-    'algorithmic-fairness':  'Algorithmic Fairness',
+    'algorithmic-fairness':  'AI & Algorithmic Fairness',
     'crowdfunding-welfare':  'Crowdfunding & Social Welfare',
     'political-conflict':    'Political Identity & Conflict',
   };
