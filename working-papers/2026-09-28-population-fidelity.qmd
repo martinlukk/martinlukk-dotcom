@@ -1,13 +1,14 @@
 ---
 title: "Population Fidelity: Evaluating Population Representativeness in LLMs"
-subtitle: "2026"
+subtitle: "arXiv, 2026"
 date: "2026-09-28"
 categories: [working-paper]
 authors: ["Neemias B. da Silva", "Martin Lukk", "Ali Sutani", "Abhishek Moturu", "Harris Yang", "Daniel Silver", "Matt Ratto", "Thiago H. Silva"]
+venue: "arXiv"
 year: 2026
 pub_project: algorithmic-fairness
+preprint: "https://arxiv.org/abs/2609.36253"
 code: "https://github.com/CriticalMaking/LLM-population-fidelity"
-no_bibtex: true  # TODO: remove once the preprint is posted
 abstract: >
   Large language models (LLMs) show considerable potential in simulating
   human attitudes and preferences. Prior work finds that LLM-generated
