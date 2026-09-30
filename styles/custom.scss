@@ -283,12 +283,22 @@ button.pub-cite {
 
 // Project tag pill — sits next to the venue text on both the Research
 // listing (rendered by pub-list.ejs) and the publication detail page
-// (injected by pub-self.js). Re-uses the .pub-tag pill, plus a touch
-// of left-margin, normal font-style (the listing's .pub-venue is
-// italic), and a small optical nudge.
+// (injected by pub-self.js). Re-uses the .pub-tag pill, plus normal
+// font-style (the listing's .pub-venue is italic) and a small optical
+// nudge. The venue line becomes a wrapping flex row so the gap before
+// the tag is a column-gap: an inline margin would travel with the tag
+// when it wraps at narrow widths, indenting it off the left edge.
+.pub-venue:has(.pub-project-tag),
+.quarto-title .subtitle:has(.pub-project-tag) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.55rem;
+  row-gap: 0.2rem;
+}
 .pub-project-tag {
-  margin-left: 0.35rem;
-  vertical-align: 1px;
+  position: relative;
+  top: -1px;
   font-style: normal;
 }
 
