@@ -48,6 +48,13 @@
     var tag = document.createElement('span');
     tag.className = 'pub-tag pub-project-tag';
     tag.textContent = PROJECT_LABELS[project] || project;
+    // The subtitle becomes a flex row once the tag lands (see
+    // custom.scss), which would make `<em>Venue</em>` and ", Year"
+    // separate flex items with the column-gap between them. Wrap the
+    // existing venue text so it stays one item.
+    var venue = document.createElement('span');
+    while (sub.firstChild) venue.appendChild(sub.firstChild);
+    sub.appendChild(venue);
     sub.appendChild(document.createTextNode(' '));
     sub.appendChild(tag);
   }
