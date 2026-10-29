@@ -23,7 +23,12 @@
 
 [[redirects]]
   from = "/working-papers/2026-07-31-fairfund-bench.html"
-  to   = "/news/2026-08-21-publication-fairfund-bench-article.html"
+  to   = "/news/2026-10-24-publication-fairfund-bench-article.html"
+  status = 301
+
+[[redirects]]
+  from = "/news/2026-08-21-publication-fairfund-bench-article.html"
+  to   = "/news/2026-10-24-publication-fairfund-bench-article.html"
   status = 301
 
 [[redirects]]
