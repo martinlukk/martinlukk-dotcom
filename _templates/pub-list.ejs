@@ -24,7 +24,7 @@ function titleOf(item) {
 // both when adding a publisher, platform, or stop-word, or when
 // changing cite-key / BibTeX rules. The chip vocabulary (PDF /
 // Article / Preprint / Code & Data / Data / Materials / Preregistration /
-// Supplement / Slides / Publisher / Excerpt / Buy / Preview /
+// Supplement / Slides / Poster / Publisher / Excerpt / Buy / Preview /
 // Project / Copy BibTeX) renders in the same order in both places
 // with the same tooltip behavior (publisher for Article, platform
 // for everything else). The `code` field drives the combined
@@ -246,6 +246,7 @@ function renderItem(item) {
   chipsHtml += chipWithPlatform('Preregistration', item.prereg);
   chipsHtml += chipWithPlatform('Supplement',  item.supplement);
   chipsHtml += chipWithPlatform('Slides',      item.slides);
+  chipsHtml += chipWithPlatform('Poster',      item.poster);
   // Book-specific chips: rendered when the entry has `book:` set.
   // Tooltip for "Publisher" uses item.venue (e.g., "Stanford University
   // Press"); the other three use URL_PLATFORMS via chipWithPlatform.

@@ -119,6 +119,7 @@ materials: "https://..."   # optional — "Materials" chip (stimuli, codebooks, 
 prereg: "https://..."      # optional — "Preregistration" chip (OSF Registry, AsPredicted, …)
 supplement: "https://..."  # optional — "Supplement" chip (online appendix / SI)
 slides: "https://..."      # optional — "Slides" chip
+poster: "https://..."      # optional — "Poster" chip
 project_page: "/foo/"     # optional; renders a "Project" chip (link to a project page on this site)
 book: "/book/"             # optional; for the book entry — routes the Research title link to /book/ instead of the news detail page
 publisher_url: "..."       # optional (book only); renders "Publisher" chip
