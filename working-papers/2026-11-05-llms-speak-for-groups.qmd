@@ -1,0 +1,44 @@
+---
+title: "When LLMs Speak for Groups: Demographic Misrepresentation in Model-Generated Survey Responses"
+subtitle: "Working paper, 2026"
+date: "2026-11-05"
+categories: [working-paper]
+authors: ["Martin Lukk", "Neemias B. da Silva", "Ali Sutani", "Abhishek Moturu", "Harris Yang", "Daniel Silver", "Thiago H. Silva", "Matt Ratto"]
+venue: "Working paper"
+year: 2026
+pub_project: algorithmic-fairness
+abstract: >
+  Large Language Models (LLMs) are increasingly used to simulate human
+  attitudes, preferences, and behaviors in a variety of contexts. Previous
+  research finds, however, that LLM-generated responses do not reliably
+  reproduce the attitudinal distributions of real populations and distort
+  them in ways that remain poorly understood. This study investigates how
+  LLMs represent specific, demographically defined population groups and
+  how representativeness varies across seven topic areas: health,
+  employment, crime, politics, technology use, education, and values. We
+  assess how social groups defined by sex, age, education, race/ethnicity,
+  income, and employment are represented by three leading LLMs, evaluated
+  against these groups' responses to questions in ten high-quality surveys
+  covering the contemporary U.S. and Canada. We consider several aspects of
+  representation, including accurate reproduction of group-level positions
+  and between-group variation. Through experiments using persona prompting,
+  we find that the models' group-specific answers are less accurate than
+  they would be by simply assigning every group the survey's average
+  answer. Across all questions, models are less accurate for disadvantaged
+  groups: those with less education, lower incomes, or no work, and racial
+  and ethnic minorities. Depending on the topic, models either compress or
+  exaggerate differences between groups, and they rarely reproduce which
+  groups differ most. Different models also distort groups differently,
+  sometimes misrepresenting the same groups in divergent ways on the same
+  question. On specific questions, models erase group differences in
+  reports of service access and other aspects of lived experience, while
+  sharpening differences by education, sex, and race/ethnicity compared to
+  survey data. Our findings highlight the potential for significant harms
+  when current models are deployed to simulate the attitudes and behaviors
+  of specific population groups in high-stakes contexts, including policy
+  design and health- and employment-related counseling.
+---
+
+::: {.abstract}
+{{< meta abstract >}}
+:::
