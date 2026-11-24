@@ -1,0 +1,10 @@
+---
+title: "Quoted in *Fortune* on crowdfunding for essentials and the affordability crisis"
+date: "2026-11-21"
+description: "Quoted in Fortune on the rise in GoFundMe campaigns for groceries and other essentials amid the U.S. affordability crisis."
+categories: [media]
+outlet: "Fortune"
+outlet_url: "https://fortune.com/2026/11/21/gofundme-fundraisers-for-groceries-essentials-increased-40-percent-american-affordability-crisis/"
+---
+
+I was quoted in Sasha Rogelberg's article, ["'Folks are struggling in many cases': GoFundMe's CEO says affordability crisis is behind 40% surge in U.S. fundraisers for essentials like groceries,"](https://fortune.com/2026/11/21/gofundme-fundraisers-for-groceries-essentials-increased-40-percent-american-affordability-crisis/) in *Fortune*, on the growth of crowdfunding for essentials and how gaps in the social safety net drive people to GoFundMe.
